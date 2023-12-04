@@ -21,17 +21,29 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Player setting
+
+    [SerializeField] private float yVelocity;
+
     [Header("Move")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveDir;
     [SerializeField] private bool isFacingRight;
-    [Header("Jump")]
-    [SerializeField] private float jumpForce;
+    [Header("Check surface")]
     [SerializeField] private bool isGround;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckLength;
     [SerializeField] private LayerMask whatIsGround;
+    [Header("Jump")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpConstant;
+    [SerializeField] private bool canDoubleJump;
+    [SerializeField] private bool canHighJump;
     [SerializeField] private float moveSpeedInAir;
+
+
+    [Header("Fall")]
+    [SerializeField] private float fallGravity;
+    [SerializeField] private float defaultGravity;
     [Header("Roll")]
     [SerializeField] private float rollSpeed;
     [SerializeField] private bool isRolling;
@@ -71,6 +83,8 @@ public class Player : MonoBehaviour
 
         stateMachine.InitState(idleState);
         isFacingRight = true;
+        canDoubleJump = true;
+        canHighJump = true;
     }
 
 
@@ -78,6 +92,8 @@ public class Player : MonoBehaviour
     {
         moveDir = Input.GetAxisRaw("Horizontal");
         stateMachine.currentState.Update();
+
+        yVelocity = rb.velocity.y;
 
         CheckGround();
     }
@@ -96,9 +112,16 @@ public class Player : MonoBehaviour
     public float AttackCountDown() => attackCountdown;
     public bool IsFirstAttack() => isFirstAttack;
     public float AttackDir() => attackDir;
+    public bool CanDoubleJump() => canDoubleJump;
+    public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
+    public bool CanHighJump() => canHighJump;
+    public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
     public float SetAttackDir(float _attackDir) => attackDir = _attackDir;
     public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
     public void SetIsGround(bool _isGround) => isGround = _isGround;
+    public float JumpConstant() => jumpConstant;
+
+
     public void SetIsFacingRight(bool _isFacingRight)
     {
         if (_isFacingRight != isFacingRight)
@@ -107,11 +130,22 @@ public class Player : MonoBehaviour
             isFacingRight = _isFacingRight;
         }
     }
+    public void ActivateFallGravity(bool _isActivate)
+    {
+        if (_isActivate)
+        {
+            rb.gravityScale = fallGravity;
+        }
+        else
+        {
+            rb.gravityScale = defaultGravity;
+        }
+    }
 
     public void CheckGround()
     {
         isGround = Physics2D.Raycast(
-            groundCheck.position, 
+            groundCheck.position,
             Vector2.down,
             groundCheckLength,
             whatIsGround
@@ -120,7 +154,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(
-            groundCheck.position, 
+            groundCheck.position,
             new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckLength)
             );
     }

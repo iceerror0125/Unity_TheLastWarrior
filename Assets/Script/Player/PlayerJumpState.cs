@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,9 @@ public class PlayerJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        //player.SetIsGround(false);
+        player.ActivateFallGravity(false);
 
-        Vector2 jump = new Vector2(
-            player.rb.velocity.x,
-            player.JumpForce()
-            );
-        player.ChangeVelocity(jump);
+        Jump(player.JumpForce());
     }
 
     public override void Exit()
@@ -29,11 +26,30 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Update();
 
+        CheckingChangeToFallState();
+        Debug.Log("Jump State");
+    }
+
+    private void CheckingChangeToFallState()
+    {
+
         if (player.rb.velocity.y < 0)
         {
             stateMachine.ChangeState(player.fallState);
         }
+        if (Input.GetKeyUp(KeyCode.Z) && player.rb.velocity.y > 0)
+        {
+            player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.rb.velocity.y / player.JumpConstant()));
+        }
+      
+    }
 
-        Debug.Log("Jump State");
+    private void Jump(float _yValue)
+    {
+        Vector2 jump = new Vector2(
+           player.rb.velocity.x,
+           _yValue
+           );
+        player.ChangeVelocity(jump);
     }
 }

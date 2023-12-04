@@ -345,7 +345,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.74
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07000001, y: 1.21, z: -10}
+  m_LocalPosition: {x: 0.92, y: 2.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -746,16 +746,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: rollSpeed
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: fallGravity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 120173364}
+    - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: jumpConstant
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: defaultGravity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: moveSpeedInAir
       value: 6
@@ -765,8 +777,16 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: limitJumpHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: groundCheckLength
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: jumpIncreasingIndex
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: whatIsGround.m_Bits

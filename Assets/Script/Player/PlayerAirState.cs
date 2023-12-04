@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class PlayerAirState : PlayerState
 {
-    
-
     public override void Enter()
     {
         base.Enter();
     }
-
     public override void Exit()
     {
         base.Exit();
@@ -20,5 +17,16 @@ public class PlayerAirState : PlayerState
     {
         base.Update();
         MoveController(player.MoveSpeedInAir());
+
+        if (player.CanDoubleJump())
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Debug.Log("Double Jump");
+                player.ActivateFallGravity(false);
+                player.SetCanDoubleJump(false);
+                stateMachine.ChangeState(player.jumpState);
+            }
+        }
     }
 }
