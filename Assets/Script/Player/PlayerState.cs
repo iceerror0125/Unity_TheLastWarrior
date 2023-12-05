@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,28 +23,23 @@ public class PlayerState : BaseState
 
     private void Flip()
     {
-        if (player.MoveDir() != 0)
+        if (player.MoveDir() != 0 && !player.IsSliding())
         {
-            if (player.MoveDir() < 0)
-                player.SetIsFacingRight(false);
-            else if (player.MoveDir() > 0)
-                player.SetIsFacingRight(true);
+            if (player.MoveDir() != player.PlayerDir())
+            {
+                player.SetIsFacingRight(player.MoveDir() == -1 ? false : true);
+                player.ChangeRotation();
+            }
         }
     }
 
-    protected void MoveController(float moveSpeed)
+    protected virtual void MoveController(float _moveSpeed)
     {
-        /*float facingValue = player.IsFacingRight() ? 1 : -1;
-        if (player.MoveDir() != facingValue)
-        {
-            player.ChangeVelocity(player.ZeroVelocity());
-            return;
-        }*/
-
         Vector2 speed = new Vector2(
-          moveSpeed * player.MoveDir(),
+          _moveSpeed * player.MoveDir(),
           player.rb.velocity.y
           );
         player.ChangeVelocity(speed);
     }
+
 }

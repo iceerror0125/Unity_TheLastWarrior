@@ -26,7 +26,7 @@ public class PlayerGroundState : PlayerState
         if (!player.IsGround())
             return;
         
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) /*|| player.IsWall()*/)
         {
             stateMachine.ChangeState(player.jumpState);
         }

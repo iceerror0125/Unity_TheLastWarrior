@@ -26,7 +26,7 @@ public class PlayerRollState : PlayerGroundState
     {
         if (player.IsRolling())
         {
-            player.ChangeVelocity(new Vector2(player.RollSpeed() * facingValue, 0));
+            player.ChangeVelocity(new Vector2(player.RollSpeed() * facingValue, player.rb.velocity.y));
             return;
         }
           

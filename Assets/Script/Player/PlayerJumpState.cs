@@ -25,6 +25,7 @@ public class PlayerJumpState : PlayerAirState
     public override void Update()
     {
         base.Update();
+      
 
         CheckingChangeToFallState();
         Debug.Log("Jump State");
@@ -39,7 +40,7 @@ public class PlayerJumpState : PlayerAirState
         }
         if (Input.GetKeyUp(KeyCode.Z) && player.rb.velocity.y > 0)
         {
-            player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.rb.velocity.y / player.JumpConstant()));
+            player.ChangeVelocity(new Vector2(player.rb.velocity.x, 0/*player.rb.velocity.y / player.JumpConstant()*/));
         }
       
     }

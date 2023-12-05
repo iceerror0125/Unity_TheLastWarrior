@@ -18,21 +18,37 @@ public class Player : MonoBehaviour
     public PlayerMoveState moveState { get; private set; }
     public PlayerGroundState rollState { get; private set; }
     public PlayerAttackState attackState { get; private set; }
+    public PlayerWallSlideState wallSlideState { get; private set; }
+    public PlayerDeadState deadState { get; private set; }
+    public PlayerWallJumpState wallJumpState { get; private set; }
     #endregion
 
     #region Player setting
 
     [SerializeField] private float yVelocity;
 
+    [Header("Wall Slide")]
+    [SerializeField] private float wallSlideGravity;
+    [SerializeField] private float wallSlideJumpForce;
+    [SerializeField] private bool isSliding;
+
+
     [Header("Move")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveDir;
+    [SerializeField] private float playerDir;
     [SerializeField] private bool isFacingRight;
-    [Header("Check surface")]
+
+    [Header("Ground Check")]
     [SerializeField] private bool isGround;
-    [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckLength;
     [SerializeField] private LayerMask whatIsGround;
+
+    [Header("Wall Check")]
+    [SerializeField] private bool isWall;
+    [SerializeField] private float wallCheckLength;
+    // [SerializeField] private LayerMask whatIsGround;
+
     [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpConstant;
@@ -40,10 +56,10 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canHighJump;
     [SerializeField] private float moveSpeedInAir;
 
-
     [Header("Fall")]
     [SerializeField] private float fallGravity;
     [SerializeField] private float defaultGravity;
+
     [Header("Roll")]
     [SerializeField] private float rollSpeed;
     [SerializeField] private bool isRolling;
@@ -51,7 +67,6 @@ public class Player : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private float attackCountdown;
     [SerializeField] private bool isFirstAttack;
-    [SerializeField] private float attackDir;
 
     #endregion
 
@@ -72,13 +87,15 @@ public class Player : MonoBehaviour
         #endregion
 
         #region Init Player State
-
         idleState = new PlayerIdleState("Player_Idle");
         moveState = new PlayerMoveState("Player_Run");
         jumpState = new PlayerJumpState("Player_Jump");
         fallState = new PlayerFallState("Player_Fall");
         rollState = new PlayerRollState("Player_Roll");
         attackState = new PlayerAttackState("Player_Attack1");
+        wallSlideState = new PlayerWallSlideState("Player_WallSlide");
+        deadState = new PlayerDeadState("Player_Death");
+        wallJumpState = new PlayerWallJumpState("Player_Jump");
         #endregion
 
         stateMachine.InitState(idleState);
@@ -94,14 +111,17 @@ public class Player : MonoBehaviour
         stateMachine.currentState.Update();
 
         yVelocity = rb.velocity.y;
+        playerDir = isFacingRight ? 1 : -1;
 
-        CheckGround();
+        CheckingGround();
+        CheckingWall();
     }
 
     public void ZeroVelocity() => rb.velocity = Vector2.zero;
     public void ChangeVelocity(Vector2 _newVelocity) => rb.velocity = _newVelocity;
     public float MoveSpeed() => moveSpeed;
     public float MoveDir() => moveDir;
+    public float SetMoveDir(float _value) => moveDir = _value; 
     public float JumpForce() => jumpForce;
     public float RollSpeed() => rollSpeed;
     public bool IsGround() => isGround;
@@ -111,24 +131,28 @@ public class Player : MonoBehaviour
     public float MoveSpeedInAir() => moveSpeedInAir;
     public float AttackCountDown() => attackCountdown;
     public bool IsFirstAttack() => isFirstAttack;
-    public float AttackDir() => attackDir;
     public bool CanDoubleJump() => canDoubleJump;
     public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
     public bool CanHighJump() => canHighJump;
     public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
-    public float SetAttackDir(float _attackDir) => attackDir = _attackDir;
     public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
     public void SetIsGround(bool _isGround) => isGround = _isGround;
     public float JumpConstant() => jumpConstant;
+    public bool IsWall() => isWall;
+    public float PlayerDir() => playerDir;
+    public float WallSlideGravity() => wallSlideGravity;
+    public float WallSlideJumpForce() => wallSlideJumpForce;
+    public bool IsSliding() => isSliding;
+    public void SetIsSliding(bool _value) => isSliding = _value;
 
+    public void ChangeRotation()
+    {
+        transform.Rotate(0, 180, 0);
+    }
 
     public void SetIsFacingRight(bool _isFacingRight)
     {
-        if (_isFacingRight != isFacingRight)
-        {
-            transform.Rotate(0, 180, 0);
-            isFacingRight = _isFacingRight;
-        }
+        isFacingRight = _isFacingRight;
     }
     public void ActivateFallGravity(bool _isActivate)
     {
@@ -142,20 +166,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void CheckGround()
+    private void CheckingGround()
     {
         isGround = Physics2D.Raycast(
-            groundCheck.position,
+            transform.position,
             Vector2.down,
             groundCheckLength,
             whatIsGround
             );
     }
+
+    private void CheckingWall()
+    {
+        isWall = Physics2D.Raycast(transform.position,
+            Vector2.right * playerDir,
+            wallCheckLength,
+            whatIsGround);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(
-            groundCheck.position,
-            new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckLength)
+            transform.position,
+            new Vector2(transform.position.x, transform.position.y - groundCheckLength)
+            );
+        Gizmos.DrawLine(
+            transform.position,
+            new Vector2(transform.position.x + wallCheckLength * playerDir, transform.position.y)
             );
     }
 }

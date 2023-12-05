@@ -12,7 +12,6 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.SetAttackDir(player.MoveDir());
         timer = player.AttackCountDown();
     }
 
@@ -33,10 +32,9 @@ public class PlayerAttackState : PlayerState
     {
         base.Update();
 
-        if (player.AttackDir() != player.MoveDir())
+        if (player.PlayerDir() != player.MoveDir())
         {
             player.ZeroVelocity();
-            player.SetAttackDir(player.MoveDir());
         }
 
         Debug.Log("Attack State");
