@@ -12,7 +12,7 @@ public class PlayerWallJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        float x = player.WallSlideJumpForce() * player.PlayerDir();
+        float x = player.WallSlideJumpForce() * player.EntityDir();
         float y = x * x;
         //var jumpVector = new Vector2(player.WallSlideJumpForce() * player.PlayerDir(), player.WallSlideJumpForce());
         var jumpVector = new Vector2(x, y);
@@ -47,7 +47,7 @@ public class PlayerWallJumpState : PlayerAirState
     {
         if (player.MoveDir() == 0)
         {
-            player.SetMoveDir(player.PlayerDir());
+            player.SetMoveDir(player.EntityDir());
             return;
         }
         if (activeMoveControllerTimer < 0)

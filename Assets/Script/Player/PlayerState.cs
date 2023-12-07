@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : BaseState
@@ -25,7 +22,7 @@ public class PlayerState : BaseState
     {
         if (player.MoveDir() != 0 && !player.IsSliding())
         {
-            if (player.MoveDir() != player.PlayerDir())
+            if (player.MoveDir() != player.EntityDir())
             {
                 player.SetIsFacingRight(player.MoveDir() == -1 ? false : true);
                 player.ChangeRotation();

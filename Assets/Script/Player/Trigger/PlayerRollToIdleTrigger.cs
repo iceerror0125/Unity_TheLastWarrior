@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerRollToIdleTrigger
 {
-    public void RollStateToIdleState()
+    public void ActiveTrigger()
     {
-        Player player = PlayerManager.instance.player;
+        var player = PlayerManager.instance.player;
         player.stateMachine.ChangeState(player.idleState);
     }
 }

@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
+    protected Player player;
     private PlayerRollToIdleTrigger toIdleTrigger;
     private PlayerChangeAttackAnim changeAttackAnim;
+    private HitEnemyTrigger hitEnemyTrigger;
 
     void Start()
     {
         toIdleTrigger = new PlayerRollToIdleTrigger();
-        changeAttackAnim = new PlayerChangeAttackAnim();    
+        changeAttackAnim = new PlayerChangeAttackAnim();   
+        hitEnemyTrigger = new HitEnemyTrigger();
     }
 
     public void RollStateToIdleState()
     {
-        toIdleTrigger.RollStateToIdleState();
+        toIdleTrigger.ActiveTrigger();
     }
     public void ChangeAttackAnim()
     {
-        changeAttackAnim.ChangeAttackAnim();
+        changeAttackAnim.ActiveTrigger();
+    }
+    public void HitEnemyTrigger()
+    {
+        hitEnemyTrigger.ActiveTrigger();
     }
 }

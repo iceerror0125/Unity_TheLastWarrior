@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    #region Component
-    public Rigidbody2D rb { get; private set; }
-    public Animator anim { get; private set; }
-    #endregion
-
     #region PlayerState
     public PlayerIdleState idleState { get; private set; }
     public PlayerAirState airState { get; private set; }
@@ -21,37 +16,18 @@ public class Player : MonoBehaviour
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerDeadState deadState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
+    public PlayerHurtState hurtState { get; private set; }
     #endregion
 
     #region Player setting
-
-    [SerializeField] private float yVelocity;
 
     [Header("Wall Slide")]
     [SerializeField] private float wallSlideGravity;
     [SerializeField] private float wallSlideJumpForce;
     [SerializeField] private bool isSliding;
 
-
-    [Header("Move")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float moveDir;
-    [SerializeField] private float playerDir;
-    [SerializeField] private bool isFacingRight;
-
-    [Header("Ground Check")]
-    [SerializeField] private bool isGround;
-    [SerializeField] private float groundCheckLength;
-    [SerializeField] private LayerMask whatIsGround;
-
-    [Header("Wall Check")]
-    [SerializeField] private bool isWall;
-    [SerializeField] private float wallCheckLength;
-    // [SerializeField] private LayerMask whatIsGround;
-
     [Header("Jump")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpConstant;
     [SerializeField] private bool canDoubleJump;
     [SerializeField] private bool canHighJump;
     [SerializeField] private float moveSpeedInAir;
@@ -60,31 +36,28 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallGravity;
     [SerializeField] private float defaultGravity;
 
-    [Header("Roll")]
-    [SerializeField] private float rollSpeed;
-    [SerializeField] private bool isRolling;
-
-    [Header("Attack")]
-    [SerializeField] private float attackCountdown;
     [SerializeField] private bool isFirstAttack;
 
     #endregion
 
-    public StateMachine stateMachine { get; private set; }
+    #region Getter Setter
+    public float JumpForce() => jumpForce;
+    public float MoveSpeedInAir() => moveSpeedInAir;
+    public bool IsFirstAttack() => isFirstAttack;
+    public bool CanDoubleJump() => canDoubleJump;
+    public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
+    public bool CanHighJump() => canHighJump;
+    public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
+    public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
+    public float WallSlideJumpForce() => wallSlideJumpForce;
+    public bool IsSliding() => isSliding;
+    public void SetIsSliding(bool _value) => isSliding = _value;
+    public float WallSlideGravity() => wallSlideGravity;
+    #endregion
 
-    private void Awake()
+    protected override void Start()
     {
-        stateMachine = new StateMachine();
-    }
-
-    private void Start()
-    {
-        #region Get Component
-
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-
-        #endregion
+        base.Start();
 
         #region Init Player State
         idleState = new PlayerIdleState("Player_Idle");
@@ -96,63 +69,21 @@ public class Player : MonoBehaviour
         wallSlideState = new PlayerWallSlideState("Player_WallSlide");
         deadState = new PlayerDeadState("Player_Death");
         wallJumpState = new PlayerWallJumpState("Player_Jump");
+        hurtState = new PlayerHurtState("Player_Hurt");
         #endregion
 
         stateMachine.InitState(idleState);
+
         isFacingRight = true;
         canDoubleJump = true;
         canHighJump = true;
     }
-
-
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
+        //stateMachine.currentState.Update();
         moveDir = Input.GetAxisRaw("Horizontal");
-        stateMachine.currentState.Update();
-
-        yVelocity = rb.velocity.y;
-        playerDir = isFacingRight ? 1 : -1;
-
-        CheckingGround();
-        CheckingWall();
-    }
-
-    public void ZeroVelocity() => rb.velocity = Vector2.zero;
-    public void ChangeVelocity(Vector2 _newVelocity) => rb.velocity = _newVelocity;
-    public float MoveSpeed() => moveSpeed;
-    public float MoveDir() => moveDir;
-    public float SetMoveDir(float _value) => moveDir = _value; 
-    public float JumpForce() => jumpForce;
-    public float RollSpeed() => rollSpeed;
-    public bool IsGround() => isGround;
-    public bool IsRolling() => isRolling;
-    public void SetIsRolling(bool _isRolling) => isRolling = _isRolling;
-    public bool IsFacingRight() => isFacingRight;
-    public float MoveSpeedInAir() => moveSpeedInAir;
-    public float AttackCountDown() => attackCountdown;
-    public bool IsFirstAttack() => isFirstAttack;
-    public bool CanDoubleJump() => canDoubleJump;
-    public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
-    public bool CanHighJump() => canHighJump;
-    public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
-    public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
-    public void SetIsGround(bool _isGround) => isGround = _isGround;
-    public float JumpConstant() => jumpConstant;
-    public bool IsWall() => isWall;
-    public float PlayerDir() => playerDir;
-    public float WallSlideGravity() => wallSlideGravity;
-    public float WallSlideJumpForce() => wallSlideJumpForce;
-    public bool IsSliding() => isSliding;
-    public void SetIsSliding(bool _value) => isSliding = _value;
-
-    public void ChangeRotation()
-    {
-        transform.Rotate(0, 180, 0);
-    }
-
-    public void SetIsFacingRight(bool _isFacingRight)
-    {
-        isFacingRight = _isFacingRight;
     }
     public void ActivateFallGravity(bool _isActivate)
     {
@@ -166,32 +97,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void CheckingGround()
+    public override void TakeDamage(Entity _attacker)
     {
-        isGround = Physics2D.Raycast(
-            transform.position,
-            Vector2.down,
-            groundCheckLength,
-            whatIsGround
-            );
-    }
-
-    private void CheckingWall()
-    {
-        isWall = Physics2D.Raycast(transform.position,
-            Vector2.right * playerDir,
-            wallCheckLength,
-            whatIsGround);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(
-            transform.position,
-            new Vector2(transform.position.x, transform.position.y - groundCheckLength)
-            );
-        Gizmos.DrawLine(
-            transform.position,
-            new Vector2(transform.position.x + wallCheckLength * playerDir, transform.position.y)
-            );
+        base.TakeDamage(_attacker);
+        stateMachine.ChangeState(hurtState);
     }
 }

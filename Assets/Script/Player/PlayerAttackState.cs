@@ -32,7 +32,7 @@ public class PlayerAttackState : PlayerState
     {
         base.Update();
 
-        if (player.PlayerDir() != player.MoveDir())
+        if (player.EntityDir() != player.MoveDir())
         {
             player.ZeroVelocity();
         }

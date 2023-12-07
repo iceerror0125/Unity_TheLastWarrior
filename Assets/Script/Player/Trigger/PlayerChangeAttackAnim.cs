@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerChangeAttackAnim
 {
-    public void ChangeAttackAnim()
+    public void ActiveTrigger()
     {
-        Player player = PlayerManager.instance.player;
+        var player = PlayerManager.instance.player;
         player.SetIsFirstAttack(!player.IsFirstAttack());
         player.stateMachine.ChangeState(player.idleState);
     }
