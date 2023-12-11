@@ -15,6 +15,5 @@ public class HitPlayerTrigger
                 enemy.CauseDamage(player);
             }
         }
-
     }
 }

@@ -12,6 +12,7 @@ public class Common1AttackState : Common1State
     {
         base.Enter();
         common1.ZeroVelocity();
+        common1.SetIsAttack(true);
     }
 
     public override void Exit()
@@ -22,7 +23,7 @@ public class Common1AttackState : Common1State
     public override void Update()
     {
         base.Update();
-        if (!common1.IsPlayerInAttackRange())
+        if (!common1.IsAttack)
         {
             stateMachine.ChangeState(common1.battleState);
         }

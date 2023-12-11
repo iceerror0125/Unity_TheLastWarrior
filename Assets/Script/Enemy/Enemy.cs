@@ -13,10 +13,13 @@ public class Enemy : Entity
     [SerializeField] protected float exitBattleStateTime;
     [Header("Attack")]
     [SerializeField] protected float attackRange;
+    [SerializeField] protected bool isAttack;
 
     public void SetIsDetectedPlayer(bool _value) => isDetected = _value;
     public bool IsDetected() => isDetected;
     public float ExitBattleStateTime => exitBattleStateTime;
+    public bool IsAttack => isAttack;
+    public void SetIsAttack(bool _value) => isAttack = _value;
 
     protected override void Start()
     {
