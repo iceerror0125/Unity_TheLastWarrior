@@ -15,10 +15,13 @@ public class ItemData : ScriptableObject
     [SerializeField] protected string itemName;
     [SerializeField] protected Sprite img;
     [SerializeField] protected ItemType type;
+    [TextArea]
+    [SerializeField] protected string description;
 
     public string ItemName => itemName;
     public Sprite Img => img;
     public ItemType Type => type;
+    public  string Description => description;
 
     private void OnValidate()
     {

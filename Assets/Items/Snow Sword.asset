@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e42bdbccb17a8745adf2f0369ba6d92, type: 3}
   m_Name: Snow Sword
   m_EditorClassIdentifier: 
-  id: 1e351e15-4097-4b0d-be12-ce883786c918
+  id: 9327d571-17e7-4af7-a864-36f04942926c
   itemName: Snow Sword
   img: {fileID: -1172215379, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
+  description: 
   damage: 0
-  critRate: 0
-  critDamage: 0
+  critRate: 10
+  critDamage: 10

@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class UI_SlotItem : MonoBehaviour
 {
     private Image img;
+    private ItemData data;
 
+    public ItemData Data => data;
     public void SetupImageSlot(ItemData item)
     {
+        data = item;
         img = GetComponentsInChildren<Image>()[1];
 
         if (item != null)

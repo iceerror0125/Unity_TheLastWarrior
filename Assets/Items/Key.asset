@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7622851999944184e8524e6882d361c6, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  id: fed69536-a71b-466f-90f6-94e638655986
+  id: df11a0cb-aae2-4da1-91f8-5fcf3f72fa38
   itemName: Key
   img: {fileID: 21300000, guid: ef16229155cf94940a55ea6bfe9faf36, type: 3}
   type: 0
+  description: Can be used to open something
