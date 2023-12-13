@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7447371806134502490}
   - component: {fileID: 4167066044929910074}
   - component: {fileID: 7777395241476001680}
+  - component: {fileID: 1550504188340179729}
   m_Layer: 0
   m_Name: Snow Sword
   m_TagString: Untagged
@@ -144,3 +145,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1550504188340179729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123488790049151512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5398878f741bd784e93966c193d2d432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  moveTimer: 0
+  timer: 0
+  isUp: 0

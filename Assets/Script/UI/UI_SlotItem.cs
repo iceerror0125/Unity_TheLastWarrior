@@ -20,10 +20,11 @@ public class UI_SlotItem : MonoBehaviour
             img.color = Color.white;
         }
     }
-    public void Clear()
+    public void ClearSlot()
     {
         img = GetComponentsInChildren<Image>()[1];
         img.sprite = null;
         img.color = new Color(0, 0, 0, 0);
+        data = null;
     }
 }

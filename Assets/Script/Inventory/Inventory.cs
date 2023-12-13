@@ -1,8 +1,8 @@
+using AYellowpaper.SerializedCollections;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -27,7 +27,6 @@ public class Inventory : MonoBehaviour
         }
 
         stashList = new List<ItemData>();
-        equipSlot = new ItemDataEquipment();
         stashDic = new Dictionary<ItemData, InventoryItem>();
     }
 
@@ -40,6 +39,7 @@ public class Inventory : MonoBehaviour
 
     private void UpdateUI()
     {
+        ClearUI();
         for (int i = 0; i < stashList.Count; i++)
         {
             uiStashSlots[i].SetupImageSlot(stashList[i]);
@@ -50,11 +50,12 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < uiStashSlots.Length; i++)
         {
-            uiStashSlots[i].Clear();
+            uiStashSlots[i].ClearSlot();
         }
     }
 
-    public void AddItem(ItemData item) {
+    public void AddItem(ItemData item)
+    {
         // already exist
         if (stashDic.TryGetValue(item, out var value))
         {
@@ -69,8 +70,9 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
-    public void AddEquipmentItem(ItemDataEquipment item) {
-        // already exist
+    public void AddEquipmentItem(ItemDataEquipment item)
+    {
+        // already exist, automaticly add to stash and add to equip slot
         if (equipSlot != null)
         {
             AddItem(equipSlot);
@@ -82,7 +84,7 @@ public class Inventory : MonoBehaviour
     {
         if (stashDic.TryGetValue(item, out var value))
         {
-            if (value.Amount > 0)
+            if (value.Amount > 1)
             {
                 value.Decrease();
             }
@@ -97,7 +99,10 @@ public class Inventory : MonoBehaviour
 
     public void RemoveEquipment(ItemDataEquipment item)
     {
-        equipSlot = null;
-        AddItem(item);
+        if (equipSlot != null)
+        {
+            equipSlot = null;
+            AddItem(item);
+        }
     }
 }

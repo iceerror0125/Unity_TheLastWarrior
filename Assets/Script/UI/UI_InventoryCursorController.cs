@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class UI_InventoryCursorController : MonoBehaviour
 {
@@ -47,11 +48,41 @@ public class UI_InventoryCursorController : MonoBehaviour
         {
             MoveSelection(0, 1);
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            EquipAnndUnEquip();
+        }
+    }
+
+    private void EquipAnndUnEquip()
+    {
+        UI_SlotItem data;
+        Inventory inventory = Inventory.instance;
+        Debug.Log(currentIndex);
+        if (currentIndex < 0)
+        {
+            data = equipmentSlot.GetComponent<UI_SlotItem>();
+            if (data.Data != null)
+            {
+                inventory.RemoveEquipment(data.Data as ItemDataEquipment);
+                data.ClearSlot();
+            }
+        }
+        else
+        {
+            data = gridLayoutGroup.transform.GetChild(currentIndex).GetComponent<UI_SlotItem>();
+            if (data.Data != null && data.Data.Type == ItemType.equipment)
+            {
+                inventory.AddEquipmentItem(data.Data as ItemDataEquipment);
+                equipmentSlot.GetComponent<UI_SlotItem>().SetupImageSlot(data.Data);
+                inventory.RemoveItem(data.Data);
+            }
+        }
     }
 
     void MoveSelection(int horizontal, int vertical)
     {
-        Debug.Log(currentIndex);
         int rowLenght = gridLayoutGroup.constraintCount;
         // navigate from equipment slot to stash slot when press any arrow key.
         if (currentIndex == -1)

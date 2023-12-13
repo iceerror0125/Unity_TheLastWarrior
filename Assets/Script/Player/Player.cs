@@ -40,6 +40,9 @@ public class Player : Entity
 
     #endregion
 
+    private PlayerStat playerStat;
+    float xxx = 3;
+
     #region Getter Setter
     public float JumpForce() => jumpForce;
     public float MoveSpeedInAir() => moveSpeedInAir;
@@ -53,6 +56,7 @@ public class Player : Entity
     public bool IsSliding() => isSliding;
     public void SetIsSliding(bool _value) => isSliding = _value;
     public float WallSlideGravity() => wallSlideGravity;
+    public PlayerStat PlayerStat => playerStat;
     #endregion
 
     protected override void Start()
@@ -72,6 +76,8 @@ public class Player : Entity
         hurtState = new PlayerHurtState("Player_Hurt");
         #endregion
 
+        playerStat = GetComponent<PlayerStat>();
+
         stateMachine.InitState(idleState);
 
         isFacingRight = true;
@@ -84,6 +90,14 @@ public class Player : Entity
 
         //stateMachine.currentState.Update();
         moveDir = Input.GetAxisRaw("Horizontal");
+
+      
+        xxx -= Time.deltaTime;
+        if (xxx < 0)
+        {
+            playerStat.TakeDamage(10);
+            xxx = 3;
+        }
     }
     public void ActivateFallGravity(bool _isActivate)
     {
