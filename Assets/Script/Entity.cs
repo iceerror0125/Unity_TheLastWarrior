@@ -55,6 +55,7 @@ public class Entity : MonoBehaviour
     public bool IsFacingRight() => isFacingRight;
     public float EntityDir() => entityDir;
     public float AttackCountDown() => attackCountdown;
+    public float SetAttackCountdown(float _value) => attackCountdown = _value;
     public Transform AttackCheck => attackCheck;
     public float AttackCheckRadius => attackCheckRadius;
     public float HurtTime => hurtTime;
@@ -134,15 +135,14 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(x, y);
     }
     
-    public virtual void TakeDamage(Entity _attacker)
+    public virtual void KnockBack(Entity _attacker)
     {
         Vector2 hit = new Vector2(4 * _attacker.EntityDir(), 4);
         ChangeVelocity(hit);
     }
 
-    public virtual void CauseDamage(Entity _hitEntity)
+    public virtual void Hit(Entity _hitEntity)
     {
-        Debug.Log("Cause damage");
-        _hitEntity.TakeDamage(this);
+        _hitEntity.KnockBack(this);
     }
 }

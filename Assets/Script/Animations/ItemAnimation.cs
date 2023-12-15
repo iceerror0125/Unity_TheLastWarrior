@@ -24,14 +24,7 @@ public class ItemAnimation : MonoBehaviour
 
         if (timer < 0)
         {
-            if (isUp)
-            {
-                speed = Mathf.Abs(speed);
-            }   
-            else
-            {
-                speed = Mathf.Abs(speed) * -1;
-            }
+            speed *= -1;
             timer = moveTimer;
             isUp = !isUp;
         }

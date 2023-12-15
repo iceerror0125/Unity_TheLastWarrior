@@ -6,6 +6,8 @@ using UnityEngine;
 public class Common1BattleState : Common1State
 {
     float exitBattleStateTimer;
+    Player player;
+
     public Common1BattleState(string _animName)
     {
         animName = _animName;
@@ -17,6 +19,8 @@ public class Common1BattleState : Common1State
         common1.ZeroVelocity();
         timer = 0.2f;
         exitBattleStateTimer = common1.ExitBattleStateTime;
+
+        player = PlayerManager.instance.player;
     }
 
     public override void Exit()
@@ -36,13 +40,12 @@ public class Common1BattleState : Common1State
         }
 
         ChangeState();
-
         ChansingPlayer();
     }
 
     private void ChangeState()
     {
-        if (exitBattleStateTimer < 0)
+        if (exitBattleStateTimer < 0 || player.stat.IsDead)
         {
             stateMachine.ChangeState(common1.idleState);
         }
@@ -55,7 +58,6 @@ public class Common1BattleState : Common1State
 
     private void ChansingPlayer()
     {
-        Player player = PlayerManager.instance.player;
         if (common1.EntityDir() > 0 && common1.transform.position.x - 0.4 > player.transform.position.x)
         {
             common1.Flip();

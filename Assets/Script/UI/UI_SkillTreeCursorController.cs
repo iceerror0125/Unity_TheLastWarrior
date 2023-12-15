@@ -48,6 +48,10 @@ public class UI_SkillTreeCursorController : MonoBehaviour
                 SetNewPosition(uiSkillSlot.Down);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
+        }
     }
 
     private void SetNewPosition(Transform newPosition)

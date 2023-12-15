@@ -27,6 +27,5 @@ public class PlayerIdleState : PlayerGroundState
         {
             stateMachine.ChangeState(player.moveState);
         }
-        Debug.Log("Idle State");
     }
 }

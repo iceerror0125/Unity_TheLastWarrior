@@ -12,12 +12,14 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        timer = player.AttackCountDown();
+        
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.timer = player.AttackCountDown();
+
         if (!player.IsFirstAttack())
         {
             animName = "Player_Attack2";
@@ -36,7 +38,5 @@ public class PlayerAttackState : PlayerState
         {
             player.ZeroVelocity();
         }
-
-        Debug.Log("Attack State");
     }
 }

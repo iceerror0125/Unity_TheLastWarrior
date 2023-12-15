@@ -7,11 +7,14 @@ public class EnemyTrigger : MonoBehaviour
     private Enemy enemy;
     private HitPlayerTrigger hitPlayerTrigger;
     private CancelAttackTrigger cancelAttackTrigger;
+    private DestroyObjectTrigger destroyObjectTrigger;
     void Start()
     {
         hitPlayerTrigger = new HitPlayerTrigger();
         cancelAttackTrigger = new CancelAttackTrigger();
-        enemy = GetComponentInParent<Enemy>();  
+        destroyObjectTrigger = new DestroyObjectTrigger();
+
+        enemy = GetComponentInParent<Enemy>();
     }
     public void HitPlayer()
     {
@@ -22,5 +25,9 @@ public class EnemyTrigger : MonoBehaviour
         cancelAttackTrigger.ActiveTrigger(enemy);
     }
 
-   
+    public void DestroyGameObjectTrigger()
+    {
+        destroyObjectTrigger.ActiveTrigger(enemy);
+    }
+
 }

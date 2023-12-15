@@ -36,7 +36,7 @@ public class PlayerGroundState : PlayerState
             stateMachine.ChangeState(player.rollState);
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && timer < 0)
+        if (Input.GetKeyDown(KeyCode.X) && player.timer < 0)
         {
             stateMachine.ChangeState(player.attackState);
         }

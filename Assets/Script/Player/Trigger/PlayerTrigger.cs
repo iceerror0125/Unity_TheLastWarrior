@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerTrigger : MonoBehaviour
 {
     protected Player player;
+
+    [SerializeField] private Buff3 skill;
+
     private PlayerRollToIdleTrigger toIdleTrigger;
     private PlayerChangeAttackAnim changeAttackAnim;
     private HitEnemyTrigger hitEnemyTrigger;
@@ -26,6 +29,6 @@ public class PlayerTrigger : MonoBehaviour
     }
     public void HitEnemyTrigger()
     {
-        hitEnemyTrigger.ActiveTrigger();
+        hitEnemyTrigger.ActiveTrigger(skill);
     }
 }

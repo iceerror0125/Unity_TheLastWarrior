@@ -26,9 +26,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Update();
       
-
         CheckingChangeToFallState();
-        Debug.Log("Jump State");
     }
 
     private void CheckingChangeToFallState()

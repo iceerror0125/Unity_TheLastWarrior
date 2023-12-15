@@ -46,15 +46,20 @@ public class Common1 : GroundEnemy
 
         //stateMachine.currentState.Update();
 
-        if (DetectPlayer() && isDetected == false)
+        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.stat.IsDead)
         {
             stateMachine.ChangeState(battleState);
         }
+
+        if (stat.IsDead)
+        {
+            stateMachine.ChangeState(deadState);
+        }
     }
 
-    public override void TakeDamage(Entity _attacker)
+    public override void KnockBack(Entity _attacker)
     {
-        base.TakeDamage(_attacker);
+        base.KnockBack(_attacker);
         stateMachine.ChangeState(hurtState);
     }
 }

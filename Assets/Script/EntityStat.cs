@@ -11,28 +11,34 @@ public class EntityStat : MonoBehaviour
     [SerializeField] private float critRate;
     [SerializeField] private float critDamage;
 
-    public System.Action onChangeHP;
+    [SerializeField] private bool isDead;
 
+    public System.Action<float> onChangeHP;
+    #region Get Set
     public float MaxHp => maxHp;
     public float Hp => hp;
     public float Damage => damage;
+    public float SetDamage(float _value) => damage = _value;
     public float CritRate => critRate;
+    public float SetCritRate(float _value) => critRate = _value;
     public float CritDamage => critDamage;
+    public float SetCritDamage(float _value) => critDamage = _value;
+    public bool IsDead => isDead;
+    #endregion
 
     protected virtual void Start()
     {
         hp = maxHp;
+        isDead = false;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         hp -= damage;
 
-        onChangeHP();
-        /*if (onChangeHP != null)
+        if (hp <= 0)
         {
-            onChangeHP();
-        }*/
+            isDead = true;
+        }
     }
-
 }

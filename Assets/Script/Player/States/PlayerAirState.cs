@@ -40,7 +40,6 @@ public class PlayerAirState : PlayerState
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                Debug.Log("Double Jump");
                 player.ActivateFallGravity(false);
                 player.SetCanDoubleJump(false);
                 stateMachine.ChangeState(player.jumpState);

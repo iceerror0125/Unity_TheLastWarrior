@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : Entity
 {
@@ -38,10 +40,12 @@ public class Player : Entity
 
     [SerializeField] private bool isFirstAttack;
 
+    public float timer;
     #endregion
 
-    private PlayerStat playerStat;
-    float xxx = 3;
+    public PlayerStat stat { get; private set; }
+    /*float xxx = 3;
+    public float damage;*/
 
     #region Getter Setter
     public float JumpForce() => jumpForce;
@@ -56,7 +60,7 @@ public class Player : Entity
     public bool IsSliding() => isSliding;
     public void SetIsSliding(bool _value) => isSliding = _value;
     public float WallSlideGravity() => wallSlideGravity;
-    public PlayerStat PlayerStat => playerStat;
+    public PlayerStat PlayerStat => stat;
     #endregion
 
     protected override void Start()
@@ -76,7 +80,7 @@ public class Player : Entity
         hurtState = new PlayerHurtState("Player_Hurt");
         #endregion
 
-        playerStat = GetComponent<PlayerStat>();
+        stat = GetComponent<PlayerStat>();
 
         stateMachine.InitState(idleState);
 
@@ -87,16 +91,13 @@ public class Player : Entity
     protected override void Update()
     {
         base.Update();
+        timer -= Time.deltaTime;
 
-        //stateMachine.currentState.Update();
         moveDir = Input.GetAxisRaw("Horizontal");
 
-      
-        xxx -= Time.deltaTime;
-        if (xxx < 0)
+        if (stat.IsDead)
         {
-            playerStat.TakeDamage(10);
-            xxx = 3;
+            stateMachine.ChangeState(deadState);
         }
     }
     public void ActivateFallGravity(bool _isActivate)
@@ -111,9 +112,9 @@ public class Player : Entity
         }
     }
 
-    public override void TakeDamage(Entity _attacker)
+    public override void KnockBack(Entity _attacker)
     {
-        base.TakeDamage(_attacker);
+        base.KnockBack(_attacker);
         stateMachine.ChangeState(hurtState);
     }
 }

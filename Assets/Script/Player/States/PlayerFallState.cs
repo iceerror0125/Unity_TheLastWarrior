@@ -29,7 +29,5 @@ public class PlayerFallState : PlayerAirState
         {
             stateMachine.ChangeState(player.idleState);
         }
-       
-        Debug.Log("Fall State");
     }
 }

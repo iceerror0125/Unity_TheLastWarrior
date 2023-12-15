@@ -9,7 +9,7 @@ public class Common1State : EnemyState
     {
         base.Enter();
         stateMachine = common1.stateMachine;
-        common1.anim.Play(animName);
+        common1.anim.Play(animName);    
     }
 
     public override void Exit()
