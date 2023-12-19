@@ -41,7 +41,7 @@ public class Entity : MonoBehaviour
     #endregion
 
     public StateMachine stateMachine { get; private set; }
-
+    public EntityStat stat { get; private set; }
     #region Getter Setter
     public float MoveSpeed() => moveSpeed;
     public float MoveDir() => moveDir;
@@ -72,6 +72,7 @@ public class Entity : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        stat = GetComponent<EntityStat>();
 
         rb.gravityScale = 4;
         #endregion
@@ -144,5 +145,7 @@ public class Entity : MonoBehaviour
     public virtual void Hit(Entity _hitEntity)
     {
         _hitEntity.KnockBack(this);
+        stat.CauseDamage(_hitEntity);
     }
+
 }

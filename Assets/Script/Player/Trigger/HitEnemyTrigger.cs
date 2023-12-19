@@ -14,7 +14,6 @@ public class HitEnemyTrigger
             if (enemy != null && !enemy.stat.IsDead)
             {
                 player.Hit(enemy);
-                enemy.stat.TakeDamage(player.PlayerStat.Damage);
 
                 if (_skill.IsActivated)
                 {

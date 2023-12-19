@@ -5,13 +5,14 @@ using UnityEngine;
 public class EntityStat : MonoBehaviour
 {
 
-    [SerializeField] private float maxHp;
-    [SerializeField] private float hp;
-    [SerializeField] private float damage;
-    [SerializeField] private float critRate;
-    [SerializeField] private float critDamage;
+    [SerializeField] protected float maxHp;
+    [SerializeField] protected float hp;
+    [SerializeField] protected float damage;
+    [Range(0f, 1f)] 
+    [SerializeField] protected float critRate;
+    [SerializeField] protected float critDamage;
 
-    [SerializeField] private bool isDead;
+    [SerializeField] protected bool isDead;
 
     public System.Action<float> onChangeHP;
     #region Get Set
@@ -32,13 +33,27 @@ public class EntityStat : MonoBehaviour
         isDead = false;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float _damage)
     {
-        hp -= damage;
+        hp -= _damage;
 
         if (hp <= 0)
         {
             isDead = true;
         }
+    }
+
+    public virtual void CauseDamage(Entity _hitEntity)
+    {
+        float plusDamage = 0;
+
+        float crit = Random.Range(0, 100);
+        if (crit < critRate*100)
+        {
+            plusDamage += critDamage;
+        }
+
+        float totalDamage = damage + plusDamage;
+        _hitEntity.stat.TakeDamage(totalDamage);
     }
 }

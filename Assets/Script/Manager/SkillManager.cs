@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private PlayerSkill slot1;
     [SerializeField] private PlayerSkill slot2;
     [SerializeField] private PlayerSkill slot3;
-
+    [SerializeField] private GameObject skillTree;
+    [SerializeField] private UI_SkillSet skillSet;
     public PlayerSkill Slot1 => slot1;
     public PlayerSkill Slot2 => slot2;
     public PlayerSkill Slot3 => slot3;
@@ -28,24 +30,62 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
+        if (skillTree.activeSelf)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.A))
         {
-            slot1.Activate();
+            slot1?.Activate();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            slot2.Activate();
+            slot2?.Activate();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            slot3.Activate();
+            slot3?.Activate();
         }
     }
 
-    public void SetSkillSlot(PlayerSkill _slot1 = null, PlayerSkill _slot2 = null, PlayerSkill _slot3 = null)
+    /*public void SetSkillSlot(PlayerSkill _slot1 = null, PlayerSkill _slot2 = null, PlayerSkill _slot3 = null)
     {
-        slot1 = _slot1;
-        slot2 = _slot2;
-        slot3 = _slot3;
+        CheckExistedSkill();
+        slot1 = _slot1 != null ? _slot1 : slot1;
+        slot2 = _slot2 != null ? _slot2 : slot2;
+        slot3 = _slot3 != null ? _slot3 : slot3;
+    }*/
+
+    public void SetA(PlayerSkill _skill)
+    {
+        CheckExistedSkill(_skill);
+        slot1 = _skill;
+        UpdateSkillSet();
+    }
+    public void SetS(PlayerSkill _skill)
+    {
+        CheckExistedSkill(_skill);
+        slot2 = _skill;
+        UpdateSkillSet();
+    }
+    public void SetD(PlayerSkill _skill)
+    {
+        CheckExistedSkill(_skill);
+        slot3 = _skill;
+        UpdateSkillSet();
+    }
+
+    private void CheckExistedSkill(PlayerSkill _skill)
+    {
+        if (slot1 == _skill) slot1 = null;
+        if (slot2 == _skill) slot2 = null;
+        if (slot3 == _skill) slot3 = null;
+    }
+    private void UpdateSkillSet()
+    {
+        skillSet.SetA(slot1?.Img);
+        skillSet.SetS(slot2?.Img);
+        skillSet.SetD(slot3?.Img);
     }
 }

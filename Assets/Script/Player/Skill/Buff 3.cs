@@ -26,10 +26,10 @@ public class Buff3 : PlayerSkill
     }
     protected override void Exit()
     {
-        base.Exit();
         counter = 0;
         player.stat.SetCritRate(originalCritRate);
         player.stat.SetCritDamage(originalCritDamage);
+        base.Exit();
     }
     public void Trigger()
     {

@@ -48,8 +48,7 @@ public class UI_SkillSlot : MonoBehaviour
     {
         skill.Unlock(true);
         image.color = UnlockColor();
-        SkillManager.instance.SetSkillSlot(skill);
-
+        
         if (!skill.IsActiveSkill)
         {
             skill.Activate();

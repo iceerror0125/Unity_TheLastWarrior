@@ -6,6 +6,7 @@ public class UI_SkillTreeCursorController : MonoBehaviour
 {
     [SerializeField] private Transform cursor;
     [SerializeField] private Transform initSkillSlot;
+    [SerializeField] private UI_SkillExplain explain;
 
     private Transform currentSkillSlot;
     private UI_SkillSlot uiSkillSlot;
@@ -48,8 +49,17 @@ public class UI_SkillTreeCursorController : MonoBehaviour
                 SetNewPosition(uiSkillSlot.Down);
             }
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            PlayerSkill skill = currentSkillSlot.GetComponent<UI_SkillSlot>().Skill;
+            if (skill.IsActiveSkill && skill.IsUnlock)
+            {
+                DialogManager.instance.ShowSetSkillKeyDialog(skill);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            // condition to unlock
             currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
         }
     }
@@ -62,6 +72,8 @@ public class UI_SkillTreeCursorController : MonoBehaviour
         RectTransform rect = cursor.GetComponent<RectTransform>();
         rect.offsetMax = new Vector2(0, 0);
         rect.offsetMin = new Vector2(0, 0);
+        // explain skill detail
+        explain.ShowExplain(uiSkillSlot.Skill);
     }
 
     public void InitCursor()

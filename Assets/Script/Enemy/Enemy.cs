@@ -17,7 +17,7 @@ public class Enemy : Entity
     [SerializeField] protected bool isAttack;
     #endregion
 
-    public EnemyStat stat { get; private set; }
+    //public EnemyStat stat { get; private set; }
 
 
     #region Get Set
@@ -32,7 +32,7 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start();
-        stat = GetComponent<EnemyStat>();
+        //stat = GetComponent<EnemyStat>();
         isFacingRight = true;
     }
 

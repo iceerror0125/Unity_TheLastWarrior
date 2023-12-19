@@ -43,7 +43,7 @@ public class Player : Entity
     public float timer;
     #endregion
 
-    public PlayerStat stat { get; private set; }
+    // public PlayerStat stat { get; private set; }
     /*float xxx = 3;
     public float damage;*/
 
@@ -60,7 +60,7 @@ public class Player : Entity
     public bool IsSliding() => isSliding;
     public void SetIsSliding(bool _value) => isSliding = _value;
     public float WallSlideGravity() => wallSlideGravity;
-    public PlayerStat PlayerStat => stat;
+    // public PlayerStat PlayerStat => stat;
     #endregion
 
     protected override void Start()
@@ -80,7 +80,7 @@ public class Player : Entity
         hurtState = new PlayerHurtState("Player_Hurt");
         #endregion
 
-        stat = GetComponent<PlayerStat>();
+        //stat = GetComponent<PlayerStat>();
 
         stateMachine.InitState(idleState);
 

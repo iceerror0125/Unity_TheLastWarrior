@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerStat : EntityStat
 {
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float _damage)
     {
-        base.TakeDamage(damage);
-        onChangeHP(damage);
+        base.TakeDamage(_damage);
+        onChangeHP(_damage);
     }
+
+   
 }

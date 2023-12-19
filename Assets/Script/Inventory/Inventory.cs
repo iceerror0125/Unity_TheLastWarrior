@@ -44,6 +44,8 @@ public class Inventory : MonoBehaviour
         {
             uiStashSlots[i].SetupImageSlot(stashList[i]);
         }
+
+        UI_PlayerStat.instance.UpdateStat();
     }
 
     private void ClearUI()

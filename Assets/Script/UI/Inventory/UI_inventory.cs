@@ -21,6 +21,8 @@ public class UI_inventory : MonoBehaviour
                 skillTree.SetActive(false);
                 inventory.GetComponent<UI_InventoryCursorController>().InitCursor();
             }
+
+            UI_PlayerStat.instance.UpdateStat();
         }
 
         if (Input.GetKeyDown(KeyCode.O))

@@ -30,8 +30,6 @@ public class PlayerWallSlideState : PlayerState
         base.Exit();
         player.SetIsSliding(false);
         player.ChangeRotation();
-
-        Debug.Log("Exit Wall State");
     }
 
     public override void Update()

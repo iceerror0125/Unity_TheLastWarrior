@@ -58,7 +58,7 @@ public class UI_SkillBarSlot : MonoBehaviour
     private void EnabledImage()
     {
         skillImage.color = EnabledColor;
-        countdownImage.color = EnabledColor;
+        //countdownImage.color = EnabledColor;
     }
     private void UnenabledImage()
     {
