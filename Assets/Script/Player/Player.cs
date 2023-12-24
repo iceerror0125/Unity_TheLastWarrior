@@ -43,7 +43,7 @@ public class Player : Entity
     public float timer;
     #endregion
 
-    // public PlayerStat stat { get; private set; }
+    //public PlayerStat stat { get; private set; }
     /*float xxx = 3;
     public float damage;*/
 
@@ -112,9 +112,15 @@ public class Player : Entity
         }
     }
 
-    public override void KnockBack(Entity _attacker)
+    public override void KnockBack(Entity _attacker, float x, float y)
     {
-        base.KnockBack(_attacker);
+        base.KnockBack(_attacker, x, y);
         stateMachine.ChangeState(hurtState);
+    }
+
+    public void SpellHit(Entity _hitEntity)
+    {
+        _hitEntity.KnockBack(this, 30, 4);
+        stat.CauseDamage(_hitEntity, stat.Damage + stat.Damage * 0.5f);
     }
 }

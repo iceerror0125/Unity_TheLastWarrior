@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -38,10 +39,13 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform attackCheck;
     [SerializeField] protected float attackCheckRadius;
     private float hurtTime = 0.2f;
+
+    private bool isDead;
     #endregion
 
     public StateMachine stateMachine { get; private set; }
     public EntityStat stat { get; private set; }
+
     #region Getter Setter
     public float MoveSpeed() => moveSpeed;
     public float MoveDir() => moveDir;
@@ -59,6 +63,8 @@ public class Entity : MonoBehaviour
     public Transform AttackCheck => attackCheck;
     public float AttackCheckRadius => attackCheckRadius;
     public float HurtTime => hurtTime;
+    public bool IsDead => isDead;
+    public void SetIsDead(bool _value) => isDead = _value;
     #endregion
 
     protected virtual void Awake()
@@ -136,16 +142,16 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(x, y);
     }
     
-    public virtual void KnockBack(Entity _attacker)
+    public virtual void KnockBack(Entity _attacker, float x, float y)
     {
-        Vector2 hit = new Vector2(4 * _attacker.EntityDir(), 4);
+        Vector2 hit = new Vector2(x * _attacker.EntityDir(), y);
         ChangeVelocity(hit);
     }
-
     public virtual void Hit(Entity _hitEntity)
     {
-        _hitEntity.KnockBack(this);
+        _hitEntity.KnockBack(this, 4, 4);
         stat.CauseDamage(_hitEntity);
     }
-
+    
+    
 }

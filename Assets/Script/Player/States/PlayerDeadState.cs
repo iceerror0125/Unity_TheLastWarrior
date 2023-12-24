@@ -12,6 +12,7 @@ public class PlayerDeadState : PlayerState
     {
         base.Enter();
         player.ZeroVelocity();
+        player.SetIsDead(true);
     }
 
     public override void Exit()

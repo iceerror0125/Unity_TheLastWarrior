@@ -9,6 +9,4 @@ public class PlayerStat : EntityStat
         base.TakeDamage(_damage);
         onChangeHP(_damage);
     }
-
-   
 }

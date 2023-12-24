@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heal1 : MonoBehaviour
+public class Heal1 : PlayerSkill
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void SetUp()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.SetUp();
+        float recoverHP = player.stat.MaxHp * 0.2f;
+        player.stat.RecoverHP(recoverHP);
     }
 }

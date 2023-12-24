@@ -56,4 +56,20 @@ public class EntityStat : MonoBehaviour
         float totalDamage = damage + plusDamage;
         _hitEntity.stat.TakeDamage(totalDamage);
     }
+
+    public virtual void CauseDamage(Entity _hitEntity, float _damage)
+    {
+        _hitEntity.stat.TakeDamage(_damage);
+    }
+
+    public void RecoverHP(float _recoverHP)
+    {
+        hp += _recoverHP;
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+        onChangeHP(hp);
+    }
+
 }

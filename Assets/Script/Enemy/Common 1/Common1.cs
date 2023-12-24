@@ -57,9 +57,9 @@ public class Common1 : GroundEnemy
         }
     }
 
-    public override void KnockBack(Entity _attacker)
+    public override void KnockBack(Entity _attacker, float x, float y)
     {
-        base.KnockBack(_attacker);
+        base.KnockBack(_attacker, x, y);
         stateMachine.ChangeState(hurtState);
     }
 }

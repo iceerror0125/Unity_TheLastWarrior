@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell1 : MonoBehaviour
+public class Spell1 : PlayerSkill
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject skillPrefab;
 
-    // Update is called once per frame
-    void Update()
+    protected override void SetUp()
     {
-        
+        base.SetUp();
+        Player player = PlayerManager.instance.player;
+        GameObject skill = Instantiate(skillPrefab, player.transform.position, Quaternion.identity);
+        skill.GetComponent<Spell1Animation>().Activate();
     }
 }

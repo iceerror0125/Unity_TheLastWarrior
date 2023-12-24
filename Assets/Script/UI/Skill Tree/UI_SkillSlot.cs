@@ -18,17 +18,19 @@ public class UI_SkillSlot : MonoBehaviour
     private void Start()
     {
         image = GetComponentsInChildren<Image>()[1];
-        image.sprite = skill.Img;
-
-        if (!skill.IsUnlock)
+        if (skill != null)
         {
-            image.color = LockColor();
-        }
-        else
-        {
-            image.color = UnlockColor();
-        }
+            image.sprite = skill.Img;
 
+            if (!skill.IsUnlock)
+            {
+                image.color = LockColor();
+            }
+            else
+            {
+                image.color = UnlockColor();
+            }
+        }
     }
     public Transform Left => left;
     public Transform Right => right;

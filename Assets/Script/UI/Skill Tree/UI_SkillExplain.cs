@@ -12,6 +12,9 @@ public class UI_SkillExplain : MonoBehaviour
     
     public void ShowExplain(PlayerSkill _skill)
     {
+        if (_skill == null)
+            return;
+
         skillName.text = _skill.SkillName;
         description.text = _skill.Description;
         if (_skill.IsActiveSkill)

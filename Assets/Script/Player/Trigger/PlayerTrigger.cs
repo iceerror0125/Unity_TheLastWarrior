@@ -7,6 +7,7 @@ public class PlayerTrigger : MonoBehaviour
     protected Player player;
 
     [SerializeField] private Buff3 skill;
+    [SerializeField] private Heal2 heal;
 
     private PlayerRollToIdleTrigger toIdleTrigger;
     private PlayerChangeAttackAnim changeAttackAnim;
@@ -29,6 +30,6 @@ public class PlayerTrigger : MonoBehaviour
     }
     public void HitEnemyTrigger()
     {
-        hitEnemyTrigger.ActiveTrigger(skill);
+        hitEnemyTrigger.ActiveTrigger(skill, heal);
     }
 }
