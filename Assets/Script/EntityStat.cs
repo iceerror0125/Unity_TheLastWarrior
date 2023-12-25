@@ -43,7 +43,7 @@ public class EntityStat : MonoBehaviour
         }
     }
 
-    public virtual void CauseDamage(Entity _hitEntity)
+    public virtual void CauseDamageByNormalAttack(Entity _hitEntity)
     {
         float plusDamage = 0;
 

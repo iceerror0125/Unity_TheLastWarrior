@@ -118,9 +118,27 @@ public class Player : Entity
         stateMachine.ChangeState(hurtState);
     }
 
-    public void SpellHit(Entity _hitEntity)
+    public void SpellHitFarKnockBack(Entity _hitEntity, float _damage)
     {
         _hitEntity.KnockBack(this, 30, 4);
-        stat.CauseDamage(_hitEntity, stat.Damage + stat.Damage * 0.5f);
+        stat.CauseDamage(_hitEntity, _damage);
+    }
+    public void SpellHit(Entity _hitEntity, float _damage)
+    {
+        _hitEntity.KnockBack(this, 4, 4);
+        stat.CauseDamage(_hitEntity, _damage);
+    }
+
+    public Enemy NeareastEnemy()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10f);
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Enemy>() != null)
+            {
+                return collider.GetComponent<Enemy>();
+            }
+        }
+        return null;
     }
 }

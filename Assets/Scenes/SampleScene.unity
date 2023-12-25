@@ -2855,7 +2855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &546114690
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2927,7 +2927,7 @@ Transform:
   m_GameObject: {fileID: 546114688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.46, y: 0, z: 0}
+  m_LocalPosition: {x: -2.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75afe48588a368409a7eab44c66103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 3
   moveDir: 0
   entityDir: 1
   isFacingRight: 0
@@ -4033,6 +4033,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122728f1352bbc540b24bf5179be87f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUnlock: 0
+  isActiveSkill: 0
+  countdown: 5
+  duration: 0
+  img: {fileID: 21300000, guid: 0b3de04cb53a3f648bfdaa971a1f9c61, type: 3}
+  skillName: 
+  description: 
+  skillPrefab: {fileID: 3046906344721934433, guid: d9ecd957e7a643a4dbae421eca8166f7, type: 3}
 --- !u!1 &682460519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4816,7 +4824,7 @@ MonoBehaviour:
   right: {fileID: 467725783}
   up: {fileID: 280415715}
   down: {fileID: 445233952}
-  skill: {fileID: 0}
+  skill: {fileID: 662752888}
 --- !u!1 &814395478
 GameObject:
   m_ObjectHideFlags: 0
@@ -5615,6 +5623,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086e513c4f09d9e49b41e6f3ae8142a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUnlock: 0
+  isActiveSkill: 1
+  countdown: 5
+  duration: 5
+  img: {fileID: 21300000, guid: 26b48d037b8727845a3295bfcc79ab7a, type: 3}
+  skillName: 
+  description: 
+  skillPrefab: {fileID: 72459555218851305, guid: 3307ebc9215944c438c49c020347fb0f, type: 3}
 --- !u!1 &947667663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4687612580518691189, guid: 9243a5980f2434f4e95007fc601ca5b9, type: 3}
@@ -6429,7 +6445,7 @@ GameObject:
   - component: {fileID: 1058173935}
   - component: {fileID: 1058173934}
   m_Layer: 5
-  m_Name: Canvas - Player Bar
+  m_Name: Canvas - HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10281,7 +10297,7 @@ MonoBehaviour:
   right: {fileID: 1629418688}
   up: {fileID: 212082686}
   down: {fileID: 1300296823}
-  skill: {fileID: 0}
+  skill: {fileID: 932375979}
 --- !u!1 &1765295399
 GameObject:
   m_ObjectHideFlags: 0
@@ -12406,11 +12422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.64
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: 4.53
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.z

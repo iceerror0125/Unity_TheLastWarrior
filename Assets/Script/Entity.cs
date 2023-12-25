@@ -150,7 +150,7 @@ public class Entity : MonoBehaviour
     public virtual void Hit(Entity _hitEntity)
     {
         _hitEntity.KnockBack(this, 4, 4);
-        stat.CauseDamage(_hitEntity);
+        stat.CauseDamageByNormalAttack(_hitEntity);
     }
     
     

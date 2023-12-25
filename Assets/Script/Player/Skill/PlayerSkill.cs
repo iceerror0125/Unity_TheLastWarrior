@@ -47,7 +47,6 @@ public class PlayerSkill : MonoBehaviour
 
         canUseSkill = false;
         SetUp();
-
         UI_PlayerStat.instance.UpdateStat();
 
         ToExitCodition();
@@ -65,8 +64,15 @@ public class PlayerSkill : MonoBehaviour
         yield return new WaitForSeconds(countdown);
         canUseSkill = true;
         isExitCalled = false;
+
+        AfterExit();
+        Debug.Log(countdown + " - " + duration);
+        // auto activate for passive skill
+        if (!isActiveSkill)
+        {
+            Activate();
+        }
     }
-
-
-
+    protected virtual void AfterExit() { }
+    
 }

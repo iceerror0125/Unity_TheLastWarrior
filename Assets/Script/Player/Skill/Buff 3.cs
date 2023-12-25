@@ -38,7 +38,6 @@ public class Buff3 : PlayerSkill
     protected override void ToExitCodition()
     {
         StartCoroutine(WaitCounter());
-
     }
     private IEnumerator WaitCounter()
     {
