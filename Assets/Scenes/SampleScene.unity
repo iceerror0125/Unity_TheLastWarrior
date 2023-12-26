@@ -2927,7 +2927,7 @@ Transform:
   m_GameObject: {fileID: 546114688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.31, y: 0, z: 0}
+  m_LocalPosition: {x: -0.11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75afe48588a368409a7eab44c66103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 0
   moveDir: 0
   entityDir: 1
   isFacingRight: 0
@@ -7113,6 +7113,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e2544a85f637841ab581ea3cf124f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUnlock: 0
+  isActiveSkill: 1
+  countdown: 2
+  duration: 3
+  img: {fileID: 21300000, guid: 3181a520b29e0514aa191edfa7aa2ef2, type: 3}
+  skillName: 
+  description: 
+  skillPrefab: {fileID: 6929345585300952808, guid: 8972f5bbfb60bbe4493e312aa03602c1, type: 3}
+  x: 9
 --- !u!1001 &1206260099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7624,7 +7633,7 @@ MonoBehaviour:
   right: {fileID: 1629418688}
   up: {fileID: 445233952}
   down: {fileID: 0}
-  skill: {fileID: 0}
+  skill: {fileID: 1195042588}
 --- !u!1 &1306788327
 GameObject:
   m_ObjectHideFlags: 0
@@ -12422,11 +12431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.09
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.53
+      value: 4.62
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.z
