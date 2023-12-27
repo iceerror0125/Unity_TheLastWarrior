@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyStat))]
 public class Enemy : Entity
 {
     #region Enemy Setting

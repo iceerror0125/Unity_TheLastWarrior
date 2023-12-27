@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -70,18 +71,19 @@ public class Entity : MonoBehaviour
     protected virtual void Awake()
     {
         stateMachine = new StateMachine();
-    }
 
-    protected virtual void Start()
-    {
         #region Get Component
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         stat = GetComponent<EntityStat>();
-
         rb.gravityScale = 4;
         #endregion
+    }
+
+    protected virtual void Start()
+    {
+       
     }
 
     protected virtual void Update()
@@ -95,6 +97,7 @@ public class Entity : MonoBehaviour
         CheckingWall();
     }
 
+ 
     private void CheckingGround()
     {
         isGround = Physics2D.Raycast(

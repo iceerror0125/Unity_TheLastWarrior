@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 69f215597f3c0a44888de4a0ccf52c26
+guid: e411e4531afbf064b875898d1d397711
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,118 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Owlet_Monster_Death_8_0
+      name: pipo-mapeffect013a_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac2d6ca287d1f64ca8f28a3fcfff7bf
+      internalID: 974826242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-mapeffect013a_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15cee8e6900566d4da44b14fe93b5d14
+      internalID: -1120348661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-mapeffect013a_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e8ce94966439e418ba811f03053b8e
+      internalID: 364532590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-mapeffect013a_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddca819f5a226446be21a64d7cca273
+      internalID: -329758845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-mapeffect013a_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de75e5a41e0f94a4a84fea8ab66719be
+      internalID: 907313585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-mapeffect013a_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d30d9e299d0338146aabb5c0b1cd62c2
-      internalID: -1881208907
+      spriteID: f728c4180e6c0b84db2a50ce4be54fea
+      internalID: 933337846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Owlet_Monster_Death_8_1
+      name: pipo-mapeffect013a_6
       rect:
         serializedVersion: 2
-        x: 32
+        x: 400
         y: 0
-        width: 32
-        height: 32
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c5c60d7b9e592e4eabb84549801dd59
-      internalID: 1219126801
+      spriteID: 215d4cfbe96a41c44a1dd8e0fde1ba46
+      internalID: -1531106913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Owlet_Monster_Death_8_2
+      name: pipo-mapeffect013a_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 800
         y: 0
-        width: 32
-        height: 32
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dec6c1592a8d334e94088bdeee3e3f4
-      internalID: -1848490997
+      spriteID: 4790d3f994372684396d5b949302cece
+      internalID: -1219556565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Owlet_Monster_Death_8_3
+      name: pipo-mapeffect013a_8
       rect:
         serializedVersion: 2
-        x: 96
+        x: 1200
         y: 0
-        width: 32
-        height: 32
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66e45a147d5ea74419b22cca25fd7abf
-      internalID: 167199862
+      spriteID: 5868b22becf0f2a45bf44d766830ed54
+      internalID: -414247304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Owlet_Monster_Death_8_4
+      name: pipo-mapeffect013a_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1600
         y: 0
-        width: 32
-        height: 32
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,71 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7587c19f3e64fa43a221e45aec35337
-      internalID: -1447408764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Owlet_Monster_Death_8_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a148978b445f0074195f300483a4ebd4
-      internalID: -18579973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Owlet_Monster_Death_8_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 933dc82ed0e688743a2ac8b83b4f79ab
-      internalID: 1007836380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Owlet_Monster_Death_8_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d59cf9cce71db3748b33da9ebb5ac00e
-      internalID: -1903629188
+      spriteID: c07b0d87dd34b1842a2ab254a22d531d
+      internalID: -124189175
       vertices: []
       indices: 
       edges: []
@@ -301,14 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Owlet_Monster_Death_8_0: -1881208907
-      Owlet_Monster_Death_8_1: 1219126801
-      Owlet_Monster_Death_8_2: -1848490997
-      Owlet_Monster_Death_8_3: 167199862
-      Owlet_Monster_Death_8_4: -1447408764
-      Owlet_Monster_Death_8_5: -18579973
-      Owlet_Monster_Death_8_6: 1007836380
-      Owlet_Monster_Death_8_7: -1903629188
+      pipo-mapeffect013a_0: 974826242
+      pipo-mapeffect013a_1: -1120348661
+      pipo-mapeffect013a_2: 364532590
+      pipo-mapeffect013a_3: -329758845
+      pipo-mapeffect013a_4: 907313585
+      pipo-mapeffect013a_5: 933337846
+      pipo-mapeffect013a_6: -1531106913
+      pipo-mapeffect013a_7: -1219556565
+      pipo-mapeffect013a_8: -414247304
+      pipo-mapeffect013a_9: -124189175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

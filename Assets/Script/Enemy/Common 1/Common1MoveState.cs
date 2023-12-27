@@ -23,7 +23,7 @@ public class Common1MoveState : Common1State
     public override void Update()
     {
         base.Update();
-
+        
         common1.ChangeVelocity(common1.MoveSpeed() * common1.EntityDir(), common1.rb.velocity.y);
         if (timer < 0  || common1.IsWall())
         {
