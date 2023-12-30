@@ -39,11 +39,11 @@ public class Common1BattleState : Common1State
             common1.ChangeVelocity(battleSpeed);
         }
 
-        ChangeState();
-        ChansingPlayer();
+        TransitionStateCheck();
+        common1.TurnToPlayer();
     }
 
-    private void ChangeState()
+    private void TransitionStateCheck()
     {
         if (exitBattleStateTimer < 0 || player.stat.IsDead)
         {
@@ -56,15 +56,5 @@ public class Common1BattleState : Common1State
         }
     }
 
-    private void ChansingPlayer()
-    {
-        if (common1.EntityDir() > 0 && common1.transform.position.x - 0.4 > player.transform.position.x)
-        {
-            common1.Flip();
-        }
-        else if (common1.EntityDir() < 0 && common1.transform.position.x + 0.4 < player.transform.position.x)
-        {
-            common1.Flip();
-        }
-    }
+ 
 }

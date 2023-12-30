@@ -10,6 +10,7 @@ public class Common2 : GroundEnemy
     public Common2DeadState deadState { get; private set; }
     public Common2MoveState moveState { get; private set; }
     #endregion
+
     [SerializeField] private float movingTime;
     [SerializeField] private float battleToExplodeTime;
     private bool isInDeadState;

@@ -14,6 +14,7 @@ public class GroundEnemy : Enemy
             if (hitLayer == whatIsPlayer)
                 return true;
         }
+        
         return false;
     }
     protected override void OnDrawGizmos()

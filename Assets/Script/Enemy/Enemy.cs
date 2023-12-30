@@ -18,6 +18,7 @@ public class Enemy : Entity
     [SerializeField] protected bool isAttack;
     #endregion
 
+    public Player player { get; private set; }
     //public EnemyStat stat { get; private set; }
 
 
@@ -35,6 +36,7 @@ public class Enemy : Entity
         base.Start();
         //stat = GetComponent<EnemyStat>();
         isFacingRight = true;
+        player = PlayerManager.instance.player;
     }
 
     public void Flip()
@@ -59,6 +61,30 @@ public class Enemy : Entity
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+    
+    public bool IsOnTheRightOfPlayer()
+    {
+        if (transform.position.x - 0.4 > player.transform.position.x)
+        {
+            return true;
+        }
+        /*else if (entityDir < 0 && transform.position.x + 0.4 < player.transform.position.x)
+        {
+            return false;
+        }*/
+        return false;
+    }
 
+    public void TurnToPlayer()
+    {
+        if (EntityDir() > 0 && IsOnTheRightOfPlayer())
+        {
+            Flip();
+        }
+        else if (EntityDir() < 0 && !IsOnTheRightOfPlayer())
+        {
+            Flip();
+        }
+    }
 
 }
