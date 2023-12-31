@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundState
 {
-    public PlayerIdleState(string _animName)
+    public PlayerIdleState(string animName) : base(animName)
     {
-        this.animName = _animName;
     }
 
     public override void Enter()
@@ -23,7 +19,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if (player.MoveDir() !=0 )
+        if (player.MoveDir != 0)
         {
             stateMachine.ChangeState(player.moveState);
         }

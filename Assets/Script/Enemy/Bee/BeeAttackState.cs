@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
-public class BeeAttackState : BeeState
+public class BeeAttackState : EnemyAttackState
 {
-    public BeeAttackState(string _animName)
+    Bee bee;
+    public BeeAttackState(Enemy enemy, string animName) : base(enemy, animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
+        bee = (Bee)enemy;
         bee.InstantiateProjectile().GetComponent<BeeProjectileSetUp>().Activate();
-        timer = 0.5f;
     }
 
     public override void Exit()
@@ -25,9 +26,5 @@ public class BeeAttackState : BeeState
     public override void Update()
     {
         base.Update();
-        if (timer < 0)
-        {
-            stateMachine.ChangeState(bee.battleState);
-        }
     }
 }

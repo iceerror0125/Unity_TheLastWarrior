@@ -4,19 +4,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Common3AttackState : Common3State
+public class Common3AttackState : EnemyAttackState
 {
-    public Common3AttackState(string _animName)
+    private Common3 common3;
+    public Common3AttackState(Enemy enemy, string animName) : base(enemy, animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
-        common3.ZeroVelocity();
+        common3 = (Common3)enemy;
         common3.InstantiateProjectile().GetComponent<Common3ProjectileSetUp>().Activate();
-      
-        timer = 0.5f;
     }
 
     public override void Exit()
@@ -28,10 +27,5 @@ public class Common3AttackState : Common3State
     public override void Update()
     {
         base.Update();
-
-        if (timer < 0)
-        {
-            stateMachine.ChangeState(common3.battleState);
-        }
     }
 }

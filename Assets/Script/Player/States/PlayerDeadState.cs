@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerDeadState : PlayerState
 {
-    public PlayerDeadState(string _animName)
+    public PlayerDeadState(string animName) : base(animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();

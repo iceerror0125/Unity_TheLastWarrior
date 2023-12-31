@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Common1DeadState : Common1State
+public class EnemyDeadState : EnemyState
 {
-    public Common1DeadState(string _animName)
+    public EnemyDeadState(Enemy enemy, string animName) : base(enemy, animName)
     {
-        animName = _animName;
     }
     public override void Enter()
     {

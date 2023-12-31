@@ -1,23 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWallSlideState : PlayerState
 {
     float delayTime;
     bool wasPress;
-    public PlayerWallSlideState(string _animName)
+
+    public PlayerWallSlideState(string animName) : base(animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
         player.ZeroVelocity();
         player.SetIsSliding(true);
-        //player.rb.gravityScale = player.WallSlideGravity();
-        player.SetIsFacingRight(!player.IsFacingRight());
+        player.SetIsFacingRight(!player.IsFacingRight);
         player.SetCanDoubleJump(true);
         player.SetCanHighJump(true);
 
@@ -35,7 +32,7 @@ public class PlayerWallSlideState : PlayerState
     public override void Update()
     {
         base.Update();
-        player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.WallSlideGravity()));
+        player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.WallSlideGravity));
 
 
         CheckToGroundState();
@@ -52,7 +49,7 @@ public class PlayerWallSlideState : PlayerState
 
     private void CheckToGroundState()
     {
-        if (player.IsGround())
+        if (player.IsGround)
         {
             stateMachine.ChangeState(player.idleState);
         }

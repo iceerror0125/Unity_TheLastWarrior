@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
-public class Common3HurtState : Common3State
+public class EnemyHurtState : EnemyState
 {
-    public Common3HurtState(string _animName)
+    public EnemyHurtState(Enemy enemy, string animName) : base(enemy, animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
-        timer = common3.HurtTime;
+        timer = enemy.HurtTime;
     }
 
     public override void Exit()
@@ -25,7 +24,7 @@ public class Common3HurtState : Common3State
         base.Update();
         if (timer < 0)
         {
-            stateMachine.ChangeState(common3.battleState);
+            stateMachine.ChangeState(enemy.BattleState);
         }
     }
 }

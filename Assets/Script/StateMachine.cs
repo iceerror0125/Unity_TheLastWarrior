@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class StateMachine 
 {
     public BaseState currentState { get; private set; }
-
     public void InitState(BaseState newState)
     {
         currentState = newState;

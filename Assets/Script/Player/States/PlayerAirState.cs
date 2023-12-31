@@ -1,10 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAirState : PlayerState
 {
+    public PlayerAirState(string animName) : base(animName)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -19,7 +20,7 @@ public class PlayerAirState : PlayerState
     public override void Update()
     {
         base.Update();
-        MoveController(player.MoveSpeedInAir());
+        MoveController(player.MoveSpeedInAir);
 
         CheckDoubleJump();
         if (timer < 0)
@@ -28,7 +29,7 @@ public class PlayerAirState : PlayerState
 
     protected void CheckWallSlide()
     {
-        if (player.IsWall())
+        if (player.IsWall)
         {
             stateMachine.ChangeState(player.wallSlideState);
         }
@@ -36,7 +37,7 @@ public class PlayerAirState : PlayerState
 
     private void CheckDoubleJump()
     {
-        if (player.CanDoubleJump())
+        if (player.CanDoubleJump)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {

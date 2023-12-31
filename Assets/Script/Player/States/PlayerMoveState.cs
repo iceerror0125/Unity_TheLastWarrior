@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundState
 {
-    public PlayerMoveState(string _animName)
+    public PlayerMoveState(string animName) : base(animName)
     {
-        this.animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -22,9 +19,9 @@ public class PlayerMoveState : PlayerGroundState
     {
         base.Update();
 
-        MoveController(player.MoveSpeed());
+        MoveController(player.MoveSpeed);
 
-        if (player.MoveDir() == 0)
+        if (player.MoveDir == 0)
         {
             stateMachine.ChangeState(player.idleState);
         }

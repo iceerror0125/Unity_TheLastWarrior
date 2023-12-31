@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyEnemy : Enemy
 {
-    [Header("Move")]
-    [SerializeField] private Vector2 moveRange;
-    public Vector2 MoveRange => moveRange;
+    protected override void Update()
+    {
+        base.Update();
+        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.stat.IsDead)
+        {
+            stateMachine.ChangeState(battleState);
+        }
+    }
     public bool DetectPlayer()
     {
-        var detectPosition = new Vector2(transform.position.x + additionalDetectPosition.x * EntityDir(), transform.position.y);
+        var detectPosition = new Vector2(transform.position.x + additionalDetectPosition.x * EntityDir, transform.position.y);
         var colliders = Physics2D.OverlapCircleAll(detectPosition, detectPlayerDistance);
         if (colliders != null)
         {

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Buff1 : PlayerSkill
@@ -11,8 +10,8 @@ public class Buff1 : PlayerSkill
     {
         base.SetUp();
 
-        originCountdown = player.AttackCountDown();
-        newCountdown = player.AttackCountDown() - player.AttackCountDown() * 1f; // 100%
+        originCountdown = player.AttackCountDown;
+        newCountdown = player.AttackCountDown - player.AttackCountDown * 1f; // 100%
         player.SetAttackCountdown(newCountdown);
     }
     protected override void Exit()

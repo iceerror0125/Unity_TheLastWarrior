@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
-public class BeeBattleState : BeeState
+public class BeeBattleState : EnemyBattleState
 {
-    public BeeBattleState(string _animName)
-    {
-        animName = _animName;
-    }
+   
     float exitBattleStateTimer;
     Player player;
-    
+    Bee bee;
+    public BeeBattleState(Enemy enemy, string animName) : base(enemy, animName)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
+        bee = (Bee)enemy;
+        player = PlayerManager.instance.player;
+
         bee.SetIsDetectedPlayer(true);
 
         timer = bee.ToAttackStateTimer;
         exitBattleStateTimer = bee.ExitBattleStateTime;
-
-        player = PlayerManager.instance.player;
     }
 
     public override void Exit()
@@ -38,7 +40,7 @@ public class BeeBattleState : BeeState
 
         if (timer < 0 && bee.DetectPlayer())
         {
-            stateMachine.ChangeState(bee.attackState);
+            stateMachine.ChangeState(bee.AttackState);
         }
     }
 
@@ -47,7 +49,7 @@ public class BeeBattleState : BeeState
         exitBattleStateTimer -= Time.deltaTime;
         if (exitBattleStateTimer < 0)
         {
-            stateMachine.ChangeState(bee.idleState);
+            stateMachine.ChangeState(bee.IdleState);
         }
     }
 
@@ -59,7 +61,7 @@ public class BeeBattleState : BeeState
         }
         else
         {
-            bee.ChangeVelocity(bee.MoveSpeed() * bee.EntityDir(), bee.rb.velocity.y);
+            bee.ChangeVelocity(bee.MoveSpeed * bee.EntityDir, bee.rb.velocity.y);
         }
     }
 
@@ -68,7 +70,7 @@ public class BeeBattleState : BeeState
     {
         if (exitBattleStateTimer < 0 || player.stat.IsDead)
         {
-            stateMachine.ChangeState(bee.idleState);
+            stateMachine.ChangeState(bee.IdleState);
         }
     }
 }

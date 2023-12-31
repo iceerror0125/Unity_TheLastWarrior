@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
-using UnityEngine;
 
 public class PlayerHurtState : PlayerState
 {
-    public PlayerHurtState(string _animName)
+    public PlayerHurtState(string animName) : base(animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();

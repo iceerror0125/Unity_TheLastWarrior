@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Player : Entity
 {
@@ -37,29 +33,24 @@ public class Player : Entity
     [Header("Fall")]
     [SerializeField] private float fallGravity;
     [SerializeField] private float defaultGravity;
-
     [SerializeField] private bool isFirstAttack;
 
     public float timer;
     #endregion
 
-    //public PlayerStat stat { get; private set; }
-    /*float xxx = 3;
-    public float damage;*/
-
     #region Getter Setter
-    public float JumpForce() => jumpForce;
-    public float MoveSpeedInAir() => moveSpeedInAir;
-    public bool IsFirstAttack() => isFirstAttack;
-    public bool CanDoubleJump() => canDoubleJump;
+    public float JumpForce => jumpForce;
+    public float MoveSpeedInAir => moveSpeedInAir;
+    public bool IsFirstAttack => isFirstAttack;
+    public bool CanDoubleJump => canDoubleJump;
     public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
-    public bool CanHighJump() => canHighJump;
+    public bool CanHighJump => canHighJump;
     public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
     public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
-    public float WallSlideJumpForce() => wallSlideJumpForce;
-    public bool IsSliding() => isSliding;
+    public float WallSlideJumpForce => wallSlideJumpForce;
+    public bool IsSliding => isSliding;
     public void SetIsSliding(bool _value) => isSliding = _value;
-    public float WallSlideGravity() => wallSlideGravity;
+    public float WallSlideGravity => wallSlideGravity;
     // public PlayerStat PlayerStat => stat;
     #endregion
 
@@ -79,8 +70,6 @@ public class Player : Entity
         wallJumpState = new PlayerWallJumpState("Player_Jump");
         hurtState = new PlayerHurtState("Player_Hurt");
         #endregion
-
-        //stat = GetComponent<PlayerStat>();
 
         stateMachine.InitState(idleState);
 

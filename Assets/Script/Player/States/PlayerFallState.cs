@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerFallState : PlayerAirState
 {
-    public PlayerFallState(string _animName)
+    public PlayerFallState(string animName) : base(animName)
     {
-        this.animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -25,7 +22,7 @@ public class PlayerFallState : PlayerAirState
     {
         base.Update();
 
-        if (player.IsGround())
+        if (player.IsGround)
         {
             stateMachine.ChangeState(player.idleState);
         }

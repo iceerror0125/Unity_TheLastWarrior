@@ -1,5 +1,3 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -19,6 +17,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float moveDir;
     [SerializeField] protected float entityDir;
     [SerializeField] protected bool isFacingRight;
+    [SerializeField] private Vector2 moveRange;
 
     [Header("Ground Check")]
     [SerializeField] protected bool isGround;
@@ -48,24 +47,25 @@ public class Entity : MonoBehaviour
     public EntityStat stat { get; private set; }
 
     #region Getter Setter
-    public float MoveSpeed() => moveSpeed;
-    public float MoveDir() => moveDir;
+    public float MoveSpeed => moveSpeed;
+    public float MoveDir => moveDir;
     public float SetMoveDir(float _value) => moveDir = _value;
-    public float RollSpeed() => rollSpeed;
-    public bool IsGround() => isGround;
+    public float RollSpeed => rollSpeed;
+    public bool IsGround => isGround;
     public void SetIsGround(bool _isGround) => isGround = _isGround;
-    public bool IsWall() => isWall;
-    public bool IsRolling() => isRolling;
+    public bool IsWall => isWall;
+    public bool IsRolling => isRolling;
     public void SetIsRolling(bool _isRolling) => isRolling = _isRolling;
-    public bool IsFacingRight() => isFacingRight;
-    public float EntityDir() => entityDir;
-    public float AttackCountDown() => attackCountdown;
+    public bool IsFacingRight => isFacingRight;
+    public float EntityDir => entityDir;
+    public float AttackCountDown => attackCountdown;
     public float SetAttackCountdown(float _value) => attackCountdown = _value;
     public Transform AttackCheck => attackCheck;
     public float AttackCheckRadius => attackCheckRadius;
     public float HurtTime => hurtTime;
     public bool IsDead => isDead;
     public void SetIsDead(bool _value) => isDead = _value;
+    public Vector2 MoveRange => moveRange;
     #endregion
 
     protected virtual void Awake()
@@ -73,19 +73,14 @@ public class Entity : MonoBehaviour
         stateMachine = new StateMachine();
 
         #region Get Component
-
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         stat = GetComponent<EntityStat>();
-        rb.gravityScale = 4;
+        // rb.gravityScale = 4;
         #endregion
     }
 
-    protected virtual void Start()
-    {
-       
-    }
-
+    protected virtual void Start() { }
     protected virtual void Update()
     {
         if (stateMachine != null)
@@ -96,8 +91,6 @@ public class Entity : MonoBehaviour
         CheckingGround();
         CheckingWall();
     }
-
- 
     private void CheckingGround()
     {
         isGround = Physics2D.Raycast(
@@ -107,7 +100,6 @@ public class Entity : MonoBehaviour
             whatIsGround
             );
     }
-
     private void CheckingWall()
     {
         isWall = Physics2D.Raycast(transform.position,
@@ -127,27 +119,23 @@ public class Entity : MonoBehaviour
             );
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
-
     public void ChangeRotation()
     {
         transform.Rotate(0, 180, 0);
     }
-
     public void SetIsFacingRight(bool _isFacingRight)
     {
         isFacingRight = _isFacingRight;
     }
-
     public void ZeroVelocity() => rb.velocity = Vector2.zero;
     public void ChangeVelocity(Vector2 _newVelocity) => rb.velocity = _newVelocity;
     public void ChangeVelocity(float x, float y)
     {
         rb.velocity = new Vector2(x, y);
     }
-    
     public virtual void KnockBack(Entity _attacker, float x, float y)
     {
-        Vector2 hit = new Vector2(x * _attacker.EntityDir(), y);
+        Vector2 hit = new Vector2(x * _attacker.EntityDir, y);
         ChangeVelocity(hit);
     }
     public virtual void Hit(Entity _hitEntity)
@@ -155,6 +143,4 @@ public class Entity : MonoBehaviour
         _hitEntity.KnockBack(this, 4, 4);
         stat.CauseDamageByNormalAttack(_hitEntity);
     }
-    
-    
 }

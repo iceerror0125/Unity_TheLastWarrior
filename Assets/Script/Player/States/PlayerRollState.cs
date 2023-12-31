@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRollState : PlayerGroundState
 {
     private int facingValue;
-    public PlayerRollState(string _animName)
+
+    public PlayerRollState(string animName) : base(animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
         player.SetIsRolling(true);
-        facingValue = player.IsFacingRight() ? 1 : -1;
+        facingValue = player.IsFacingRight ? 1 : -1;
     }
 
     public override void Exit()
@@ -24,9 +23,9 @@ public class PlayerRollState : PlayerGroundState
 
     public override void Update()
     {
-        if (player.IsRolling())
+        if (player.IsRolling)
         {
-            player.ChangeVelocity(new Vector2(player.RollSpeed() * facingValue, player.rb.velocity.y));
+            player.ChangeVelocity(new Vector2(player.RollSpeed * facingValue, player.rb.velocity.y));
             return;
         }
           

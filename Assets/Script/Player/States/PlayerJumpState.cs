@@ -1,20 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerJumpState : PlayerAirState
 {
-    public PlayerJumpState(string _animName)
+    public PlayerJumpState(string animName) : base(animName)
     {
-        this.animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
         player.ActivateFallGravity(false);
 
-        Jump(player.JumpForce());
+        Jump(player.JumpForce);
     }
 
     public override void Exit()
@@ -38,16 +36,16 @@ public class PlayerJumpState : PlayerAirState
         }
         if (Input.GetKeyUp(KeyCode.Z) && player.rb.velocity.y > 0)
         {
-            player.ChangeVelocity(new Vector2(player.rb.velocity.x, 0/*player.rb.velocity.y / player.JumpConstant()*/));
+            player.ChangeVelocity(new Vector2(player.rb.velocity.x, 0));
         }
       
     }
 
-    private void Jump(float _yValue)
+    private void Jump(float yValue)
     {
         Vector2 jump = new Vector2(
            player.rb.velocity.x,
-           _yValue
+           yValue
            );
         player.ChangeVelocity(jump);
     }

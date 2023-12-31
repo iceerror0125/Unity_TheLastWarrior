@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerAttackState : PlayerState
 {
-    public PlayerAttackState(string _animName)
+    public PlayerAttackState(string animName) : base(animName)
     {
-        animName = _animName;
         player.SetIsFirstAttack(true);
     }
+
     public override void Enter()
     {
         base.Enter();
-        
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.timer = player.AttackCountDown();
+        player.timer = player.AttackCountDown;
 
-        if (!player.IsFirstAttack())
+        if (!player.IsFirstAttack)
         {
             animName = "Player_Attack2";
         }
@@ -34,7 +30,7 @@ public class PlayerAttackState : PlayerState
     {
         base.Update();
 
-        if (player.EntityDir() != player.MoveDir())
+        if (player.EntityDir != player.MoveDir)
         {
             player.ZeroVelocity();
         }

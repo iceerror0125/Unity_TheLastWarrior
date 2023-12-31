@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class PlayerGroundState : PlayerState
 {
+    public PlayerGroundState(string animName) : base(animName)
+    {
+    }
 
     public override void Enter()
     {
@@ -23,10 +23,10 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
-        if (!player.IsGround())
+        if (!player.IsGround)
             return;
         
-        if (Input.GetKeyDown(KeyCode.Z) /*|| player.IsWall()*/)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             stateMachine.ChangeState(player.jumpState);
         }

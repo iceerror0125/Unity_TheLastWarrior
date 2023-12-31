@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWallJumpState : PlayerAirState
 {
     private float activeMoveControllerTimer;
-    public PlayerWallJumpState(string _animName)
+
+    public PlayerWallJumpState(string animName) : base(animName)
     {
-        animName = _animName;
     }
+
     public override void Enter()
     {
         base.Enter();
-        float x = player.WallSlideJumpForce() * player.EntityDir();
+        float x = player.WallSlideJumpForce * player.EntityDir;
         float y = x * x;
-        //var jumpVector = new Vector2(player.WallSlideJumpForce() * player.PlayerDir(), player.WallSlideJumpForce());
         var jumpVector = new Vector2(x, y);
         player.ChangeVelocity(jumpVector);
 
@@ -31,7 +29,7 @@ public class PlayerWallJumpState : PlayerAirState
         base.Update();
         activeMoveControllerTimer -= Time.deltaTime;
 
-        MoveController(player.MoveSpeedInAir());
+        MoveController(player.MoveSpeedInAir);
 
 
         JumpController();
@@ -43,15 +41,15 @@ public class PlayerWallJumpState : PlayerAirState
 
     }
 
-    protected override void MoveController(float _moveSpeed)
+    protected override void MoveController(float moveSpeed)
     {
-        if (player.MoveDir() == 0)
+        if (player.MoveDir == 0)
         {
-            player.SetMoveDir(player.EntityDir());
+            player.SetMoveDir(player.EntityDir);
             return;
         }
         if (activeMoveControllerTimer < 0)
-            base.MoveController(_moveSpeed);
+            base.MoveController(moveSpeed);
     }
 
     private void JumpController()

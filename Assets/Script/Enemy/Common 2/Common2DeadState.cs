@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Common2DeadState : Common2State
+public class Common2DeadState : EnemyDeadState
 {
-   public Common2DeadState(string _animName)
+    public Common2DeadState(Enemy enemy, string animName) : base(enemy, animName)
     {
-        animName = _animName;
     }
 
     public override void Enter()
     {
         base.Enter();
-        common2.SetIsInDeadState(true);
+        ((Common2)enemy).SetIsInDeadState(true);
     }
 
     public override void Exit()
@@ -23,6 +22,6 @@ public class Common2DeadState : Common2State
     public override void Update()
     {
         base.Update();
-        common2.ZeroVelocity();
+        ((Common2)enemy).ZeroVelocity();
     }
 }

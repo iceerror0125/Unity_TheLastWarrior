@@ -2982,6 +2982,7 @@ MonoBehaviour:
   moveDir: 0
   entityDir: 1
   isFacingRight: 0
+  moveRange: {x: 0, y: 0}
   isGround: 0
   groundCheckLength: 1.1
   whatIsGround:
@@ -2994,6 +2995,8 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 703824155}
   attackCheckRadius: 0.5
+  moveDuration: 5
+  idleDuration: 1
   detectPlayerDistance: 7
   additionalDetectPosition: {x: 0.5, y: 0}
   isDetected: 0
@@ -3003,8 +3006,6 @@ MonoBehaviour:
   exitBattleStateTime: 5
   attackRange: 1.2
   isAttack: 0
-  moveDuration: 5
-  idleDuration: 1
 --- !u!114 &546114694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3490,7 +3491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &609977957
 Transform:
   m_ObjectHideFlags: 0
@@ -3499,14 +3500,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609977956}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.77, y: 2.07, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.4100003, y: 3.26, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 716894731}
   - {fileID: 1232900683}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1751429932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &609977958
 MonoBehaviour:
@@ -3524,6 +3525,7 @@ MonoBehaviour:
   moveDir: 0
   entityDir: 1
   isFacingRight: 1
+  moveRange: {x: 1, y: 1}
   isGround: 0
   groundCheckLength: 0
   whatIsGround:
@@ -3536,6 +3538,8 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 1232900683}
   attackCheckRadius: 0
+  moveDuration: 2
+  idleDuration: 1
   detectPlayerDistance: 4.75
   additionalDetectPosition: {x: 0, y: 0}
   isDetected: 0
@@ -3545,9 +3549,6 @@ MonoBehaviour:
   exitBattleStateTime: 0
   attackRange: 0
   isAttack: 0
-  moveRange: {x: 1, y: 1}
-  moveDuration: 2
-  idleDuration: 1
   projectile: {fileID: 800209104388000245, guid: 453fa853216f604479d2eb3791ad7bf7, type: 3}
   distanceStopMoving: 0
   toAttackStateCountdown: 3
@@ -4619,6 +4620,7 @@ GameObject:
   - component: {fileID: 716894731}
   - component: {fileID: 716894733}
   - component: {fileID: 716894732}
+  - component: {fileID: 716894734}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -4714,6 +4716,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &716894734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716894730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905af74861e8a0743a09aea62e4e3fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &729031213
 GameObject:
   m_ObjectHideFlags: 0
@@ -7342,6 +7356,7 @@ GameObject:
   - component: {fileID: 1112410123}
   - component: {fileID: 1112410125}
   - component: {fileID: 1112410124}
+  - component: {fileID: 1112410126}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -7437,6 +7452,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1112410126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112410122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905af74861e8a0743a09aea62e4e3fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1112608837
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,7 +8441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1303937626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8431,6 +8458,7 @@ MonoBehaviour:
   moveDir: 0
   entityDir: 0
   isFacingRight: 1
+  moveRange: {x: 0, y: 0}
   isGround: 0
   groundCheckLength: 0.74
   whatIsGround:
@@ -8443,6 +8471,8 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 96429623}
   attackCheckRadius: 0
+  moveDuration: 2
+  idleDuration: 2
   detectPlayerDistance: 15
   additionalDetectPosition: {x: 0.7, y: 0}
   isDetected: 0
@@ -8452,8 +8482,6 @@ MonoBehaviour:
   exitBattleStateTime: 5
   attackRange: 0
   isAttack: 0
-  moveDuration: 2
-  idleDuration: 2
   distanceStopMoving: 10
   toAttackStateCountdown: 2
   moveBackwardSpeed: 2
@@ -10945,7 +10973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1679154064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10980,6 +11008,7 @@ MonoBehaviour:
   moveDir: 0
   entityDir: 1
   isFacingRight: 1
+  moveRange: {x: 0, y: 0}
   isGround: 0
   groundCheckLength: 1.3
   whatIsGround:
@@ -10992,6 +11021,8 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 930051789}
   attackCheckRadius: 1.5
+  moveDuration: 0
+  idleDuration: 0
   detectPlayerDistance: 10
   additionalDetectPosition: {x: 0.65, y: 0}
   isDetected: 0
@@ -11001,7 +11032,6 @@ MonoBehaviour:
   exitBattleStateTime: 0
   attackRange: 0
   isAttack: 0
-  movingTime: 3
   battleToExplodeTime: 3
 --- !u!70 &1679154066
 CapsuleCollider2D:
@@ -11347,7 +11377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1751429932
 Transform:
   m_ObjectHideFlags: 0
@@ -11361,6 +11391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 609977957}
   - {fileID: 1679154068}
   - {fileID: 546114692}
   - {fileID: 1303937630}
@@ -13493,7 +13524,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 180519069098606717, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 180519069098606717, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_SortingLayerID
@@ -14162,4 +14193,3 @@ SceneRoots:
   - {fileID: 986829519}
   - {fileID: 790191611}
   - {fileID: 1819783091}
-  - {fileID: 609977957}

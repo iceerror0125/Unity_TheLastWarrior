@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ultimate : PlayerSkill
@@ -15,10 +14,10 @@ public class Ultimate : PlayerSkill
     {
         base.SetUp();
 
-        Vector2 spawnPos = new Vector2 (player.transform.position.x + player.EntityDir() * x, player.transform.position.y);
+        Vector2 spawnPos = new Vector2 (player.transform.position.x + player.EntityDir * x, player.transform.position.y);
         GameObject skill = Instantiate(skillPrefab, spawnPos, Quaternion.identity); 
         script = skill.GetComponent<UltimateSetUp>();
-        if (player.EntityDir() < 0 )
+        if (player.EntityDir < 0 )
         {
             script.ReverseRotation();
         }
