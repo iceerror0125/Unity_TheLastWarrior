@@ -15,6 +15,8 @@ public class Common2 : GroundEnemy
 
     protected override void Start()
     {
+        base.Start();
+        idleState = new EnemyIdleState(this, "Common2_Move");
         battleState = new Common2BattleState(this, "Common2_Move");
         deadState = new Common2DeadState(this, "Common2_Explode");
         moveState = new EnemyMoveState(this, "Common2_Move");

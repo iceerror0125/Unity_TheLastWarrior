@@ -23,10 +23,10 @@ public class Bee : FlyEnemy
     {
         base.Start();
         attackState = new BeeAttackState(this, "Bee_Attack");
-        battleState = new BeeBattleState(this, "Bee_Move");
+        battleState = new BeeBattleState(this, "Bee_Idle");
         deadState = new EnemyDeadState(this, "Bee_Dead");
         idleState = new EnemyIdleState(this, "Bee_Idle");
-        moveState = new EnemyMoveState(this, "Bee_Move");
+        moveState = new FlyEnemyMoveState(this, "Bee_Move");
 
         stateMachine.InitState(idleState);
     }

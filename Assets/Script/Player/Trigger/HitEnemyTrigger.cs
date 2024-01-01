@@ -9,9 +9,9 @@ public class HitEnemyTrigger
         foreach (var collider in colliders)
         {
             var enemy = collider.GetComponent<Enemy>();
-            if (enemy != null && !enemy.stat.IsDead)
+            if (enemy != null && !enemy.IsDead)
             {
-                player.Hit(enemy);
+                player.PerformNormalAttack(enemy);
 
                 if (_skill.IsActivated)
                 {

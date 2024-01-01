@@ -35,7 +35,7 @@ public class BeeProjectileSetUp : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-            EnemyManager.instance.bee.Hit(collision.GetComponent<Player>());
+            EnemyManager.instance.bee.PerformNormalAttack(collision.GetComponent<Player>());
         }
     }
 }

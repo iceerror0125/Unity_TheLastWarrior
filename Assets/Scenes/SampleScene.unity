@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96429623}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: 'AttackCheck  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2886,7 +2886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &546114690
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2978,7 +2978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75afe48588a368409a7eab44c66103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 3
   moveDir: 0
   entityDir: 1
   isFacingRight: 0
@@ -2995,6 +2995,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 703824155}
   attackCheckRadius: 0.5
+  isDead: 0
   moveDuration: 5
   idleDuration: 1
   detectPlayerDistance: 7
@@ -3023,7 +3024,6 @@ MonoBehaviour:
   damage: 0
   critRate: 0
   critDamage: 0
-  isDead: 0
 --- !u!1 &549289422
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,8 +3500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609977956}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4100003, y: 3.26, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.2, y: 2.92, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3538,6 +3538,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 1232900683}
   attackCheckRadius: 0
+  isDead: 0
   moveDuration: 2
   idleDuration: 1
   detectPlayerDistance: 4.75
@@ -3546,9 +3547,10 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  exitBattleStateTime: 0
+  exitBattleStateTime: 3
   attackRange: 0
   isAttack: 0
+  limitBoxSize: {x: 10, y: 5}
   projectile: {fileID: 800209104388000245, guid: 453fa853216f604479d2eb3791ad7bf7, type: 3}
   distanceStopMoving: 0
   toAttackStateCountdown: 3
@@ -3632,7 +3634,6 @@ MonoBehaviour:
   damage: 0
   critRate: 0
   critDamage: 0
-  isDead: 0
 --- !u!1 &612366392
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,7 +4628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &716894731
 Transform:
   m_ObjectHideFlags: 0
@@ -7357,7 +7358,7 @@ GameObject:
   - component: {fileID: 1112410125}
   - component: {fileID: 1112410124}
   - component: {fileID: 1112410126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7996,7 +7997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1232900683
 Transform:
   m_ObjectHideFlags: 0
@@ -8471,6 +8472,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 96429623}
   attackCheckRadius: 0
+  isDead: 0
   moveDuration: 2
   idleDuration: 2
   detectPlayerDistance: 15
@@ -8566,7 +8568,6 @@ MonoBehaviour:
   damage: 10
   critRate: 0
   critDamage: 0
-  isDead: 0
 --- !u!4 &1303937630
 Transform:
   m_ObjectHideFlags: 0
@@ -10991,7 +10992,6 @@ MonoBehaviour:
   damage: 30
   critRate: 0
   critDamage: 0
-  isDead: 0
 --- !u!114 &1679154065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11021,7 +11021,8 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 930051789}
   attackCheckRadius: 1.5
-  moveDuration: 0
+  isDead: 0
+  moveDuration: 3
   idleDuration: 0
   detectPlayerDistance: 10
   additionalDetectPosition: {x: 0.65, y: 0}
@@ -11029,7 +11030,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  exitBattleStateTime: 0
+  exitBattleStateTime: 10
   attackRange: 0
   isAttack: 0
   battleToExplodeTime: 3
@@ -11065,8 +11066,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024353266, y: -0.139615}
-  m_Size: {x: 1.1409183, y: 1.3853263}
+  m_Offset: {x: 0.024353266, y: -0.19144154}
+  m_Size: {x: 1.1409183, y: 1.4889793}
   m_Direction: 0
 --- !u!50 &1679154067
 Rigidbody2D:
@@ -11104,7 +11105,7 @@ Transform:
   m_GameObject: {fileID: 1679154063}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.06, y: 2.39, z: 0.14641063}
+  m_LocalPosition: {x: -12.92, y: -0.1, z: 0.14641063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13626,6 +13627,10 @@ PrefabInstance:
       propertyPath: whatIsGround.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4965197237443911239, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6328103100589448371, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_Name
       value: Player
@@ -13648,11 +13653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.71
+      value: 17.28
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13727,10 +13732,10 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694009857}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -13750,12 +13755,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0257272e2f5ed41bb4e5236552a3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 10000
   hp: 0
   damage: 50
   critRate: 0.5
   critDamage: 50
-  isDead: 0
 --- !u!1001 &5007443985329185972
 PrefabInstance:
   m_ObjectHideFlags: 0

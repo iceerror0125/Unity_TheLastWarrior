@@ -22,8 +22,7 @@ public class Entity : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] protected bool isGround;
     [SerializeField] protected float groundCheckLength;
-    [SerializeField] protected LayerMask whatIsGround;
-
+    [SerializeField] protected LayerMask whatIsGround = 1 << 3;
 
     [Header("Wall Check")]
     [SerializeField] protected bool isWall;
@@ -33,14 +32,14 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float rollSpeed;
     [SerializeField] protected bool isRolling;
 
-
     [Header("Attack")]
     [SerializeField] protected float attackCountdown;
     [SerializeField] protected Transform attackCheck;
     [SerializeField] protected float attackCheckRadius;
     private float hurtTime = 0.2f;
 
-    private bool isDead;
+    [Header("Dead")]
+    [SerializeField] protected bool isDead;
     #endregion
 
     public StateMachine stateMachine { get; private set; }
@@ -76,8 +75,9 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         stat = GetComponent<EntityStat>();
-        // rb.gravityScale = 4;
         #endregion
+        // rb.gravityScale = 4;
+        isDead = false;
     }
 
     protected virtual void Start() { }
@@ -123,24 +123,44 @@ public class Entity : MonoBehaviour
     {
         transform.Rotate(0, 180, 0);
     }
-    public void SetIsFacingRight(bool _isFacingRight)
+    public void SetIsFacingRight(bool isFacingRight)
     {
-        isFacingRight = _isFacingRight;
+        this.isFacingRight = isFacingRight;
     }
     public void ZeroVelocity() => rb.velocity = Vector2.zero;
-    public void ChangeVelocity(Vector2 _newVelocity) => rb.velocity = _newVelocity;
+    public void ChangeVelocity(Vector2 newVelocity) => rb.velocity = newVelocity;
     public void ChangeVelocity(float x, float y)
     {
         rb.velocity = new Vector2(x, y);
     }
-    public virtual void KnockBack(Entity _attacker, float x, float y)
+
+    public virtual void KnockBack(Entity attacker, float x, float y)
     {
-        Vector2 hit = new Vector2(x * _attacker.EntityDir, y);
+        Vector2 hit = new Vector2(x * attacker.EntityDir, y);
         ChangeVelocity(hit);
     }
-    public virtual void Hit(Entity _hitEntity)
+
+    // Use Entity as Interface and Stat is Interface implement
+    public virtual void PerformNormalAttack(Entity hitEntity)
     {
-        _hitEntity.KnockBack(this, 4, 4);
-        stat.CauseDamageByNormalAttack(_hitEntity);
+        hitEntity.KnockBack(this, 4, 4);
+        stat.PerformNormalAttack(hitEntity);
+    }
+    public virtual void PerformSpellAttack(Entity hitEntity, float damage)
+    {
+        stat.PerformSpellAttack(hitEntity, damage);
+    }
+    public virtual void PerformSpellAttack(Entity hitEntity, float damage, Vector2 knockBack)
+    {
+        hitEntity.KnockBack(this, knockBack.x, knockBack.y);
+        stat.PerformSpellAttack(hitEntity, damage);
+    }
+    public virtual void RecoverHP (float recoverHP)
+    {
+        stat.RecoverHP(recoverHP);
+    }
+    public virtual void TakeDamage(float damage)
+    {
+        stat.TakeDamage(damage);
     }
 }

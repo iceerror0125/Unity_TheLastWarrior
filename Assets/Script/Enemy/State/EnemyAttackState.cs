@@ -12,7 +12,6 @@ public class EnemyAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        enemy.ZeroVelocity();
         enemy.SetIsAttack(true);
     }
 
@@ -25,6 +24,7 @@ public class EnemyAttackState : EnemyState
     public override void Update()
     {
         base.Update();
+        enemy.ZeroVelocity();
         if (!enemy.IsAttack)
         {
             stateMachine.ChangeState(enemy.BattleState);

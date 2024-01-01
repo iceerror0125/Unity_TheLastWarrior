@@ -10,6 +10,7 @@ public class EnemyDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        enemy.ZeroVelocity(); // In case it can't access Update()
     }
 
     public override void Exit()
@@ -20,5 +21,6 @@ public class EnemyDeadState : EnemyState
     public override void Update()
     {
         base.Update();
+        enemy.ZeroVelocity();
     }
 }

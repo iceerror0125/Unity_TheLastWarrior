@@ -10,9 +10,9 @@ public class HitPlayerTrigger
         foreach (var collider in colliders)
         {
             var player = collider.GetComponent<Player>();
-            if (player != null && !player.stat.IsDead)
+            if (player != null && !player.IsDead)
             {
-                _enemy.Hit(player);
+                _enemy.PerformNormalAttack(player);
             }
         }
     }

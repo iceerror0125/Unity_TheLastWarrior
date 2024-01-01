@@ -36,7 +36,7 @@ public class Spell2SetUp : MonoBehaviour
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            player.SpellHit(enemy, player.stat.Damage * 0.33f);
+            player.PerformSpellAttack(enemy, player.stat.Damage * 0.33f);
             Destroy(gameObject);
         }
     }

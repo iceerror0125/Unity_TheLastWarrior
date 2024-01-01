@@ -5,7 +5,7 @@ public class GroundEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.stat.IsDead)
+        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.IsDead)
         {
             stateMachine.ChangeState(battleState);
         }

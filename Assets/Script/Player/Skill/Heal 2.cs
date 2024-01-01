@@ -10,7 +10,7 @@ public class Heal2 : PlayerSkill
             return;
 
         float recoverHP = player.stat.MaxHp * 0.05f;
-        player.stat.RecoverHP(recoverHP);
+        player.RecoverHP(recoverHP);
     }
     protected override void Exit()
     {

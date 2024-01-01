@@ -27,7 +27,7 @@ public class Spell3SetUp : MonoBehaviour
             if (enemy != null)
             {
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, transform.position, speed * Time.deltaTime);
-                PlayerManager.instance.player.SpellHit(enemy, PlayerManager.instance.player.stat.Damage * 0.2f);
+                PlayerManager.instance.player.PerformSpellAttack(enemy, PlayerManager.instance.player.stat.Damage * 0.2f);
             }
         }
     }

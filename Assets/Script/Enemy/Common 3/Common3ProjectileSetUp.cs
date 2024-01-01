@@ -57,7 +57,6 @@ public class Common3ProjectileSetUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.layer);
         if (collision.GetComponent<Enemy>() != null)
         {
             return;
@@ -66,7 +65,7 @@ public class Common3ProjectileSetUp : MonoBehaviour
         if (collision.GetComponent<Player>() != null)
         {
             Player player = collision.GetComponent<Player>();
-            EnemyManager.instance.common3.Hit(player);
+            EnemyManager.instance.common3.PerformNormalAttack(player);
             Destroy(gameObject);
         }
         if (collision.gameObject.layer == 3) // 3: Ground

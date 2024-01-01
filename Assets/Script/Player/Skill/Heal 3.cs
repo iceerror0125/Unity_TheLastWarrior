@@ -7,7 +7,7 @@ public class Heal3 : PlayerSkill
         if (player.IsDead)
         {
             float recoverHP = player.stat.MaxHp * 0.5f;
-            player.stat.RecoverHP(recoverHP);
+            player.RecoverHP(recoverHP);
         }
     }
 }

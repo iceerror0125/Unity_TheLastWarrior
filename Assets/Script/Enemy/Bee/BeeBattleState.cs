@@ -7,7 +7,6 @@ public class BeeBattleState : EnemyBattleState
 {
    
     float exitBattleStateTimer;
-    Player player;
     Bee bee;
     public BeeBattleState(Enemy enemy, string animName) : base(enemy, animName)
     {
@@ -17,12 +16,10 @@ public class BeeBattleState : EnemyBattleState
     {
         base.Enter();
         bee = (Bee)enemy;
-        player = PlayerManager.instance.player;
 
         bee.SetIsDetectedPlayer(true);
 
         timer = bee.ToAttackStateTimer;
-        exitBattleStateTimer = bee.ExitBattleStateTime;
     }
 
     public override void Exit()
@@ -33,23 +30,13 @@ public class BeeBattleState : EnemyBattleState
     public override void Update()
     {
         base.Update();
-        bee.TurnToPlayer();
+        Debug.Log("Battle State");
+
         MoveController();
-        TransitionStateCheck();
-        ExitStateCheck();
 
         if (timer < 0 && bee.DetectPlayer())
         {
             stateMachine.ChangeState(bee.AttackState);
-        }
-    }
-
-    private void ExitStateCheck()
-    {
-        exitBattleStateTimer -= Time.deltaTime;
-        if (exitBattleStateTimer < 0)
-        {
-            stateMachine.ChangeState(bee.IdleState);
         }
     }
 
@@ -62,15 +49,6 @@ public class BeeBattleState : EnemyBattleState
         else
         {
             bee.ChangeVelocity(bee.MoveSpeed * bee.EntityDir, bee.rb.velocity.y);
-        }
-    }
-
-
-    private void TransitionStateCheck()
-    {
-        if (exitBattleStateTimer < 0 || player.stat.IsDead)
-        {
-            stateMachine.ChangeState(bee.IdleState);
         }
     }
 }

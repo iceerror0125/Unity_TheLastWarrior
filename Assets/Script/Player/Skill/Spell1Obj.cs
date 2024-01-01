@@ -10,7 +10,8 @@ public class Spell1Obj : MonoBehaviour
         {
             /*Vector2 hit = new Vector2(30 * enemy.EntityDir() * - 1, 4);
             enemy.ChangeVelocity(hit);*/
-            PlayerManager.instance.player.SpellHitFarKnockBack(enemy, stat.Damage + stat.Damage * 0.5f);
+            Vector2 knockBack = new Vector2(30, 4);
+            PlayerManager.instance.player.PerformSpellAttack(enemy, stat.Damage + stat.Damage * 0.5f, knockBack);
             //stat.CauseDamage(enemy, stat.Damage + stat.Damage * 0.5f); //150%
         }
     }

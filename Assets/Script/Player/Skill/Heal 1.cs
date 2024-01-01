@@ -5,6 +5,6 @@ public class Heal1 : PlayerSkill
     {
         base.SetUp();
         float recoverHP = player.stat.MaxHp * 0.2f;
-        player.stat.RecoverHP(recoverHP);
+        player.RecoverHP(recoverHP);
     }
 }

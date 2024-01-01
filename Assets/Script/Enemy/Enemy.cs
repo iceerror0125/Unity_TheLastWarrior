@@ -11,7 +11,7 @@ public class Enemy : Entity
     [SerializeField] protected float detectPlayerDistance;
     [SerializeField] protected Vector2 additionalDetectPosition; // outside this tranform collider
     [SerializeField] protected bool isDetected;
-    [SerializeField] protected LayerMask whatIsPlayer;
+    [SerializeField] protected LayerMask whatIsPlayer = 1 << 6;
     [SerializeField] protected float exitBattleStateTime;
     [Header("Attack")]
     [SerializeField] protected float attackRange;
@@ -31,7 +31,7 @@ public class Enemy : Entity
 
     #region Get Set
     public void SetIsDetectedPlayer(bool _value) => isDetected = _value;
-    public bool IsDetected() => isDetected;
+    public bool IsDetected => isDetected;
     public float ExitBattleStateTime => exitBattleStateTime;
     public bool IsAttack => isAttack;
     public void SetIsAttack(bool _value) => isAttack = _value;
@@ -56,7 +56,6 @@ public class Enemy : Entity
     protected override void Update()
     {
         base.Update();
-
     }
     public void Flip()
     {
@@ -66,7 +65,7 @@ public class Enemy : Entity
     public bool IsPlayerInAttackRange()
     {
         var collider = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
-        if (collider != null && collider.GetComponent<Player>()?.stat.IsDead == false)
+        if (collider != null && collider.GetComponent<Player>()?.IsDead == false)
         {
             return true;
         }

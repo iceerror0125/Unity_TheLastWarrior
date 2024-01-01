@@ -2,13 +2,45 @@ using UnityEngine;
 
 public class FlyEnemy : Enemy
 {
+    [Header("Fly Setting")]
+    [SerializeField] protected Vector2 limitBoxSize;
+    private Vector2 originalPosition;
+
+    protected override void Start()
+    {
+        base.Start();
+        originalPosition = transform.position;
+    }
     protected override void Update()
     {
         base.Update();
-        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.stat.IsDead)
+        if (DetectPlayer() && isDetected == false && !PlayerManager.instance.player.IsDead)
         {
             stateMachine.ChangeState(battleState);
         }
+        /*if (IsOutFlyBox(transform.position))
+        {
+            stateMachine.ChangeState(idleState);
+        }*/
+    }
+
+    public bool IsInsideFlyBox(Vector2 current)
+    {
+        Vector2 minLimit = originalPosition - limitBoxSize / 2f;
+        Vector2 maxLimit = originalPosition + limitBoxSize / 2f;
+
+        if (current.x > minLimit.x && current.x < maxLimit.x &&
+            current.y > minLimit.y && current.y < maxLimit.y)
+        {
+            return true;
+        }
+        return false;
+        /*RaycastHit2D hit = Physics2D.BoxCast(originalPosition, limitBoxSize, 0f, Vector2.zero);
+        if (!hit.collider)
+        {
+            return true;
+        }
+        return false;*/
     }
     public bool DetectPlayer()
     {
@@ -31,5 +63,7 @@ public class FlyEnemy : Enemy
         base.OnDrawGizmos();
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectPlayerDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(originalPosition, limitBoxSize);
     }
 }

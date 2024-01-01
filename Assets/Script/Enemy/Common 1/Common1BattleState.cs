@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Common2DeadState : EnemyDeadState
+public class Common1BattleState : EnemyBattleState
 {
-    public Common2DeadState(Enemy enemy, string animName) : base(enemy, animName)
+    public Common1BattleState(Enemy enemy, string animName) : base(enemy, animName)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-        ((Common2)enemy).SetIsInDeadState(true);
     }
 
     public override void Exit()
@@ -22,6 +21,6 @@ public class Common2DeadState : EnemyDeadState
     public override void Update()
     {
         base.Update();
-      
+        enemy.ChangeVelocity(enemy.MoveSpeed * 1.5f * enemy.EntityDir, enemy.rb.velocity.y);
     }
 }

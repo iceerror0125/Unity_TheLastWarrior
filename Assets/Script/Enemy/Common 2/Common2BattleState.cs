@@ -6,7 +6,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Common2BattleState : EnemyBattleState
 {
-    private Player player;
     private Common2 common2;
     public Common2BattleState(Enemy enemy, string animName) : base(enemy, animName)
     {
@@ -27,14 +26,13 @@ public class Common2BattleState : EnemyBattleState
 
     public override void Update()
     {
-        base.Update();
-        common2.ChangeVelocity(common2.MoveSpeed * common2.EntityDir * 3, common2.rb.velocity.y);
+        // base.Update();
+        common2.ChangeVelocity(common2.MoveSpeed * common2.EntityDir * 4, common2.rb.velocity.y);
 
         if (timer < 0)
         {
             stateMachine.ChangeState(common2.DeadState);
         }
-
 
         CheckExplosion();
     }
