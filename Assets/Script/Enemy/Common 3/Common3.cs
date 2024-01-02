@@ -38,11 +38,7 @@ public class Common3 : GroundEnemy
     {
         base.Update(); 
     }
-    public override void KnockBack(Entity _attacker, float x, float y)
-    {
-        base.KnockBack(_attacker, x, y);
-        stateMachine.ChangeState(hurtState);
-    }
+   
     public GameObject InstantiateProjectile()
     {
         return Instantiate(projectilePrefab, transform.position, Quaternion.identity);

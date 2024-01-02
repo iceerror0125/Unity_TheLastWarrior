@@ -1,7 +1,14 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class GroundEnemy : Enemy
 {
+    protected float raycastAngle = 15f;
+    protected override void Start()
+    {
+        base.Start();
+        rb.gravityScale = 4f;
+    }
     protected override void Update()
     {
         base.Update();
@@ -13,12 +20,26 @@ public class GroundEnemy : Enemy
     public bool DetectPlayer()
     {
         var detectPosition = new Vector2(transform.position.x + additionalDetectPosition.x * EntityDir, transform.position.y);
-        var hit = Physics2D.Raycast(detectPosition, Vector2.right * EntityDir, detectPlayerDistance);
-        if (hit.collider != null)
+        var hit = DetectPlayer(detectPosition, Vector2.right * EntityDir, detectPlayerDistance);
+        var angleHit = DetectPlayer(detectPosition, RayCastAngleVector(), detectPlayerDistance + 1);
+        return hit || angleHit;
+    }
+    private Vector2 RayCastAngleVector()
+    {
+        float angleInRadians = raycastAngle * Mathf.Deg2Rad;
+        Vector2 raycastDirection = new Vector2(Mathf.Cos(angleInRadians) * entityDir, Mathf.Sin(angleInRadians));
+        Debug.DrawRay(transform.position, raycastDirection * detectPlayerDistance, Color.red);
+        return raycastDirection;
+        //return Physics2D.Raycast(transform.position, raycastDirection, detectPlayerDistance + 2);
+    }
+
+    bool DetectPlayer(Vector2 origin, Vector2 direction, float distance)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance);
+
+        if (hit.collider != null && (1 << hit.collider.gameObject.layer) == whatIsPlayer)
         {
-            LayerMask hitLayer = 1 << hit.collider.gameObject.layer;
-            if (hitLayer == whatIsPlayer)
-                return true;
+            return true;
         }
 
         return false;

@@ -30,13 +30,12 @@ public class BeeBattleState : EnemyBattleState
     public override void Update()
     {
         base.Update();
-        Debug.Log("Battle State");
 
         MoveController();
 
         if (timer < 0 && bee.DetectPlayer())
         {
-            stateMachine.ChangeState(bee.AttackState);
+            stateMachine.ChangeState(bee.attackState);
         }
     }
 

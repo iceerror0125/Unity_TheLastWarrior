@@ -17,14 +17,16 @@ public class Enemy : Entity
     [SerializeField] protected float attackRange;
     [SerializeField] protected bool isAttack;
     #endregion
+
     #region State
-    protected EnemyAttackState attackState;
-    protected EnemyBattleState battleState;
-    protected EnemyDeadState deadState;
-    protected EnemyHurtState hurtState;
-    protected EnemyIdleState idleState;
-    protected EnemyMoveState moveState;
+    public EnemyAttackState attackState { get; protected set; }
+    public EnemyBattleState battleState { get; protected set; }
+    public EnemyDeadState deadState { get; protected set; }
+    public EnemyHurtState hurtState { get; protected set; }
+    public EnemyIdleState idleState { get; protected set; }
+    public EnemyMoveState moveState { get; protected set; }
     #endregion
+
     public Player player { get; private set; }
     //public EnemyStat stat { get; private set; }
 
@@ -37,12 +39,7 @@ public class Enemy : Entity
     public void SetIsAttack(bool _value) => isAttack = _value;
     public float MoveDuration => moveDuration;
     public float IdleDuration => idleDuration;
-    public EnemyAttackState AttackState => attackState;
-    public EnemyBattleState BattleState => battleState;
-    public EnemyDeadState DeadState => deadState;
-    public EnemyHurtState HurtState => hurtState;
-    public EnemyIdleState IdleState => idleState;
-    public EnemyMoveState MoveState => moveState;
+    public float DetectPlayerDistance => detectPlayerDistance;
     #endregion
 
     protected override void Start()
@@ -79,12 +76,7 @@ public class Enemy : Entity
     }
     public bool IsOnTheRightOfPlayer()
     {
-        if (transform.position.x - 0.4 > player.transform.position.x)
-        {
-            return true;
-        }
-        
-        return false;
+        return IsRightOfB(player);
     }
     public void TurnToPlayer()
     {
@@ -97,5 +89,9 @@ public class Enemy : Entity
             Flip();
         }
     }
-
+    public override void KnockBack(Entity _attacker, float x, float y)
+    {
+        base.KnockBack(_attacker, x, y);
+        stateMachine.ChangeState(hurtState);
+    }
 }

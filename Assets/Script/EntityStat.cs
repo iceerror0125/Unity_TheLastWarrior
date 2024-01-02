@@ -37,6 +37,7 @@ public class EntityStat : MonoBehaviour
         if (hp <= 0)
         {
             entity.SetIsDead(true);
+            //entity.stateMachine.ChangeState(entity.deadState);
         }
     }
 

@@ -21,7 +21,7 @@ public class Common3AttackState : EnemyAttackState
     public override void Exit()
     {
         base.Exit();
-        common3.SetToAttackStateTimer(common3.ToAttackStateCountdown);
+        //common3.SetToAttackStateTimer(common3.ToAttackStateCountdown);
     }
 
     public override void Update()

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EnemyBattleState : EnemyState
 {
-    float exitBattleStateTimer;
+    protected float exitBattleStateTimer;
+    protected float attackCountdownTimer;
     protected Player player;
     public EnemyBattleState(Enemy enemy, string animName) : base(enemy, animName)
     {
@@ -14,6 +15,7 @@ public class EnemyBattleState : EnemyState
     {
         base.Enter();
         exitBattleStateTimer = enemy.ExitBattleStateTime;
+        attackCountdownTimer = enemy.AttackCountDown;
         enemy.SetIsDetectedPlayer(true);
         enemy.SetIsAttack(false);
         /*enemy.ZeroVelocity();
@@ -30,7 +32,7 @@ public class EnemyBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-        
+
         TransitionStateCheck();
         enemy.TurnToPlayer();
     }
@@ -38,15 +40,15 @@ public class EnemyBattleState : EnemyState
     protected virtual void TransitionStateCheck()
     {
         exitBattleStateTimer -= Time.deltaTime;
-
+        attackCountdownTimer -= Time.deltaTime;
         if (exitBattleStateTimer < 0 || player.IsDead)
         {
-            stateMachine.ChangeState(enemy.IdleState);
+            stateMachine.ChangeState(enemy.idleState);
         }
 
-        if (enemy.IsPlayerInAttackRange())
+        if (enemy.IsPlayerInAttackRange() && attackCountdownTimer < 0)
         {
-            stateMachine.ChangeState(enemy.AttackState);
+            stateMachine.ChangeState(enemy.attackState);
         }
     }
 

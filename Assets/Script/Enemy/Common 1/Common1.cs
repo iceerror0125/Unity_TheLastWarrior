@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -19,11 +19,5 @@ public class Common1 : GroundEnemy
         #endregion
 
         stateMachine.InitState(idleState);
-    }
-
-    public override void KnockBack(Entity _attacker, float x, float y)
-    {
-        base.KnockBack(_attacker, x, y);
-        stateMachine.ChangeState(hurtState);
     }
 }

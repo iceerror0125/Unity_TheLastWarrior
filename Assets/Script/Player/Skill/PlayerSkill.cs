@@ -63,7 +63,7 @@ public class PlayerSkill : MonoBehaviour
         isExitCalled = false;
 
         AfterExit();
-        Debug.Log(countdown + " - " + duration);
+        // Debug.Log(countdown + " - " + duration);
         // auto activate for passive skill
         if (!isActiveSkill)
         {

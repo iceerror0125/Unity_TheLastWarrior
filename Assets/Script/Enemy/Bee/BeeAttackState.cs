@@ -26,6 +26,5 @@ public class BeeAttackState : EnemyAttackState
     public override void Update()
     {
         base.Update();
-        Debug.Log("Attack State");
     }
 }

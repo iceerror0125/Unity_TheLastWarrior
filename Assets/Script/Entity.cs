@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using UnityEngine;
 
 
@@ -36,10 +37,11 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float attackCountdown;
     [SerializeField] protected Transform attackCheck;
     [SerializeField] protected float attackCheckRadius;
-    private float hurtTime = 0.2f;
+    [SerializeField] private float hurtTime = 0.5f;
 
     [Header("Dead")]
     [SerializeField] protected bool isDead;
+    public bool isInDeadState { get; private set; } // to prevent entering deadState multiple times
     #endregion
 
     public StateMachine stateMachine { get; private set; }
@@ -65,6 +67,7 @@ public class Entity : MonoBehaviour
     public bool IsDead => isDead;
     public void SetIsDead(bool _value) => isDead = _value;
     public Vector2 MoveRange => moveRange;
+    public void SetIsInDeadState(bool value) => isInDeadState = value;
     #endregion
 
     protected virtual void Awake()
@@ -78,6 +81,7 @@ public class Entity : MonoBehaviour
         #endregion
         // rb.gravityScale = 4;
         isDead = false;
+        isInDeadState = false;
     }
 
     protected virtual void Start() { }
@@ -133,10 +137,21 @@ public class Entity : MonoBehaviour
     {
         rb.velocity = new Vector2(x, y);
     }
+    public virtual bool IsRightOfB(Entity b)
+    {
+        if (transform.position.x - 0.4 > b.transform.position.x)
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     public virtual void KnockBack(Entity attacker, float x, float y)
     {
-        Vector2 hit = new Vector2(x * attacker.EntityDir, y);
+        // knockback in a direction versus position of attacker
+        float knockbackDir = IsRightOfB(attacker) == true ? 1 : -1;
+        Vector2 hit = new Vector2(x * knockbackDir, y);
         ChangeVelocity(hit);
     }
 
@@ -148,6 +163,7 @@ public class Entity : MonoBehaviour
     }
     public virtual void PerformSpellAttack(Entity hitEntity, float damage)
     {
+        hitEntity.KnockBack(this, 4, 4);
         stat.PerformSpellAttack(hitEntity, damage);
     }
     public virtual void PerformSpellAttack(Entity hitEntity, float damage, Vector2 knockBack)

@@ -27,8 +27,8 @@ public class EnemyMoveState : EnemyState
 
         if (timer < 0 || enemy.IsWall)
         {
-            enemy.IdleState.SetHasFlip(true);
-            stateMachine.ChangeState(enemy.IdleState);
+            enemy.idleState.SetHasFlip(true);
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 }

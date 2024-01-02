@@ -11,11 +11,13 @@ public class EnemyDeadState : EnemyState
     {
         base.Enter();
         enemy.ZeroVelocity(); // In case it can't access Update()
+        enemy.SetIsInDeadState(true);
     }
 
     public override void Exit()
     {
         base.Exit();
+        // enemy.SetIsInDeadState(false);
     }
 
     public override void Update()

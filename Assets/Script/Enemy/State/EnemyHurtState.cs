@@ -24,7 +24,7 @@ public class EnemyHurtState : EnemyState
         base.Update();
         if (timer < 0)
         {
-            stateMachine.ChangeState(enemy.BattleState);
+            stateMachine.ChangeState(enemy.battleState);
         }
     }
 }

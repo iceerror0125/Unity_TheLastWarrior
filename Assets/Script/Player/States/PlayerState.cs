@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 
 public class PlayerState : BaseState
@@ -19,6 +20,11 @@ public class PlayerState : BaseState
     {
         base.Update();
         Flip();
+
+        if (player.IsDead && !player.isInDeadState)
+        {
+            stateMachine.ChangeState(player.deadState);
+        }
     }
 
     private void Flip()

@@ -32,7 +32,7 @@ public class EnemyIdleState : EnemyState
         {
             if (hasFlip)
                 Flip();
-            stateMachine.ChangeState(enemy.MoveState);
+            stateMachine.ChangeState(enemy.moveState);
         }
     }
 }

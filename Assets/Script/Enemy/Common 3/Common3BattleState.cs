@@ -12,7 +12,9 @@ public class Common3BattleState : EnemyBattleState
     {
         base.Enter();
         common3 = (Common3)enemy;
-        timer = common3.ToAttackStateTimer;
+        //timer = common3.ToAttackStateTimer;
+        timer = common3.ToAttackStateCountdown;
+
     }
 
     public override void Exit()
@@ -27,21 +29,21 @@ public class Common3BattleState : EnemyBattleState
 
         if (timer < 0 && common3.DetectPlayer()) 
         {
-            stateMachine.ChangeState(common3.AttackState);
+            stateMachine.ChangeState(common3.attackState);
         }
     }
     private void MoveController()
     {
-     
         if (Vector2.Distance(player.transform.position, common3.transform.position) < common3.DistanceStopMoving)
         {
             // move backward when player appproaches enemy
             common3.ChangeVelocity(common3.MoveBackwardSpeed * common3.EntityDir * -1, common3.rb.velocity.y);
         }
-        else
+        if (Vector2.Distance(player.transform.position, common3.transform.position) > common3.DetectPlayerDistance)
         {
-            // Chasing player when out stop moving distance  
+            // Chasing player when out detect player distance  
             common3.ChangeVelocity(common3.MoveSpeed * common3.EntityDir, common3.rb.velocity.y);
         }
+      
     }
 }

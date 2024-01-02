@@ -35,11 +35,6 @@ public class Bee : FlyEnemy
     {
         base.Update();
     }
-    public override void KnockBack(Entity _attacker, float x, float y)
-    {
-        base.KnockBack(_attacker, x, y);
-        //stateMachine.ChangeState(hurtState);
-    }
 
     public GameObject InstantiateProjectile()
     {

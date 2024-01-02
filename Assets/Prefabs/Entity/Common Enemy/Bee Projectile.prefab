@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5699a4ba7505834eaf34644f4f15149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  existTimer: 2
+  speed: 1
+  existTimer: 1

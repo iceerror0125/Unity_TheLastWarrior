@@ -31,7 +31,7 @@ public class Common2BattleState : EnemyBattleState
 
         if (timer < 0)
         {
-            stateMachine.ChangeState(common2.DeadState);
+            stateMachine.ChangeState(common2.deadState);
         }
 
         CheckExplosion();
@@ -40,11 +40,11 @@ public class Common2BattleState : EnemyBattleState
     {
         if (Vector2.Distance(common2.transform.position, player.transform.position) < 1)
         {
-            stateMachine.ChangeState(common2.DeadState);
+            stateMachine.ChangeState(common2.deadState);
         }
         if (common2.IsWall)
         {
-            stateMachine.ChangeState(common2.DeadState);
+            stateMachine.ChangeState(common2.deadState);
         }
     }
 }

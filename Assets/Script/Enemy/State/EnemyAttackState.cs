@@ -27,7 +27,7 @@ public class EnemyAttackState : EnemyState
         enemy.ZeroVelocity();
         if (!enemy.IsAttack)
         {
-            stateMachine.ChangeState(enemy.BattleState);
+            stateMachine.ChangeState(enemy.battleState);
         }
     }
 }

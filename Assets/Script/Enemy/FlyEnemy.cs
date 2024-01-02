@@ -10,6 +10,7 @@ public class FlyEnemy : Enemy
     {
         base.Start();
         originalPosition = transform.position;
+        rb.gravityScale = 0;
     }
     protected override void Update()
     {
@@ -18,10 +19,6 @@ public class FlyEnemy : Enemy
         {
             stateMachine.ChangeState(battleState);
         }
-        /*if (IsOutFlyBox(transform.position))
-        {
-            stateMachine.ChangeState(idleState);
-        }*/
     }
 
     public bool IsInsideFlyBox(Vector2 current)
@@ -35,12 +32,6 @@ public class FlyEnemy : Enemy
             return true;
         }
         return false;
-        /*RaycastHit2D hit = Physics2D.BoxCast(originalPosition, limitBoxSize, 0f, Vector2.zero);
-        if (!hit.collider)
-        {
-            return true;
-        }
-        return false;*/
     }
     public bool DetectPlayer()
     {

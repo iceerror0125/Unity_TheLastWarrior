@@ -84,10 +84,7 @@ public class Player : Entity
 
         moveDir = Input.GetAxisRaw("Horizontal");
 
-        if (isDead)
-        {
-            stateMachine.ChangeState(deadState);
-        }
+       
     }
     public void ActivateFallGravity(bool _isActivate)
     {
@@ -101,22 +98,11 @@ public class Player : Entity
         }
     }
 
-    /*public override void KnockBack(Entity _attacker, float x, float y)
+    public override void KnockBack(Entity attacker, float x, float y)
     {
-        base.KnockBack(_attacker, x, y);
+        base.KnockBack(attacker, x, y);
         stateMachine.ChangeState(hurtState);
     }
-
-    public void SpellHitFarKnockBack(Entity _hitEntity, float _damage)
-    {
-        _hitEntity.KnockBack(this, 30, 4);
-        PerformSpellAttack(_hitEntity, _damage);
-    }
-    public void SpellHit(Entity _hitEntity, float _damage)
-    {
-        _hitEntity.KnockBack(this, 4, 4);
-        PerformSpellAttack(_hitEntity, _damage);
-    }*/
 
     public Enemy NeareastEnemy()
     {
