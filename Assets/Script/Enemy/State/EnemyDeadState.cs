@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyState
         base.Enter();
         enemy.ZeroVelocity(); // In case it can't access Update()
         enemy.SetIsInDeadState(true);
+        enemy.rb.gravityScale = 4;
     }
 
     public override void Exit()

@@ -33,6 +33,20 @@ public class FlyEnemy : Enemy
         }
         return false;
     }
+    public void BackToFLyBox()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, originalPosition, moveSpeed * Time.deltaTime); 
+    }
+    public bool isInOriginalPos()
+    {
+        BackToFLyBox();
+        if ((Vector2)transform.position == originalPosition)
+        {
+            return true;
+        }
+        return false;
+    }
+   
     public bool DetectPlayer()
     {
         var detectPosition = new Vector2(transform.position.x + additionalDetectPosition.x * EntityDir, transform.position.y);

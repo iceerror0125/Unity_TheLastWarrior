@@ -158,11 +158,15 @@ public class Entity : MonoBehaviour
     // Use Entity as Interface and Stat is Interface implement
     public virtual void PerformNormalAttack(Entity hitEntity)
     {
+        if (hitEntity.isDead) return;
+
         hitEntity.KnockBack(this, 4, 4);
         stat.PerformNormalAttack(hitEntity);
     }
     public virtual void PerformSpellAttack(Entity hitEntity, float damage)
     {
+        if (hitEntity.isDead) return;
+
         hitEntity.KnockBack(this, 4, 4);
         stat.PerformSpellAttack(hitEntity, damage);
     }

@@ -7,6 +7,7 @@ public class FlyEnemyMoveState : EnemyMoveState
 {
     Vector2 moveVector;
     FlyEnemy flyEnemy;
+    private float outFlyBoxTimer;
     public FlyEnemyMoveState(Enemy enemy, string animName) : base(enemy, animName)
     {
     }
@@ -18,6 +19,8 @@ public class FlyEnemyMoveState : EnemyMoveState
         flyEnemy = (FlyEnemy)enemy;
 
         moveVector = CalculateMoveVector();
+
+        outFlyBoxTimer = 2;
     }
 
     public override void Exit()
@@ -27,6 +30,18 @@ public class FlyEnemyMoveState : EnemyMoveState
 
     public override void Update()
     {
+        outFlyBoxTimer -= Time.deltaTime;
+
+        if (!flyEnemy.IsInsideFlyBox(flyEnemy.transform.position))
+        {
+            if (!flyEnemy.isInOriginalPos())
+            {
+                return;
+            }
+           
+        }
+      
+
         base.Update();
         enemy.ChangeVelocity(enemy.MoveSpeed * moveVector.x, moveVector.y);
     }
@@ -40,11 +55,7 @@ public class FlyEnemyMoveState : EnemyMoveState
         }
 
         float y = Random.Range(-enemy.MoveRange.y, enemy.MoveRange.y);
-        Vector2 futureEnemyPosition = new Vector2(
-            enemy.transform.position.x + x * enemy.MoveDuration * enemy.MoveSpeed,
-            enemy.transform.position.y + y * enemy.MoveDuration * enemy.MoveSpeed);
-        if (flyEnemy.IsInsideFlyBox(futureEnemyPosition))
-            return new Vector2(x, y);
-        return new Vector2(0, 0);
+      
+        return new Vector2(x, y);
     }
 }
