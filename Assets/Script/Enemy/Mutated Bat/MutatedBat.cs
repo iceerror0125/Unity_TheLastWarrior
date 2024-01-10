@@ -5,6 +5,7 @@ using UnityEngine;
 public class MutatedBat : FlyEnemy
 {
     [SerializeField] private GameObject projectilePrefab;
+    public MutatedBatSkillState skill { get; private set; }
 
     protected override void Start()
     {
@@ -15,8 +16,22 @@ public class MutatedBat : FlyEnemy
         battleState = new EnemyBattleState(this, "MutatedBat_Idle");
         idleState = new EnemyIdleState(this, "MutatedBat_Idle");
         moveState = new FlyEnemyMoveState(this, "MutatedBat_Idle");
+        skill = new MutatedBatSkillState(this, "MutatedBat_Idle");
+
+        skillList.Add(skill);
+        skillIndex = skillList.Count;
 
         stateMachine.InitState(idleState);
+    }
+
+
+    protected override void Update()
+    {
+        base.Update();
+        if (attackCount == 3)
+        {
+            stateMachine.ChangeState(skill);
+        }
     }
 
     public GameObject InstantiateProjectile()

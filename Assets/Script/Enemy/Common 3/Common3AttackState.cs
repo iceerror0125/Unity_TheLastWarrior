@@ -14,6 +14,7 @@ public class Common3AttackState : EnemyAttackState
     public override void Enter()
     {
         base.Enter();
+        //Debug.Log("GG");
         common3 = (Common3)enemy;
         common3.InstantiateProjectile().GetComponent<Common3ProjectileSetUp>().Activate();
     }

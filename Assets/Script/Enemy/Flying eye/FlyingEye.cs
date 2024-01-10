@@ -25,4 +25,19 @@ public class FlyingEye : FlyEnemy
 
         stateMachine.InitState(idleState);
     }
+
+
+    /*public override void PerformNormalAttack(Entity hitEntity)
+    {
+        if (attackCount == 3) // the third attack will be further knockback
+        {
+            defautKnockback = new Vector2(10, 6);
+            DefaultAttackCount();
+        }
+        else
+        {
+            defautKnockback = new Vector2(4, 4);
+        }
+        base.PerformNormalAttack(hitEntity);
+    }*/
 }

@@ -28,6 +28,7 @@ public class EntityStat : MonoBehaviour
     {
         hp = maxHp;
         entity = GetComponent<Entity>();
+        critDamage = damage;
     }
 
     public virtual void TakeDamage(float damage)
@@ -43,6 +44,10 @@ public class EntityStat : MonoBehaviour
 
     public void PerformNormalAttack(Entity hitEntity)
     {
+        if (hitEntity.IsDead) return;
+
+        if (hitEntity.isImmortal) return;
+
         float plusDamage = 0;
 
         float crit = Random.Range(0, 100);
@@ -53,11 +58,36 @@ public class EntityStat : MonoBehaviour
 
         float totalDamage = damage + plusDamage;
         hitEntity.TakeDamage(totalDamage);
+        hitEntity.canKnockback = true;
     }
 
     public void PerformSpellAttack(Entity hitEntity, float damage)
     {
+        if (hitEntity.IsDead) return;
+
+        if (hitEntity.isImmortal) return;
+
         hitEntity.TakeDamage(damage);
+
+        hitEntity.canKnockback = true;
+    }
+
+    public bool DoesCauseDamage(Entity hitEntity, float damage, bool isCrit)
+    {
+        if (hitEntity.isImmortal || hitEntity.IsDead) return false;
+
+        float plusDamage = 0;
+        if (isCrit)
+        {
+            float crit = Random.Range(0, 100);
+            if (crit < critRate * 100)
+            {
+                plusDamage += critDamage;
+            }
+        }
+        float totalDamage = damage + plusDamage;
+        hitEntity.TakeDamage(totalDamage);
+        return true;
     }
 
     public void RecoverHP(float recoverHP)

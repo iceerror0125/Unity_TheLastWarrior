@@ -80,7 +80,9 @@ public class MutatedBatProjectileSetUp : MonoBehaviour
             var player = hit.gameObject.GetComponent<Player>();
             if (player != null)
             {
-                bat.PerformNormalAttack(player);
+                //bat.PerformNormalAttack(player);
+                bat.CauseDamage(player, isCrit: true);
+
                 isCauseDamage = true;
             }
         }

@@ -27,17 +27,18 @@ public class EnemyBattleState : EnemyState
     public override void Exit()
     {
         base.Exit();
+
     }
 
     public override void Update()
     {
         base.Update();
 
-        TransitionStateCheck();
+        TranslateStateCheck();
         enemy.TurnToPlayer();
     }
 
-    protected virtual void TransitionStateCheck()
+    protected virtual void TranslateStateCheck()
     {
         exitBattleStateTimer -= Time.deltaTime;
         attackCountdownTimer -= Time.deltaTime;
@@ -48,7 +49,24 @@ public class EnemyBattleState : EnemyState
 
         if (enemy.IsPlayerInAttackRange() && attackCountdownTimer < 0)
         {
-            stateMachine.ChangeState(enemy.attackState);
+            if (!enemy.CanUseSkill())
+            {
+                stateMachine.ChangeState(enemy.attackState);
+            }
+            else
+            {
+                // enemy has a skill
+                if (enemy.AttackCount >= 2)
+                {
+                    enemy.ActivateSkill();
+                }
+                else
+                {
+                    stateMachine.ChangeState(enemy.attackState);
+                }
+            }
+
+            
         }
     }
 

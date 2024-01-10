@@ -55,7 +55,9 @@ public class UltimateSetUp : MonoBehaviour
             Enemy enemy = collider.GetComponent<Enemy>();
             if (enemy != null)
             {
-                PlayerManager.instance.player.PerformSpellAttack(enemy, PlayerManager.instance.player.stat.Damage);
+                //PlayerManager.instance.player.PerformSpellAttack(enemy, PlayerManager.instance.player.stat.Damage);
+                PlayerManager.instance.player.CauseDamage(enemy, PlayerManager.instance.player.stat.Damage);
+
             }
         }
     }

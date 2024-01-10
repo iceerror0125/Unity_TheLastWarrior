@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Security.Principal;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyStat))]
@@ -16,6 +19,11 @@ public class Enemy : Entity
     [Header("Attack")]
     [SerializeField] protected float attackRange;
     [SerializeField] protected bool isAttack;
+    [Header("Additional Skill")]
+    [SerializeField] protected int attackCount; // active special skill when attackCount = x
+    [SerializeField] protected List<EnemyState> skillList;
+    protected int skillIndex;
+
     #endregion
 
     #region State
@@ -40,6 +48,7 @@ public class Enemy : Entity
     public float MoveDuration => moveDuration;
     public float IdleDuration => idleDuration;
     public float DetectPlayerDistance => detectPlayerDistance;
+    public int AttackCount => attackCount;
     #endregion
 
     protected override void Start()
@@ -48,12 +57,36 @@ public class Enemy : Entity
         //stat = GetComponent<EnemyStat>();
         isFacingRight = true;
         player = PlayerManager.instance.player;
+        skillList = new List<EnemyState>();
 
     }
     protected override void Update()
     {
         base.Update();
+
+        if (stat.Hp < stat.MaxHp / 2)
+        {
+            skillIndex = skillList.Count;
+            ActivePhase2();
+        }
     }
+
+    protected virtual void ActivePhase2() { }
+
+    public void ActivateSkill()
+    {
+        if (skillList.Count > 0) // some enemies don't have a skill
+        {
+            int index = Random.Range(0, skillIndex);
+            stateMachine.ChangeState(skillList[index]);
+            attackCount = 0;
+        }
+    }
+    public bool CanUseSkill()
+    {
+        return skillList.Count > 0;
+    }
+
     public void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -67,6 +100,14 @@ public class Enemy : Entity
             return true;
         }
         return false;
+    }
+    public void DefaultAttackCount()
+    {
+        attackCount = 0;
+    }
+    public void PlusAttackCount()
+    {
+        attackCount++;
     }
     protected override void OnDrawGizmos()
     {
@@ -89,9 +130,14 @@ public class Enemy : Entity
             Flip();
         }
     }
-    public override void KnockBack(Entity _attacker, float x, float y)
+    /* public override void KnockBack(Entity hitEntity, float x, float y)
+     {
+         base.KnockBack(hitEntity, x, y);
+
+     }*/
+    public override void KnockBack(Entity attacker, Vector2 knockback)
     {
-        base.KnockBack(_attacker, x, y);
+        base.KnockBack(attacker, knockback);
         stateMachine.ChangeState(hurtState);
     }
 }

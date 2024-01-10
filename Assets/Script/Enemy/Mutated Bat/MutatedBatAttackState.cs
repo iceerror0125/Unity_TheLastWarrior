@@ -14,7 +14,7 @@ public class MutatedBatAttackState : EnemyAttackState
     {
         base.Enter();
         bat = (MutatedBat)enemy;
-       
+
         bat.InstantiateProjectile().GetComponent<MutatedBatProjectileSetUp>().Activate(bat);
     }
 

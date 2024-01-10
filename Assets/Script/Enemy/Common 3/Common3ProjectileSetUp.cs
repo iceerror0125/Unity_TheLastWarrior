@@ -65,7 +65,9 @@ public class Common3ProjectileSetUp : MonoBehaviour
         if (collision.GetComponent<Player>() != null)
         {
             Player player = collision.GetComponent<Player>();
-            EnemyManager.instance.common3.PerformNormalAttack(player);
+            //EnemyManager.instance.common3.PerformNormalAttack(player);
+            EnemyManager.instance.common3.CauseDamage(player, isCrit: true);
+
             Destroy(gameObject);
         }
         if (collision.gameObject.layer == 3) // 3: Ground

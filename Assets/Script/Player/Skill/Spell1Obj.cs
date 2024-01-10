@@ -9,7 +9,9 @@ public class Spell1Obj : MonoBehaviour
         if (enemy != null )
         {
             Vector2 knockBack = new Vector2(30, 4);
-            PlayerManager.instance.player.PerformSpellAttack(enemy, stat.Damage + stat.Damage * 0.5f, knockBack);
+            //PlayerManager.instance.player.PerformSpellAttack(enemy, stat.Damage + stat.Damage * 0.5f, knockBack);
+            PlayerManager.instance.player.CauseDamage(enemy, stat.Damage + stat.Damage * 0.5f, knockBack: knockBack);
+
         }
     }
 }

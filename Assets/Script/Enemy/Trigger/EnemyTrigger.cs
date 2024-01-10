@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour
 {
-    private Enemy enemy;
+    protected Enemy enemy;
     private HitPlayerTrigger hitPlayerTrigger;
     private CancelAttackTrigger cancelAttackTrigger;
     private DestroyObjectTrigger destroyObjectTrigger;
-    void Start()
+    protected virtual void Start()
     {
         hitPlayerTrigger = new HitPlayerTrigger();
         cancelAttackTrigger = new CancelAttackTrigger();

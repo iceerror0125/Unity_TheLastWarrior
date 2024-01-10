@@ -13,6 +13,8 @@ public class EnemyAttackState : EnemyState
     {
         base.Enter();
         enemy.SetIsAttack(true);
+        enemy.PlusAttackCount();
+        
     }
 
     public override void Exit()

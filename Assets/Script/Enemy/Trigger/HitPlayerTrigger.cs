@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class HitPlayerTrigger
 {
-    public void ActiveTrigger(Enemy _enemy)
+    public void ActiveTrigger(Enemy enemy)
     {
-        var colliders = Physics2D.OverlapCircleAll(_enemy.AttackCheck.position, _enemy.AttackCheckRadius);
+        var colliders = Physics2D.OverlapCircleAll(enemy.AttackCheck.position, enemy.AttackCheckRadius);
         foreach (var collider in colliders)
         {
             var player = collider.GetComponent<Player>();
             if (player != null && !player.IsDead)
             {
-                _enemy.PerformNormalAttack(player);
+                //enemy.PerformNormalAttack(player);
+                enemy.CauseDamage(player, isCrit: true);
+
             }
         }
     }

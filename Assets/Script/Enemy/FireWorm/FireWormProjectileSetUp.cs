@@ -67,7 +67,9 @@ public class FireWormProjectileSetUp : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-            fireWorm.PerformNormalAttack(collision.GetComponent<Player>());
+            //fireWorm.PerformNormalAttack(collision.GetComponent<Player>());
+            fireWorm.CauseDamage(collision.GetComponent<Player>(), isCrit: true);
+
         }
     }
     void SimulateProjectile()

@@ -98,9 +98,14 @@ public class Player : Entity
         }
     }
 
-    public override void KnockBack(Entity attacker, float x, float y)
+    /* public override void KnockBack(Entity attacker, float x, float y)
+     {
+         base.KnockBack(attacker, x, y);
+         stateMachine.ChangeState(hurtState);
+     }*/
+    public override void KnockBack(Entity attacker, Vector2 knockback)
     {
-        base.KnockBack(attacker, x, y);
+        base.KnockBack(attacker, knockback);
         stateMachine.ChangeState(hurtState);
     }
 

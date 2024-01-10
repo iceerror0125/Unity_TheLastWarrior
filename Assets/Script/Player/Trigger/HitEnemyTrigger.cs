@@ -11,7 +11,9 @@ public class HitEnemyTrigger
             var enemy = collider.GetComponent<Enemy>();
             if (enemy != null && !enemy.IsDead)
             {
-                player.PerformNormalAttack(enemy);
+                //player.PerformNormalAttack(enemy);
+                player.CauseDamage(enemy, isCrit: true);
+
 
                 if (_skill.IsActivated)
                 {

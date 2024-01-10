@@ -38,9 +38,16 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform attackCheck;
     [SerializeField] protected float attackCheckRadius;
     [SerializeField] private float hurtTime = 0.5f;
+    protected Vector2 defautKnockback = new Vector2(4, 4);
+    public bool canKnockback;
 
     [Header("Dead")]
     [SerializeField] protected bool isDead;
+
+
+
+    [Header("UnDead")]
+    [SerializeField] public bool isImmortal;
     public bool isInDeadState { get; private set; } // to prevent entering deadState multiple times
     #endregion
 
@@ -68,6 +75,8 @@ public class Entity : MonoBehaviour
     public void SetIsDead(bool _value) => isDead = _value;
     public Vector2 MoveRange => moveRange;
     public void SetIsInDeadState(bool value) => isInDeadState = value;
+    public void SetAttackCheckRadius(float value) => attackCheckRadius = value;
+    public void SetAttackCheckPosition(Vector2 value) => attackCheck.position = value;
     #endregion
 
     protected virtual void Awake()
@@ -82,6 +91,7 @@ public class Entity : MonoBehaviour
         // rb.gravityScale = 4;
         isDead = false;
         isInDeadState = false;
+       
     }
 
     protected virtual void Start() { }
@@ -147,35 +157,53 @@ public class Entity : MonoBehaviour
         return false;
     }
 
-    public virtual void KnockBack(Entity attacker, float x, float y)
+    public virtual void KnockBack(Entity hitEntity, float x, float y)
     {
+        if (!hitEntity.canKnockback)
+            return;
         // knockback in a direction versus position of attacker
-        float knockbackDir = IsRightOfB(attacker) == true ? 1 : -1;
+        float knockbackDir = IsRightOfB(this) == true ? 1 : -1;
         Vector2 hit = new Vector2(x * knockbackDir, y);
+        ChangeVelocity(hit);
+
+        hitEntity.canKnockback = false;
+    }
+    public virtual void KnockBack(Entity attacker, Vector2 knockback)
+    {
+        float knockbackDir = IsRightOfB(attacker) == true ? 1 : -1;
+        Vector2 hit = new Vector2(knockback.x * knockbackDir, knockback.y);
         ChangeVelocity(hit);
     }
 
     // Use Entity as Interface and Stat is Interface implement
-    public virtual void PerformNormalAttack(Entity hitEntity)
+   /* public virtual void PerformNormalAttack(Entity hitEntity)
     {
-        if (hitEntity.isDead) return;
-
-        hitEntity.KnockBack(this, 4, 4);
         stat.PerformNormalAttack(hitEntity);
+        //hitEntity.KnockBack(this, defautKnockback.x, defautKnockback.y);
+        hitEntity.KnockBack(hitEntity, defautKnockback.x, defautKnockback.y);
     }
     public virtual void PerformSpellAttack(Entity hitEntity, float damage)
     {
-        if (hitEntity.isDead) return;
-
-        hitEntity.KnockBack(this, 4, 4);
         stat.PerformSpellAttack(hitEntity, damage);
+        hitEntity.KnockBack(this, defautKnockback.x, defautKnockback.y);
     }
     public virtual void PerformSpellAttack(Entity hitEntity, float damage, Vector2 knockBack)
     {
-        hitEntity.KnockBack(this, knockBack.x, knockBack.y);
         stat.PerformSpellAttack(hitEntity, damage);
+        hitEntity.KnockBack(this, knockBack.x, knockBack.y);
+    }*/
+    public virtual void CauseDamage(Entity hitEntity, float damage = 0, bool isCrit = false, Vector2 knockBack = default)
+    {
+        damage = damage == 0 ? stat.Damage : damage;
+        if (stat.DoesCauseDamage(hitEntity, damage, isCrit))
+        {
+            if (knockBack == Vector2.zero)
+                hitEntity.KnockBack(this, defautKnockback);
+            else
+                hitEntity.KnockBack(this, knockBack);
+        }
     }
-    public virtual void RecoverHP (float recoverHP)
+    public virtual void RecoverHP(float recoverHP)
     {
         stat.RecoverHP(recoverHP);
     }
