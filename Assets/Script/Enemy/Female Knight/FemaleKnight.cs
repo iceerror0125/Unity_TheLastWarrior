@@ -8,8 +8,7 @@ public class FemaleKnight : GroundEnemy
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject phase2;
 
-    public bool isActivePhase2 { get; private set; }
-
+   
     public FemaleKnightAttack2State atk2State { get; private set; }
     public FemaleKnightSkill skill { get; private set; }
     protected override void Start()
@@ -35,17 +34,13 @@ public class FemaleKnight : GroundEnemy
     protected override void ActivePhase2()
     {
         base.ActivePhase2();
-        if (!isActivePhase2)
-        {
-            moveSpeed = moveSpeed * 2;
-            stat.SetDamage(stat.Damage * 1.5f);
-            stat.SetCritRate(0.5f);
+        moveSpeed = moveSpeed * 2;
+        stat.SetDamage(stat.Damage * 1.5f);
+        stat.SetCritRate(0.5f);
 
-            anim.SetFloat("Speed", 2);
-            phase2.SetActive(true);
-
-            isActivePhase2 = true;
-        }
+        anim.SetFloat("Speed", 2);
+        phase2.SetActive(true);
+        
     }
     public bool IsPlayerOutOfAttackCheck()
     {

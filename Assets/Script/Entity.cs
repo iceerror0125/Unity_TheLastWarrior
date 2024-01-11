@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Security.Principal;
+using System.Xml.Serialization;
 using UnityEngine;
 
 
@@ -210,5 +212,27 @@ public class Entity : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         stat.TakeDamage(damage);
+    }
+    public virtual void DisableAnim()
+    {
+        anim.enabled = false;
+    }
+    public virtual void EnableAnim()
+    {
+        anim.enabled = true;
+    }
+    public virtual void Freeze(float seconds)
+    {
+        Debug.Log("Call");
+        StartCoroutine(FreezeCoroutine(seconds));
+    }
+    IEnumerator FreezeCoroutine(float seconds)
+    {
+        float temp = moveSpeed;
+        moveSpeed = 0;
+        DisableAnim();
+        yield return new WaitForSeconds(seconds);
+        EnableAnim();
+        moveSpeed = temp;
     }
 }

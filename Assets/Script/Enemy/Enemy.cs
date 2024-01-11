@@ -23,6 +23,7 @@ public class Enemy : Entity
     [SerializeField] protected int attackCount; // active special skill when attackCount = x
     [SerializeField] protected List<EnemyState> skillList;
     protected int skillIndex;
+    public bool isActivePhase2 { get; protected set; }
 
     #endregion
 
@@ -67,7 +68,11 @@ public class Enemy : Entity
         if (stat.Hp < stat.MaxHp / 2)
         {
             skillIndex = skillList.Count;
-            ActivePhase2();
+            if (!isActivePhase2)
+            {
+                ActivePhase2();
+                isActivePhase2 = true;
+            }
         }
     }
 
