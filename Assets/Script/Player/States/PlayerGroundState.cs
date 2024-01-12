@@ -12,6 +12,8 @@ public class PlayerGroundState : PlayerState
         player.SetCanDoubleJump(true);
         player.SetCanHighJump(true);
         player.ActivateFallGravity(false);
+       
+
     }
 
     public override void Exit()
@@ -22,9 +24,11 @@ public class PlayerGroundState : PlayerState
     public override void Update()
     {
         base.Update();
+        
 
         if (!player.IsGround)
             return;
+
         
         if (Input.GetKeyDown(KeyCode.Z))
         {

@@ -57,7 +57,6 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
-
         #region Init Player State
         idleState = new PlayerIdleState("Player_Idle");
         moveState = new PlayerMoveState("Player_Run");
@@ -81,10 +80,10 @@ public class Player : Entity
     {
         base.Update();
         timer -= Time.deltaTime;
-
+        if (GameManager.Instance.isCutScene)
+            return;
+        
         moveDir = Input.GetAxisRaw("Horizontal");
-
-       
     }
     public void ActivateFallGravity(bool _isActivate)
     {

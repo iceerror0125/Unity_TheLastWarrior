@@ -9,13 +9,13 @@ public class PlayerTrigger : MonoBehaviour
 
     private PlayerRollToIdleTrigger toIdleTrigger;
     private PlayerChangeAttackAnim changeAttackAnim;
-    private HitEnemyTrigger hitEnemyTrigger;
+    private HitTrigger hitEnemyTrigger;
 
     void Start()
     {
         toIdleTrigger = new PlayerRollToIdleTrigger();
         changeAttackAnim = new PlayerChangeAttackAnim();   
-        hitEnemyTrigger = new HitEnemyTrigger();
+        hitEnemyTrigger = new HitTrigger();
     }
 
     public void RollStateToIdleState()

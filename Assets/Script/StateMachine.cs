@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class StateMachine 
 {
     public BaseState currentState { get; private set; }

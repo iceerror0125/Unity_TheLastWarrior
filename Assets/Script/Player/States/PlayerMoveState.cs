@@ -1,4 +1,7 @@
 
+
+using UnityEngine;
+
 public class PlayerMoveState : PlayerGroundState
 {
     public PlayerMoveState(string animName) : base(animName)
@@ -18,9 +21,10 @@ public class PlayerMoveState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-
+        
         MoveController(player.MoveSpeed);
 
+        Debug.Log("Move");
         if (player.MoveDir == 0)
         {
             stateMachine.ChangeState(player.idleState);

@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class PlayerState : BaseState
 {
-    protected Player player = PlayerManager.instance.player;
-
+    //protected Player player = PlayerManager.instance.player;
+    protected Player player;
     public PlayerState(string animName) : base(animName)
     {
+        player = PlayerManager.instance.player;
     }
 
     public override void Enter()
