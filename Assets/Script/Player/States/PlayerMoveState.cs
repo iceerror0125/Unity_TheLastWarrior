@@ -24,7 +24,6 @@ public class PlayerMoveState : PlayerGroundState
         
         MoveController(player.MoveSpeed);
 
-        Debug.Log("Move");
         if (player.MoveDir == 0)
         {
             stateMachine.ChangeState(player.idleState);
