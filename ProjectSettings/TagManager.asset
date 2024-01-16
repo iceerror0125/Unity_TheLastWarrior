@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Enemy
   - FX
-  - 
+  - Gate
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 882940093
     locked: 0
   - name: FX background
     uniqueID: 2822363209
