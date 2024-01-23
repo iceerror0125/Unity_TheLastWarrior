@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class HideWall : MonoBehaviour
 {
     public float speed = 10f;
-    private SpriteRenderer sr;
+    //private SpriteRenderer tm;
+    private Tilemap tm;
     private bool isActive;
     public void FadeWall()
     {
@@ -13,7 +15,8 @@ public class HideWall : MonoBehaviour
     }
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        //tm = GetComponent<SpriteRenderer>();
+        tm = GetComponent<Tilemap>();
     }
 
     void Update()
@@ -22,8 +25,14 @@ public class HideWall : MonoBehaviour
         {
             return;
         }
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - speed * Time.deltaTime);
-        if (sr.color.a < 0)
+        /*tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, tm.color.a - speed * Time.deltaTime);
+        if (tm.color.a < 0)
+        {
+            Destroy(gameObject);
+        }*/
+
+        tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, tm.color.a - speed * Time.deltaTime);
+        if (tm.color.a < 0)
         {
             Destroy(gameObject);
         }
