@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -6,9 +7,10 @@ using UnityEngine;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private Transform esc;
+    [SerializeField] private GameObject map;
     void Start()
     {
-
+        map.SetActive(false);
     }
 
 
@@ -17,6 +19,19 @@ public class HUDManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TurnOnOff(esc);
+        }
+        TurnOnOffMap();
+    }
+
+    private void TurnOnOffMap()
+    {
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            map.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            map.SetActive(false);
         }
     }
 

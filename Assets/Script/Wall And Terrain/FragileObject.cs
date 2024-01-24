@@ -8,7 +8,6 @@ public class FragileObject : MonoBehaviour
     private float timer;
     private bool isCollide;
     private Vector2 initPos;
-
     void Start()
     {
         timer = time;
@@ -30,31 +29,33 @@ public class FragileObject : MonoBehaviour
     }
     IEnumerator ShakeRoutine()
     {
+        float range = 0.03f;
         while (true)
         {
-            Vector3 temp = new Vector3 (Random.Range(-0.01f, 0.01f), Random.Range(-0.01f, 0.01f));
+            Vector3 temp = new Vector3(Random.Range(-range, range), Random.Range(-range, range));
             transform.position += temp;
             yield return new WaitForSeconds(0.1f);
             transform.localPosition -= temp;
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player>() != null)
+        {
             isCollide = true;
+        }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            
             isCollide = false;
-            timer = time;
-            StopCoroutine(ShakeRoutine());
             transform.position = initPos;
+            StopAllCoroutines();
+            timer = time;
         }
     }
-  
 }

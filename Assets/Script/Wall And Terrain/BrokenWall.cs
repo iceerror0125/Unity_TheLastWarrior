@@ -41,6 +41,7 @@ public class BrokenWall : MonoBehaviour
         
 
         hp--;
+        StartCoroutine(ShakeRoutine());
         if (hp <= 0)
         {
             Destroy(gameObject);
@@ -64,5 +65,20 @@ public class BrokenWall : MonoBehaviour
             return BrokenWallSide.Right;
         }
         return BrokenWallSide.Left;
+    }
+
+    IEnumerator ShakeRoutine()
+    {
+        int count = 0;
+        float range = 0.1f;
+        while (count < 2)
+        {
+            Vector3 temp = new Vector3(Random.Range(-range, range), Random.Range(-range, range));
+            transform.position += temp;
+            yield return new WaitForSeconds(0.1f);
+            transform.localPosition -= temp;
+            yield return new WaitForSeconds(0.1f);
+            count++;
+        }
     }
 }
