@@ -33,12 +33,12 @@ public class HitTrigger
             player.CauseDamage(enemy, isCrit: true);
 
 
-            if (_skill.IsActivated)
+            if (_skill != null && _skill.IsActivated)
             {
                 _skill.Trigger();
             }
 
-            if (_heal.IsUnlock)
+            if (_heal != null && _heal.IsUnlock)
             {
                 _heal.HitEnemy();
                 _heal.Activate();

@@ -36,6 +36,7 @@ public class Player : Entity
     [SerializeField] private bool isFirstAttack;
 
     public float timer;
+    public CameraFollowPlayer camFollow;
     #endregion
 
     #region Getter Setter
@@ -119,5 +120,11 @@ public class Player : Entity
             }
         }
         return null;
+    }
+
+    public override void ChangeRotation()
+    {
+        base.ChangeRotation();
+        camFollow.RotateCamera();
     }
 }

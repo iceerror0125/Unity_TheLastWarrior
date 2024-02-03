@@ -12,8 +12,8 @@ public class PlayerGroundState : PlayerState
         player.SetCanDoubleJump(true);
         player.SetCanHighJump(true);
         player.ActivateFallGravity(false);
-       
 
+        CameraManager.instance.InterpolateYAxis(false);
     }
 
     public override void Exit()

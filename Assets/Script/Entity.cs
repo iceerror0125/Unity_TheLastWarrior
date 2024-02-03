@@ -135,7 +135,7 @@ public class Entity : MonoBehaviour
             );
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
-    public void ChangeRotation()
+    public virtual void ChangeRotation()
     {
         transform.Rotate(0, 180, 0);
     }
@@ -178,22 +178,6 @@ public class Entity : MonoBehaviour
     }
 
     // Use Entity as Interface and Stat is Interface implement
-   /* public virtual void PerformNormalAttack(Entity hitEntity)
-    {
-        stat.PerformNormalAttack(hitEntity);
-        //hitEntity.KnockBack(this, defautKnockback.x, defautKnockback.y);
-        hitEntity.KnockBack(hitEntity, defautKnockback.x, defautKnockback.y);
-    }
-    public virtual void PerformSpellAttack(Entity hitEntity, float damage)
-    {
-        stat.PerformSpellAttack(hitEntity, damage);
-        hitEntity.KnockBack(this, defautKnockback.x, defautKnockback.y);
-    }
-    public virtual void PerformSpellAttack(Entity hitEntity, float damage, Vector2 knockBack)
-    {
-        stat.PerformSpellAttack(hitEntity, damage);
-        hitEntity.KnockBack(this, knockBack.x, knockBack.y);
-    }*/
     public virtual void CauseDamage(Entity hitEntity, float damage = 0, bool isCrit = false, Vector2 knockBack = default)
     {
         damage = damage == 0 ? stat.Damage : damage;

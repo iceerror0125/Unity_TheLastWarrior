@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAirState : PlayerState
 {
+    private bool isFall;
     public PlayerAirState(string animName) : base(animName)
     {
     }
@@ -9,12 +10,13 @@ public class PlayerAirState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
         timer = 0.2f;
+      
     }
     public override void Exit()
     {
         base.Exit();
+        isFall = false;
     }
 
     public override void Update()
@@ -25,6 +27,12 @@ public class PlayerAirState : PlayerState
         CheckDoubleJump();
         if (timer < 0)
             CheckWallSlide();
+
+        if (player.rb.velocity.y < 0 && !isFall)
+        {
+            CameraManager.instance.InterpolateYAxis(true);
+            isFall = true;
+        }
     }
 
     protected void CheckWallSlide()

@@ -11,7 +11,7 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Enter();
         player.ActivateFallGravity(false);
-
+       
         Jump(player.JumpForce);
     }
 
