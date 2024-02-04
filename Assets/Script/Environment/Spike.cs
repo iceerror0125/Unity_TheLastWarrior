@@ -12,6 +12,11 @@ public class Spike : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        DealDamage(collision);
+    }
+
+    private void DealDamage(Collider2D collision)
+    {
         Player player = collision.gameObject.GetComponent<Player>();
         if (player != null && timer < 0)
         {
@@ -19,7 +24,15 @@ public class Spike : MonoBehaviour
             player.ChangeVelocity(4 * player.EntityDir * -1, 4);
             player.stateMachine.ChangeState(player.hurtState);
             timer = countdown;
+
+            AudioManager.instance.environment.HitBySpike();
+
         }
     }
-    
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        DealDamage(collision);
+    }
+
 }

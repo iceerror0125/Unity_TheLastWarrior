@@ -32,6 +32,7 @@ public class PlayerGroundState : PlayerState
         
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            AudioManager.instance.player.Jump();
             stateMachine.ChangeState(player.jumpState);
         }
 

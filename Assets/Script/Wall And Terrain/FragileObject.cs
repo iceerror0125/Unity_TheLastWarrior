@@ -19,10 +19,14 @@ public class FragileObject : MonoBehaviour
     {
         if (isCollide)
         {
+            AudioManager.instance.environment.ShakeGround();
+
             StartCoroutine(ShakeRoutine());
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
+                AudioManager.instance.environment.BreakWall();
+
                 Destroy(gameObject);
             }
         }

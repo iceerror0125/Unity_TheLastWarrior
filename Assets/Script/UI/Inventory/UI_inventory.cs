@@ -20,6 +20,8 @@ public class UI_inventory : MonoBehaviour
                 inventory.SetActive(true);
                 skillTree.SetActive(false);
                 inventory.GetComponent<UI_InventoryCursorController>().InitCursor();
+                AudioManager.instance.environment.InventoryOpen();
+
             }
 
             UI_PlayerStat.instance.UpdateStat();
@@ -33,9 +35,10 @@ public class UI_inventory : MonoBehaviour
             }
             else
             {
-                skillTree.SetActive(true); 
+                skillTree.SetActive(true);
                 inventory.SetActive(false);
                 skillTree.GetComponent<UI_SkillTreeCursorController>().InitCursor();
+                AudioManager.instance.environment.InventoryOpen();
             }
         }
     }

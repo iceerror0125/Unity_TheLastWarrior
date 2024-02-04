@@ -22,7 +22,6 @@ public class BrokenWall : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-            
             LoseHP();
         }
 
@@ -41,10 +40,13 @@ public class BrokenWall : MonoBehaviour
         
 
         hp--;
+        
         StartCoroutine(ShakeRoutine());
         if (hp <= 0)
         {
+            AudioManager.instance.environment.BreakWall();
             Destroy(gameObject);
+            
             if (hideWall == null)
                 return;
             if (isAppearWall)
@@ -53,8 +55,14 @@ public class BrokenWall : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.environment.DiscoverSecretPlace();
+
                 hideWall.GetComponent<HideWall>().FadeWall();
             }
+        }
+        else
+        {
+            AudioManager.instance.environment.HitBreakWall();
         }
     }
 

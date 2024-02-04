@@ -49,6 +49,7 @@ public class PlayerAirState : PlayerState
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                AudioManager.instance.player.Jump();
                 player.ActivateFallGravity(false);
                 player.SetCanDoubleJump(false);
                 stateMachine.ChangeState(player.jumpState);

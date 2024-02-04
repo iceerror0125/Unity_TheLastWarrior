@@ -30,4 +30,28 @@ public class PlayerTrigger : MonoBehaviour
     {
         hitEnemyTrigger.ActiveTrigger(skill, heal);
     }
+    public void FootStep()
+    {
+        AudioManager.instance.player.FootStep();
+    }
+    public void Attack()
+    {
+        AudioManager.instance.player.Attack();
+    }
+    public void Dead()
+    {
+        AudioManager.instance.player.Dead();
+    }
+    public void Scroll()
+    {
+        AudioManager.instance.player.Scroll();
+    }
+    public void Jump()
+    {
+        AudioManager.instance.player.Jump();
+    }
+    public void Hit()
+    {
+        AudioManager.instance.player.Hit();
+    }
 }

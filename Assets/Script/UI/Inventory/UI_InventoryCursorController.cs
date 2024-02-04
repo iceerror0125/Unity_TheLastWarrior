@@ -104,6 +104,10 @@ public class UI_InventoryCursorController : MonoBehaviour
         if (index >= gridLenght) return;
 
         SetCursorPosition(index);
+
+
+        AudioManager.instance.environment.MenuSelect();
+
     }
 
     private void SetCursorPosition(int position)

@@ -17,6 +17,9 @@ public class PlayerWallJumpState : PlayerAirState
         player.ChangeVelocity(jumpVector);
 
         activeMoveControllerTimer = 0.2f;
+
+        AudioManager.instance.player.Jump();
+
     }
 
     public override void Exit()

@@ -7,15 +7,12 @@ public class BossFightController : MonoBehaviour
     [SerializeField] private Enemy boss;
     [SerializeField] private Gate[] gates;
     private bool wasCalled;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         if (boss == null && !wasCalled)
         {
+            AudioManager.instance.environment.PlayBGTheme();
             wasCalled = true;
             for (int i = 0; i < gates.Length; i++)
             {
@@ -30,6 +27,7 @@ public class BossFightController : MonoBehaviour
         if (player != null && boss != null)
         {
             GameManager.Instance.isCutScene = true;
+            AudioManager.instance.environment.PlayBossTheme();
             for (int i = 0; i < gates.Length; i++)
             {
                 gates[i].Activate();

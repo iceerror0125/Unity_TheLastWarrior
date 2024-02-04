@@ -7301,6 +7301,10 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 6.59
       objectReference: {fileID: 0}
+    - target: {fileID: 1250158215929228893, guid: b332c4b998b237446b2a3465f172952f, type: 3}
+      propertyPath: bgTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: fef7884ec386e29478562b509c687061, type: 3}
     - target: {fileID: 1328312628728201014, guid: b332c4b998b237446b2a3465f172952f, type: 3}
       propertyPath: m_Name
       value: Hide Wall Camera
@@ -7385,6 +7389,17 @@ PrefabInstance:
       addedObject: {fileID: 1343282315}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b332c4b998b237446b2a3465f172952f, type: 3}
+--- !u!114 &1040071662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1250158215929228893, guid: b332c4b998b237446b2a3465f172952f, type: 3}
+  m_PrefabInstance: {fileID: 1040071661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb38a1387d76a143a0c7e6aae6f33c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1056423924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26885,7 +26900,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -49090,7 +49105,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.4834421, y: 1.9085016}
+  m_Offset: {x: 1.4834421, y: -0.011377811}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -49101,7 +49116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.6191983, y: 0.1941204}
+  m_Size: {x: 7.6191983, y: 0.19411945}
   m_EdgeRadius: 0
 --- !u!1 &1919493669
 GameObject:
@@ -51061,11 +51076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: -3.67
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.9
+      value: 12.9
       objectReference: {fileID: 0}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51104,6 +51119,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+--- !u!114 &4923782808341713598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6632411498715625482, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
+  m_PrefabInstance: {fileID: 4923782808341713597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866cdf6cd5607e447b1def2d7e80db95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4923782808341713599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3800108411370977473, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
@@ -51648,6 +51674,14 @@ PrefabInstance:
       propertyPath: setSkillDialog
       value: 
       objectReference: {fileID: 1476658078}
+    - target: {fileID: 8923757275247369971, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4923782808341713598}
+    - target: {fileID: 8923757275247369971, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+      propertyPath: environment
+      value: 
+      objectReference: {fileID: 1040071662}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

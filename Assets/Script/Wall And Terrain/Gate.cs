@@ -33,7 +33,7 @@ public class Gate : MonoBehaviour
         {
             offset = Vector2.up;
         }
-
+        AudioManager.instance.environment.OpenGate();
         StartCoroutine(MoveGateRoutine());
     }
     private void CloseGate()
@@ -46,6 +46,8 @@ public class Gate : MonoBehaviour
         {
             offset = Vector2.down;
         }
+        AudioManager.instance.environment.SlamGate();
+
         StartCoroutine(MoveGateRoutine());
     }
 
