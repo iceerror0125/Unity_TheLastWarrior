@@ -100,19 +100,43 @@ public class AudioEnvironment : MonoBehaviour
                 sfx.Play();
             }
         }
-       
+
     }
     private void PlayBG(AudioClip clip)
     {
         if (clip != null)
         {
-            bg.Stop();
+            /*bg.Stop();
             bg.clip = clip;
-            bg.Play();
+            bg.Play();*/
+            StartCoroutine(ChangeClipRoutine(bg, clip));
         }
         else
         {
             bg.Stop();
         }
+    }
+    private IEnumerator ChangeClipRoutine(AudioSource audio, AudioClip clip)
+    {
+        float speed = 0.01f;
+        // decrease volume
+        while (audio.volume > 0.1)
+        {
+            audio.volume -= speed;
+            yield return null;
+        }
+        audio.volume = 0;
+
+        audio.Stop();
+        audio.clip = clip;
+        audio.Play();
+
+        // increase volume
+        while (audio.volume < 0.9)
+        {
+            audio.volume += speed;
+            yield return null;
+        }
+        audio.volume = 1;
     }
 }

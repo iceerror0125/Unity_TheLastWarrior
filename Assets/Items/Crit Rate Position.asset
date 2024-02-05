@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7622851999944184e8524e6882d361c6, type: 3}
-  m_Name: HP Position
+  m_Name: Crit Rate Position
   m_EditorClassIdentifier: 
-  id: c949682b-218c-4df5-b649-1edd4b841ef2
-  itemName: HP Position
-  img: {fileID: 21300000, guid: f3b1c3f8dd24f4748b063d9127e619da, type: 3}
+  id: e1df0ba1-69f9-4079-864b-02db1ac20c22
+  itemName: Crit Rate Position
+  img: {fileID: 21300000, guid: 8b5fe5413354b104895dad81e6d77992, type: 3}
   type: 0
   description: Plus HP

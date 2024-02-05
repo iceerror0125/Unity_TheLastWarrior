@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7622851999944184e8524e6882d361c6, type: 3}
-  m_Name: HP Position
+  m_Name: Crit Damage Position
   m_EditorClassIdentifier: 
-  id: c949682b-218c-4df5-b649-1edd4b841ef2
-  itemName: HP Position
-  img: {fileID: 21300000, guid: f3b1c3f8dd24f4748b063d9127e619da, type: 3}
+  id: c6febae5-7ed8-4032-9400-4ebd0919af42
+  itemName: Crit Damage Position
+  img: {fileID: 21300000, guid: 65648b07ea8a04b4a9a63adde4445e18, type: 3}
   type: 0
   description: Plus HP

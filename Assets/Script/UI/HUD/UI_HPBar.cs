@@ -13,19 +13,26 @@ public class UI_HPBar : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        stat.onChangeHP += UpdateHPBar;
+        stat.onChangeHP += DecreaseHPEffect;
 
 
         slider.maxValue = stat.MaxHp;
         hpLostSlider.maxValue = stat.MaxHp;
-        UpdateHPBar(0);
+        DecreaseHPEffect(0);
     }
 
-    private void UpdateHPBar(float damage)
+    public void DecreaseHPEffect(float damage)
     {
         slider.value = stat.Hp;
         //Invoke("UpdateHPLostSlider", 0.5f);
         StartCoroutine(GraduallyDecreaseHP(damage));
+    }
+    public void UpdateHP()
+    {
+        slider.maxValue = stat.MaxHp;
+        hpLostSlider.maxValue = stat.MaxHp;
+        slider.value = stat.Hp;
+        hpLostSlider.value = stat.Hp;
     }
 
     private IEnumerator GraduallyDecreaseHP(float damage)

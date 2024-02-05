@@ -6,11 +6,22 @@ using UnityEngine;
 
 public class HUDManager : MonoBehaviour
 {
+    public static HUDManager instance;
     [SerializeField] private Transform esc;
     [SerializeField] private GameObject map;
+    private UI_HPBar hpBar;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(instance.gameObject);
+    }
     void Start()
     {
         map.SetActive(false);
+        hpBar = FindObjectOfType<UI_HPBar>();
     }
 
 
@@ -18,7 +29,11 @@ public class HUDManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TurnOnOff(esc);
+            if (!esc.gameObject.activeSelf)
+            {
+                esc.gameObject.SetActive(true);
+            }
+
         }
         TurnOnOffMap();
     }
@@ -45,5 +60,10 @@ public class HUDManager : MonoBehaviour
         {
             obj.gameObject.SetActive(true);
         }
+    }
+
+    public void UpdateHpBar()
+    {
+        hpBar.UpdateHP();
     }
 }

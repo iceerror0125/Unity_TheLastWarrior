@@ -4,31 +4,15 @@ using UnityEngine;
 
 public class ItemAnimation : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float moveTimer;
-    [SerializeField] private float timer;
-    [SerializeField] private bool isUp;
-    void Start()
-    {
-        speed = 0.005f;
-        moveTimer = 0.5f;
-
-        isUp = true;
-        timer = moveTimer;
-
-    }
+    [SerializeField] private float speed = 5;
+    [SerializeField] float height = 0.02f;
 
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0)
-        {
-            speed *= -1;
-            timer = moveTimer;
-            isUp = !isUp;
-        }
-
-        transform.position = new Vector2(transform.position.x, transform.position.y + speed);
+        //calculate what the new Y position will be
+        float newY = Mathf.Sin(Time.time * speed);
+        //set the object's Y to the new calculated Y
+    
+       transform.position = new Vector2(transform.position.x, transform.position.y + newY * height);
     }
 }

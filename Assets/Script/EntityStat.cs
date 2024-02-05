@@ -22,6 +22,7 @@ public class EntityStat : MonoBehaviour
     public float SetCritRate(float _value) => critRate = _value;
     public float CritDamage => critDamage;
     public float SetCritDamage(float _value) => critDamage = _value;
+    public float SetMaxHp(float _value) => maxHp = _value;
     #endregion
 
     private void Start()

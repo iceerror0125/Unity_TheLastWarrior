@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,17 @@ public class UI_ESC : MonoBehaviour
     private UI_ESCSlot script;
     private Transform initSlot;
     private bool isDisable;
+    public Stack<GameObject> displayStack { get; private set; }
 
     void Start()
     {
+        displayStack = new Stack<GameObject> ();
+
         initSlot = slot;
         isDisable = false;
         cursor.gameObject.SetActive(true);
         SetPosition(slot);
+        displayStack.Push(slot.parent.gameObject);
     }
 
     void Update()
@@ -34,6 +39,53 @@ public class UI_ESC : MonoBehaviour
             {
                 SetPosition(script.Down);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (slot.name == "Setting")
+            {
+                GoToDetailSelection("Audio Setting");
+            }
+            if (slot.name == "Tutorial")
+            {
+                GoToDetailSelection("Tutorial");
+            }
+            if (slot.name == "Resume")
+            {
+                TurnOffDetail();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TurnOffDetail();
+        }
+    }
+
+    private void TurnOffDetail()
+    {
+        if (displayStack.Count == 1)
+        {
+            transform.gameObject.SetActive(false); 
+        }
+        else
+        {
+            displayStack.Peek().gameObject.SetActive(false);
+            displayStack.Pop();
+            displayStack.Peek().gameObject.SetActive(true);
+        }
+    }
+
+    private void GoToDetailSelection(string targetName)
+    {
+        GameObject detailGO = GameObject.Find("Detail Selection");
+        GameObject detailSlot = detailGO.transform.Find(targetName).gameObject;
+
+          
+        if (detailSlot != null)
+        {
+            displayStack.Peek().gameObject.SetActive(false);
+            detailSlot.SetActive(true);
+            displayStack.Push(detailSlot);
         }
     }
 
