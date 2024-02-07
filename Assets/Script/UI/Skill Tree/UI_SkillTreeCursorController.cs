@@ -59,8 +59,9 @@ public class UI_SkillTreeCursorController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            // condition to unlock
-            currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
+            var manager = SkillManager.instance;
+            if (manager.dimond > 0)
+                currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
         }
     }
 

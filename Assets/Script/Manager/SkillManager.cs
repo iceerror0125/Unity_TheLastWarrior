@@ -9,9 +9,28 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private PlayerSkill slot3;
     [SerializeField] private GameObject skillTree;
     [SerializeField] private UI_SkillSet skillSet;
+    public int dimond { get; private set; }
+    public System.Action UpdateDimondUI = () => { };
+
     public PlayerSkill Slot1 => slot1;
     public PlayerSkill Slot2 => slot2;
     public PlayerSkill Slot3 => slot3;
+    public void PlusDimond()
+    {
+        dimond++;
+        UpdateDimondUI();
+    }
+    public void MinusDimond()
+    {
+        dimond--;
+        if (dimond < 0)
+        {
+            dimond = 0;
+        }
+        UpdateDimondUI();
+
+    }
+
 
     private void Awake()
     {

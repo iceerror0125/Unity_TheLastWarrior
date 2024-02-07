@@ -39,9 +39,12 @@ public class EntityStat : MonoBehaviour
         if (hp <= 0)
         {
             entity.SetIsDead(true);
+            ShowDeadUI();
             //entity.stateMachine.ChangeState(entity.deadState);
         }
     }
+
+    public virtual void ShowDeadUI() { }
 
     public void PerformNormalAttack(Entity hitEntity)
     {

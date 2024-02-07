@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e42bdbccb17a8745adf2f0369ba6d92, type: 3}
+  m_Name: Light Sword
+  m_EditorClassIdentifier: 
+  id: 0cb75676-038d-43b2-a342-f897f1f582d1
+  itemName: Snow Sword
+  img: {fileID: 160384165, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
+  type: 1
+  description: 
+  damage: 0
+  critRate: 10
+  critDamage: 10

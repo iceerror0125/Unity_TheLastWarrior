@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI_ESC : MonoBehaviour
 {
     [SerializeField] Transform slot;
     [SerializeField] Transform cursor;
+    [SerializeField] GameObject inventory;
+    [SerializeField] GameObject skilTree;
+
 
     private UI_ESCSlot script;
     private Transform initSlot;
@@ -15,7 +19,7 @@ public class UI_ESC : MonoBehaviour
 
     void Start()
     {
-        displayStack = new Stack<GameObject> ();
+        displayStack = new Stack<GameObject>();
 
         initSlot = slot;
         isDisable = false;
@@ -40,20 +44,32 @@ public class UI_ESC : MonoBehaviour
                 SetPosition(script.Down);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            if (slot.name == "Setting")
+            switch (slot.name)
             {
-                GoToDetailSelection("Audio Setting");
+                case "Setting":
+                    GoToDetailSelection("Audio Setting"); break;
+                case "Tutorial": GoToDetailSelection("Tutorial"); break;
+                case "Resume": TurnOffDetail(); break;
+                case "Exit": SceneManager.LoadScene("Main_Menu"); break;
             }
-            if (slot.name == "Tutorial")
-            {
-                GoToDetailSelection("Tutorial");
-            }
-            if (slot.name == "Resume")
-            {
-                TurnOffDetail();
-            }
+            /* if (slot.name == "Setting")
+             {
+                 GoToDetailSelection("Audio Setting");
+             }
+             if (slot.name == "Tutorial")
+             {
+                 GoToDetailSelection("Tutorial");
+             }
+             if (slot.name == "Resume")
+             {
+                 TurnOffDetail();
+             }
+             if (slot.name == "Exit")
+             {
+
+             }*/
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -65,7 +81,7 @@ public class UI_ESC : MonoBehaviour
     {
         if (displayStack.Count == 1)
         {
-            transform.gameObject.SetActive(false); 
+            transform.gameObject.SetActive(false);
         }
         else
         {
@@ -80,7 +96,7 @@ public class UI_ESC : MonoBehaviour
         GameObject detailGO = GameObject.Find("Detail Selection");
         GameObject detailSlot = detailGO.transform.Find(targetName).gameObject;
 
-          
+
         if (detailSlot != null)
         {
             displayStack.Peek().gameObject.SetActive(false);
@@ -96,11 +112,14 @@ public class UI_ESC : MonoBehaviour
         RectTransform rect = cursor.GetComponent<RectTransform>();
         rect.offsetMax = new Vector2(0, 0);
         rect.offsetMin = new Vector2(0, 0);
-        script = slot.GetComponent<UI_ESCSlot>();   
+        script = slot.GetComponent<UI_ESCSlot>();
     }
 
     private void OnEnable()
     {
+        inventory.SetActive(false);
+        skilTree.SetActive(false);
+
         if (isDisable)
         {
             slot = initSlot;

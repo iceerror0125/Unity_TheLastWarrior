@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject halo;
-    [SerializeField] private bool isActivated;
+    public bool isActivated { get; private set; }
 
     private void Start()
     {
@@ -30,12 +31,14 @@ public class Checkpoint : MonoBehaviour
     {
         CheckpointManager.instance.TurnOffAllCheckpoint();
         isActivated = true;
+        CheckpointManager.instance.data.scene = SceneManager.GetActiveScene().name;
         halo.SetActive(true);
     }
     public void UnActiveCheckpoint()
     {
         isActivated = false;
-        halo.SetActive(false);
+        if (halo != null)
+            halo.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

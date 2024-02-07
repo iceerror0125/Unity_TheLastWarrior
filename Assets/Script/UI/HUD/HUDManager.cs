@@ -9,6 +9,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager instance;
     [SerializeField] private Transform esc;
     [SerializeField] private GameObject map;
+    [SerializeField] private GameObject deadUI;
     private UI_HPBar hpBar;
 
     private void Awake()
@@ -65,5 +66,10 @@ public class HUDManager : MonoBehaviour
     public void UpdateHpBar()
     {
         hpBar.UpdateHP();
+    }
+
+    public void ShowDeadUI()
+    {
+        deadUI.SetActive(true);
     }
 }

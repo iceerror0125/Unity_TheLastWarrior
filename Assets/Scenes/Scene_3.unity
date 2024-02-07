@@ -307,6 +307,14 @@ PrefabInstance:
       propertyPath: stat
       value: 
       objectReference: {fileID: 1515307441}
+    - target: {fileID: 5024538508860992708, guid: c33a80b044b45fb46a555faa62ce04c3, type: 3}
+      propertyPath: skilTree
+      value: 
+      objectReference: {fileID: 949136031}
+    - target: {fileID: 5024538508860992708, guid: c33a80b044b45fb46a555faa62ce04c3, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 949136034}
     - target: {fileID: 5168996784429358107, guid: c33a80b044b45fb46a555faa62ce04c3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1352,6 +1360,14 @@ PrefabInstance:
       propertyPath: stashSlotParent
       value: 
       objectReference: {fileID: 949136030}
+    - target: {fileID: 8317725683605996147, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+      propertyPath: checkpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317725683605996147, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+      propertyPath: checkpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1840733600}
     - target: {fileID: 8923757275247369971, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
       propertyPath: player
       value: 
@@ -16058,6 +16074,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1941190257270790058, guid: 66d0b19dd54ec5f4a8e283610604146e, type: 3}
   m_PrefabInstance: {fileID: 949136029}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &949136034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3981132768696614671, guid: 66d0b19dd54ec5f4a8e283610604146e, type: 3}
+  m_PrefabInstance: {fileID: 949136029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &968039647
 GameObject:
   m_ObjectHideFlags: 0
@@ -16208,8 +16229,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.59905005, y: 1.1787, z: 0}
-    m_Extent: {x: 6.63635, y: 3.1938, z: 0}
+    m_Center: {x: 0.5992, y: 1.1758999, z: 0}
+    m_Extent: {x: 6.6265, y: 3.1904998, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -37803,6 +37824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6927365124554245827, guid: 6b708f79e6b79f64297b45a461ff4fb5, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 19eed390cb9a1db4d95bef6caedba03b, type: 2}
     - target: {fileID: 8363492261442433247, guid: 6b708f79e6b79f64297b45a461ff4fb5, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -37864,6 +37889,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b708f79e6b79f64297b45a461ff4fb5, type: 3}
+--- !u!114 &1840733600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6927365124554245827, guid: 6b708f79e6b79f64297b45a461ff4fb5, type: 3}
+  m_PrefabInstance: {fileID: 1840733599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ac240be3a29934494fe13d497e56af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1851244207
 GameObject:
   m_ObjectHideFlags: 0

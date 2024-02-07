@@ -9,4 +9,9 @@ public class PlayerStat : EntityStat
         base.TakeDamage(_damage);
         onChangeHP(_damage);
     }
+    public override void ShowDeadUI()
+    {
+        base.ShowDeadUI();
+        HUDManager.instance.ShowDeadUI();
+    }
 }

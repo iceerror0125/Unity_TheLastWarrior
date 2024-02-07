@@ -10,6 +10,7 @@ public class UI_SkillSlot : MonoBehaviour
     [SerializeField] private Transform up;
     [SerializeField] private Transform down;
 
+    [SerializeField] private UI_SkillSlot[] conditions;
     [SerializeField] private PlayerSkill skill;
     private Image image;
 
@@ -48,7 +49,11 @@ public class UI_SkillSlot : MonoBehaviour
 
     public void Unlock()
     {
+        if (!IsValidCondition())
+            return;
+
         skill.Unlock(true);
+        SkillManager.instance.MinusDimond();
         image.color = UnlockColor();
         
         if (!skill.IsActiveSkill)
@@ -57,4 +62,17 @@ public class UI_SkillSlot : MonoBehaviour
         }
     }
 
+    private bool IsValidCondition()
+    {
+        if (conditions != null)
+        {
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                if (!conditions[i].Skill.IsUnlock)
+                    return false;
+            }
+            
+        }
+        return true;
+    }
 }
