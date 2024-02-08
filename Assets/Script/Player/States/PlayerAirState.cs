@@ -24,6 +24,8 @@ public class PlayerAirState : PlayerState
         base.Update();
         MoveController(player.MoveSpeedInAir);
 
+
+
         CheckDoubleJump();
         if (timer < 0)
             CheckWallSlide();
@@ -45,13 +47,12 @@ public class PlayerAirState : PlayerState
 
     private void CheckDoubleJump()
     {
-        if (player.CanDoubleJump)
+        if (player.JumpCounter < 2)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 AudioManager.instance.player.Jump();
                 player.ActivateFallGravity(false);
-                player.SetCanDoubleJump(false);
                 stateMachine.ChangeState(player.jumpState);
             }
         }

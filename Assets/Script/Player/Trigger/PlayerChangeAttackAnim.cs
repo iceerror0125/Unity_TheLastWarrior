@@ -5,6 +5,13 @@ public class PlayerChangeAttackAnim
     {
         var player = PlayerManager.instance.player;
         player.SetIsFirstAttack(!player.IsFirstAttack);
-        player.stateMachine.ChangeState(player.idleState);
+        if (player.IsGround)
+        {
+            player.stateMachine.ChangeState(player.idleState);
+        }
+        else
+        {
+            player.stateMachine.ChangeState(player.fallState);
+        }
     }
 }

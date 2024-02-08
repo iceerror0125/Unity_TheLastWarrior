@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerWallSlideState : PlayerState
 {
@@ -15,7 +16,7 @@ public class PlayerWallSlideState : PlayerState
         player.ZeroVelocity();
         player.SetIsSliding(true);
         player.SetIsFacingRight(!player.IsFacingRight);
-        player.SetCanDoubleJump(true);
+        player.ZeroJumpCounter();
         player.SetCanHighJump(true);
 
 
@@ -33,8 +34,10 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
         player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.WallSlideGravity));
-
-
+        if (!IsSlideWall())
+        {
+           //stateMachine.ChangeState(player.fallState);
+        }
         CheckToGroundState();
         JumpOutWall();
     }
@@ -53,5 +56,24 @@ public class PlayerWallSlideState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
         }
+    }
+    private bool IsSlideWall()
+    {
+        var x = Physics2D.OverlapCircleAll(player.exitWallState.position, 1);
+        foreach (var collide in x)
+        {
+            /* TilemapCollider2D tilemapCollider = collide.GetComponent<TilemapCollider2D>();
+             Debug.Log(tilemapCollider.gameObject.layer);*/
+            if (collide != null && collide.gameObject.layer == 3)
+            {
+                return true;
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        return false;
     }
 }

@@ -9,7 +9,7 @@ public class PlayerGroundState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.SetCanDoubleJump(true);
+        player.ZeroJumpCounter();
         player.SetCanHighJump(true);
         player.ActivateFallGravity(false);
 
@@ -27,7 +27,10 @@ public class PlayerGroundState : PlayerState
         
 
         if (!player.IsGround)
+        {
+            player.stateMachine.ChangeState(player.fallState);
             return;
+        }
 
         
         if (Input.GetKeyDown(KeyCode.Z))
@@ -41,9 +44,6 @@ public class PlayerGroundState : PlayerState
             stateMachine.ChangeState(player.rollState);
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && player.timer < 0)
-        {
-            stateMachine.ChangeState(player.attackState);
-        }
+        
     }
 }

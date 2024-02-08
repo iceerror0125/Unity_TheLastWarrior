@@ -9,11 +9,13 @@ public class PlayerHurtState : PlayerState
     {
         base.Enter();
         timer = player.HurtTime;
+        player.isImmortal = true;
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.isImmortal = false;
     }
 
     public override void Update()

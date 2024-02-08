@@ -23,10 +23,12 @@ public class Player : Entity
     [SerializeField] private float wallSlideGravity;
     [SerializeField] private float wallSlideJumpForce;
     [SerializeField] private bool isSliding;
+    public Transform exitWallState;
+
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
-    [SerializeField] private bool canDoubleJump;
+    [SerializeField] private int jumpCounter;
     [SerializeField] private bool canHighJump;
     [SerializeField] private float moveSpeedInAir;
 
@@ -37,14 +39,16 @@ public class Player : Entity
 
     public float timer;
     public CameraFollowPlayer camFollow;
+    public bool isJumping;
     #endregion
 
     #region Getter Setter
     public float JumpForce => jumpForce;
     public float MoveSpeedInAir => moveSpeedInAir;
     public bool IsFirstAttack => isFirstAttack;
-    public bool CanDoubleJump => canDoubleJump;
-    public void SetCanDoubleJump(bool _canDoubleJump) => canDoubleJump = _canDoubleJump;
+    public int JumpCounter => jumpCounter;
+    public void ZeroJumpCounter() => jumpCounter = 0;
+    public void PlusJumpCounter() => jumpCounter++;
     public bool CanHighJump => canHighJump;
     public void SetCanHighJump(bool _canHighJump) => canHighJump = _canHighJump;
     public void SetIsFirstAttack(bool _isFirstAttack) => isFirstAttack = _isFirstAttack;
@@ -74,7 +78,7 @@ public class Player : Entity
         stateMachine.InitState(idleState);
 
         isFacingRight = true;
-        canDoubleJump = true;
+        jumpCounter = 0;
         canHighJump = true;
     }
     protected override void Update()
@@ -83,7 +87,7 @@ public class Player : Entity
         timer -= Time.deltaTime;
         if (GameManager.Instance.isCutScene)
             return;
-        
+
         moveDir = Input.GetAxisRaw("Horizontal");
     }
     public void ActivateFallGravity(bool _isActivate)
@@ -126,5 +130,20 @@ public class Player : Entity
     {
         base.ChangeRotation();
         camFollow.RotateCamera();
+    }
+
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(exitWallState.position, 1);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision != null && collision.gameObject.layer == 3 && !isGround)
+        {
+            stateMachine.ChangeState(fallState);
+        }
     }
 }

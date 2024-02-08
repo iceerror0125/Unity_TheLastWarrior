@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7407103674085167122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4485282601801118573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030067382934638158}
+  m_Layer: 6
+  m_Name: Exit Wall State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2030067382934638158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485282601801118573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.66, y: 0.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7407103674085167122}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5475120725689371630
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +368,7 @@ Transform:
   - {fileID: 1737886617071657850}
   - {fileID: 1814676019738034912}
   - {fileID: 798450800445456104}
+  - {fileID: 2030067382934638158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &4965197237443911239
@@ -437,6 +469,7 @@ MonoBehaviour:
   wallSlideGravity: -2
   wallSlideJumpForce: 4.5
   isSliding: 0
+  exitWallState: {fileID: 2030067382934638158}
   jumpForce: 20
   canDoubleJump: 1
   canHighJump: 1
@@ -446,6 +479,7 @@ MonoBehaviour:
   isFirstAttack: 1
   timer: 0
   camFollow: {fileID: 0}
+  isJumping: 0
 --- !u!251 &6878060916427095685
 PlatformEffector2D:
   m_ObjectHideFlags: 0

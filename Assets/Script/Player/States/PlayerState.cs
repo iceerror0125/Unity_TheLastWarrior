@@ -1,4 +1,5 @@
 using System.Xml;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState : BaseState
@@ -26,6 +27,10 @@ public class PlayerState : BaseState
         {
             stateMachine.ChangeState(player.deadState);
         }
+        if (Input.GetKeyDown(KeyCode.X) && player.timer < 0)
+        {
+            stateMachine.ChangeState(player.attackState);
+        }
     }
 
     private void Flip()
@@ -49,4 +54,5 @@ public class PlayerState : BaseState
         player.ChangeVelocity(speed);
     }
 
+    
 }

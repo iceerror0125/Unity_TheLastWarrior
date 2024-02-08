@@ -13,6 +13,7 @@ public class PlayerTrigger : MonoBehaviour
 
     void Start()
     {
+        player = PlayerManager.instance.player;
         toIdleTrigger = new PlayerRollToIdleTrigger();
         changeAttackAnim = new PlayerChangeAttackAnim();   
         hitEnemyTrigger = new HitTrigger();
@@ -29,6 +30,10 @@ public class PlayerTrigger : MonoBehaviour
     public void HitEnemyTrigger()
     {
         hitEnemyTrigger.ActiveTrigger(skill, heal);
+    }
+    public void ExitRollTrigger()
+    {
+        player.SetIsRolling(false);
     }
     public void FootStep()
     {

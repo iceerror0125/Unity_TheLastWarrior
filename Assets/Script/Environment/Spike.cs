@@ -18,7 +18,7 @@ public class Spike : MonoBehaviour
     private void DealDamage(Collider2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null && timer < 0)
+        if (player != null && timer < 0 && !player.isImmortal)
         {
             player.TakeDamage(10);
             player.ChangeVelocity(4 * player.EntityDir * -1, 4);

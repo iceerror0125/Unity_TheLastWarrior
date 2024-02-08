@@ -11,19 +11,23 @@ public class PlayerJumpState : PlayerAirState
     {
         base.Enter();
         player.ActivateFallGravity(false);
-       
+        player.isJumping = true;
         Jump(player.JumpForce);
+        player.PlusJumpCounter();
+       
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.isJumping = true;
+
     }
 
     public override void Update()
     {
         base.Update();
-      
+
         CheckingChangeToFallState();
     }
 
@@ -38,7 +42,7 @@ public class PlayerJumpState : PlayerAirState
         {
             player.ChangeVelocity(new Vector2(player.rb.velocity.x, 0));
         }
-      
+
     }
 
     private void Jump(float yValue)

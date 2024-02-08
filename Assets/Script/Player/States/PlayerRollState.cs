@@ -13,12 +13,13 @@ public class PlayerRollState : PlayerGroundState
         base.Enter();
         player.SetIsRolling(true);
         facingValue = player.IsFacingRight ? 1 : -1;
+        player.isImmortal = true;
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.SetIsRolling(false);
+        player.isImmortal = false;
     }
 
     public override void Update()
