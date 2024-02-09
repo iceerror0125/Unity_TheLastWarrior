@@ -60,8 +60,7 @@ public class UI_SkillTreeCursorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             var manager = SkillManager.instance;
-            if (manager.dimond > 0)
-                currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
+            currentSkillSlot.GetComponent<UI_SkillSlot>().Unlock();
         }
     }
 
@@ -75,6 +74,8 @@ public class UI_SkillTreeCursorController : MonoBehaviour
         rect.offsetMin = new Vector2(0, 0);
         // explain skill detail
         explain.ShowExplain(uiSkillSlot.Skill);
+
+        AudioManager.instance.environment.MenuSelect();
     }
 
     public void InitCursor()

@@ -49,7 +49,7 @@ public class UI_SkillSlot : MonoBehaviour
 
     public void Unlock()
     {
-        if (!IsValidCondition())
+        if (!IsValidCondition() || skill.IsUnlock)
             return;
 
         skill.Unlock(true);

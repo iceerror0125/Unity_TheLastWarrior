@@ -3,12 +3,13 @@ using UnityEngine;
 public class UltimateSetUp : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float countdown;
+    [SerializeField] private float countdown; // expand time
     [SerializeField] private float damageCountdown;
 
     private Vector3 scaleChange;
     private float scaleTimer;
     public Vector3 size;
+    private bool wasCallInvoke;
     void Start()
     {
         transform.localScale = new Vector3(transform.localScale.x, 0.01f, transform.localScale.z);
@@ -19,8 +20,9 @@ public class UltimateSetUp : MonoBehaviour
     void Update()
     {
         scaleTimer -= Time.deltaTime;
-       
+
         Action();
+        CheckCauseDamage();
     }
     private void Action()
     {
@@ -43,12 +45,19 @@ public class UltimateSetUp : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
-    public void CauseDamage()
+
+    public void CheckCauseDamage()
     {
         if (transform.localScale.y < 0.99)
             return;
-
+        if (!wasCallInvoke)
+        {
+            InvokeRepeating("CauseDamage", 0, damageCountdown);
+            wasCallInvoke = true;
+        }
+    }
+    private void CauseDamage()
+    {
         var colliders = Physics2D.OverlapBoxAll(transform.position, size, 0);
         foreach (var collider in colliders)
         {
@@ -57,7 +66,6 @@ public class UltimateSetUp : MonoBehaviour
             {
                 //PlayerManager.instance.player.PerformSpellAttack(enemy, PlayerManager.instance.player.stat.Damage);
                 PlayerManager.instance.player.CauseDamage(enemy, PlayerManager.instance.player.stat.Damage);
-
             }
         }
     }

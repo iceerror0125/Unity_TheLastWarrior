@@ -9,7 +9,7 @@ public class DeadZone : MonoBehaviour
         Player player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            player.TakeDamage(player.stat.Hp);
+            player.TakeDamage(player.stat.Hp, true);
         }
     }
 }

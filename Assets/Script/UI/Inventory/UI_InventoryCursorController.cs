@@ -59,7 +59,7 @@ public class UI_InventoryCursorController : MonoBehaviour
     {
         UI_SlotItem data;
         Inventory inventory = Inventory.instance;
-        Debug.Log(currentIndex);
+        //Debug.Log(currentIndex);
         if (currentIndex < 0)
         {
             data = equipmentSlot.GetComponent<UI_SlotItem>();

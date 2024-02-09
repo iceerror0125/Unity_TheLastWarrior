@@ -25,7 +25,6 @@ public class HUDManager : MonoBehaviour
         hpBar = FindObjectOfType<UI_HPBar>();
     }
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -71,5 +70,12 @@ public class HUDManager : MonoBehaviour
     public void ShowDeadUI()
     {
         deadUI.SetActive(true);
+    }
+
+    public bool IsESCMenuOn()
+    {
+        if (esc.gameObject.activeSelf)
+            return true;
+        return false;
     }
 }

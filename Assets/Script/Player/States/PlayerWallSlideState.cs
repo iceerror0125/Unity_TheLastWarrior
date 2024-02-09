@@ -17,6 +17,7 @@ public class PlayerWallSlideState : PlayerState
         player.SetIsSliding(true);
         player.SetIsFacingRight(!player.IsFacingRight);
         player.ZeroJumpCounter();
+        player.PlusJumpCounter();
         player.SetCanHighJump(true);
 
 

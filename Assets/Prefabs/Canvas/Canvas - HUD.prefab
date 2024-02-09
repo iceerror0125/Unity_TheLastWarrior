@@ -1223,6 +1223,7 @@ GameObject:
   - component: {fileID: 7416091141238673098}
   - component: {fileID: 4526891084593381387}
   - component: {fileID: 5024538508860992708}
+  - component: {fileID: 4439178948349845564}
   m_Layer: 5
   m_Name: ESC UI
   m_TagString: Untagged
@@ -1306,6 +1307,29 @@ MonoBehaviour:
   cursor: {fileID: 5135752355746695086}
   inventory: {fileID: 0}
   skilTree: {fileID: 0}
+--- !u!223 &4439178948349845564
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837992410378128594}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
+  m_TargetDisplay: 0
 --- !u!1 &2923540335337728705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,6 +3797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2447232131432280969}
   - component: {fileID: 2979321847950419728}
+  - component: {fileID: 6404707115689386769}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -3819,6 +3844,29 @@ MonoBehaviour:
   slot2: {fileID: 7261808395257028238}
   slot3: {fileID: 8156765131992152809}
   slot4: {fileID: 0}
+--- !u!223 &6404707115689386769
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445366046608761117}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &7569581599759650418
 GameObject:
   m_ObjectHideFlags: 0

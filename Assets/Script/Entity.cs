@@ -193,9 +193,9 @@ public class Entity : MonoBehaviour
     {
         stat.RecoverHP(recoverHP);
     }
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, bool isDeadZone = false)
     {
-        stat.TakeDamage(damage);
+        stat.TakeDamage(damage, isDeadZone);
     }
     public virtual void DisableAnim()
     {

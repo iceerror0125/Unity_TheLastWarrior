@@ -12,6 +12,7 @@ public class Buff1 : PlayerSkill
 
         originCountdown = player.AttackCountDown;
         newCountdown = player.AttackCountDown - player.AttackCountDown * 1f; // 100%
+        player.anim.SetFloat("speed", 2);
         player.SetAttackCountdown(newCountdown);
     }
     protected override void Exit()
@@ -26,6 +27,7 @@ public class Buff1 : PlayerSkill
     private IEnumerator ChangeToExit()
     {
         yield return new WaitForSeconds(duration);
+        player.anim.SetFloat("speed", 1);
         base.ToExitCodition();
     }
 }

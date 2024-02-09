@@ -23,6 +23,7 @@ public class ItemObject : MonoBehaviour
         {
             Inventory.instance.AddItem(item);
             manager.CollectedItem(item.ItemName);
+            AudioManager.instance.environment.PickUpItem();
             Destroy(gameObject);
         }
     }

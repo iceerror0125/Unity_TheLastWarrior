@@ -9,6 +9,7 @@ public class Dimond : MonoBehaviour
         if (collision.GetComponent<Player>() != null)
         {
             SkillManager.instance.PlusDimond();
+            AudioManager.instance.environment.PickUpItem();
             Destroy(gameObject);
         }
     }

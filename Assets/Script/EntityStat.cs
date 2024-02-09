@@ -10,6 +10,7 @@ public class EntityStat : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] protected float critRate;
     [SerializeField] protected float critDamage;
+    protected bool hasRespawn;
 
 
     public System.Action<float> onChangeHP;
@@ -32,16 +33,33 @@ public class EntityStat : MonoBehaviour
         critDamage = damage;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, bool isDeadZone = false)
     {
         hp -= damage;
 
         if (hp <= 0)
         {
-            entity.SetIsDead(true);
-            ShowDeadUI();
-            //entity.stateMachine.ChangeState(entity.deadState);
+            if (!isDeadZone)
+            {
+                CanRespawn();
+            }
+           
+            if (!hasRespawn)
+            {
+                entity.SetIsDead(true);
+                ShowDeadUI();
+            }
+            else
+            {
+                hasRespawn = false;
+            }
         }
+    }
+   
+
+    protected virtual void CanRespawn()
+    {
+
     }
 
     public virtual void ShowDeadUI() { }

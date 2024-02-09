@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spell3SetUp : MonoBehaviour
@@ -6,6 +7,7 @@ public class Spell3SetUp : MonoBehaviour
     [SerializeField] private float rad;
     public bool isSuck;
     private float timer;
+    private List<GameObject> oldEnemies = new List<GameObject>();
 
     void Update()
     {
@@ -23,12 +25,15 @@ public class Spell3SetUp : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, rad);
         foreach (var collider in colliders)
         {
+            bool isOldEnemy = oldEnemies.Contains(collider.gameObject);
+
             var enemy = collider.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && !isOldEnemy)
             {
+                oldEnemies.Add(collider.gameObject);
                 enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, transform.position, speed * Time.deltaTime);
                 //PlayerManager.instance.player.PerformSpellAttack(enemy, PlayerManager.instance.player.stat.Damage * 0.2f);
-                PlayerManager.instance.player.CauseDamage(enemy, PlayerManager.instance.player.stat.Damage * 0.2f);
+                PlayerManager.instance.player.CauseDamage(enemy, PlayerManager.instance.player.stat.Damage * 0.5f);
 
             }
         }
@@ -41,6 +46,7 @@ public class Spell3SetUp : MonoBehaviour
     public void TurnOffSuck()
     {
         isSuck = false;
+        oldEnemies = new List<GameObject>();
     }
 
     public void Activate(float _duration)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1210118859412725719}
   - component: {fileID: 8542276105443369866}
   - component: {fileID: 3415317613006381594}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ultimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1472604087
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 71775029, guid: 00f5d849ab8406844b49a7a96f7d29d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   countdown: 0.3
-  damageCountdown: 0.2
+  damageCountdown: 0.5
   size: {x: 17.7, y: 2.5, z: 1}
 --- !u!1 &9009952744994051137
 GameObject:
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873412792364538459}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

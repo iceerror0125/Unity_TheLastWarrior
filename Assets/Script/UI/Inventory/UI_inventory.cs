@@ -9,6 +9,9 @@ public class UI_inventory : MonoBehaviour
 
     void Update()
     {
+        if (HUDManager.instance.IsESCMenuOn())
+            return;
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (inventory.activeSelf)

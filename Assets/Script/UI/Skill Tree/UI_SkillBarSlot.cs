@@ -10,6 +10,8 @@ public class UI_SkillBarSlot : MonoBehaviour
     private PlayerSkill skill;
     private float timer;
 
+    public PlayerSkill Skill => skill;
+
     private void Start()
     {
         skillImage = GetComponentsInChildren<Image>()[0];
