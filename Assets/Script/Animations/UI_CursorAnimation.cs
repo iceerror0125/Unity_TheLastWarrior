@@ -18,7 +18,7 @@ public class UI_CursorAnimation : MonoBehaviour
 
     void Update()
     {
-        if ((timer += Time.deltaTime) >= (duration / sprites.Length))
+        if ((timer += Time.unscaledDeltaTime) >= (duration / sprites.Length))
         {
             timer = 0;
             image.sprite = sprites[index];

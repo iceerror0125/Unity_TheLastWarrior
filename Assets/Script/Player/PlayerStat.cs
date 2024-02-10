@@ -9,6 +9,7 @@ public class PlayerStat : EntityStat
     {
         base.TakeDamage(damage, isDeadZone);
         onChangeHP(damage);
+        CameraManager.instance.ShakeCamera(0.3f, 3);
     }
     protected override void CanRespawn()
     {

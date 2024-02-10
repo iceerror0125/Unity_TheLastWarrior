@@ -9,6 +9,7 @@ public class ItemAnimation : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.isGamePaused) return;
         //calculate what the new Y position will be
         float newY = Mathf.Sin(Time.time * speed);
         //set the object's Y to the new calculated Y

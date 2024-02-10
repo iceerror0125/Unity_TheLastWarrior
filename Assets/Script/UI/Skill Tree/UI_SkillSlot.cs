@@ -49,7 +49,7 @@ public class UI_SkillSlot : MonoBehaviour
 
     public void Unlock()
     {
-        if (!IsValidCondition() || skill.IsUnlock)
+        if (!IsValidCondition() || skill.IsUnlock || SkillManager.instance.dimond <= 0)
             return;
 
         skill.Unlock(true);

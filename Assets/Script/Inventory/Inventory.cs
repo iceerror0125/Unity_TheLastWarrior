@@ -71,12 +71,15 @@ public class Inventory : MonoBehaviour
     }
     public void AddEquipmentItem(ItemDataEquipment item)
     {
-        // already exist, automaticly add to stash and add to equip slot
+        // if slot is already exist, automaticly add to stash and add to equip slot
         if (equipSlot != null)
         {
             AddItem(equipSlot);
+            MinusPlayerStat(equipSlot);
         }
         equipSlot = item;
+        PlusPlayerStat(item);
+        UpdateUI();
     }
 
     public void RemoveItem(ItemData item)
@@ -102,6 +105,24 @@ public class Inventory : MonoBehaviour
         {
             equipSlot = null;
             AddItem(item);
+            MinusPlayerStat(item);
         }
+        UpdateUI();
+    }
+
+    private void PlusPlayerStat(ItemDataEquipment data)
+    {
+        Player player = PlayerManager.instance.player;
+        player.stat.SetDamage(player.stat.Damage + data.Damage);
+        player.stat.SetCritDamage(player.stat.CritDamage + data.CritDamage);
+        player.stat.SetCritRate(player.stat.CritRate + data.CritRate);
+    }
+
+    private void MinusPlayerStat(ItemDataEquipment data)
+    {
+        Player player = PlayerManager.instance.player;
+        player.stat.SetDamage(player.stat.Damage - data.Damage);
+        player.stat.SetCritDamage(player.stat.CritDamage - data.CritDamage);
+        player.stat.SetCritRate(player.stat.CritRate - data.CritRate);
     }
 }

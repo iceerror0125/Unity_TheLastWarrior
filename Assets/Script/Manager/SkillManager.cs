@@ -46,7 +46,7 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        if (skillTree.activeSelf)
+        if (skillTree.activeSelf || GameManager.Instance.isUITurnedOn)
         {
             return;
         }

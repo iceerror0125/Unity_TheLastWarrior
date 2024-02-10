@@ -52,7 +52,13 @@ public class UI_ESC : MonoBehaviour
                     GoToDetailSelection("Audio Setting"); break;
                 case "Tutorial": GoToDetailSelection("Tutorial"); break;
                 case "Resume": TurnOffDetail(); break;
-                case "Exit": SceneManager.LoadScene("Main_Menu"); break;
+                case "Exit":
+                    {
+                        SceneManager.LoadScene("Main_Menu");
+                        GameManager.Instance.ResumeGame();
+                       
+                        break;
+                    }
             }
             /* if (slot.name == "Setting")
              {
@@ -82,6 +88,7 @@ public class UI_ESC : MonoBehaviour
         if (displayStack.Count == 1)
         {
             transform.gameObject.SetActive(false);
+            GameManager.Instance.ResumeGame();
         }
         else
         {
@@ -126,9 +133,11 @@ public class UI_ESC : MonoBehaviour
             SetPosition(slot);
             isDisable = false;
         }
+        GameManager.Instance.TurnOnUI();
     }
     private void OnDisable()
     {
         isDisable = true;
+        GameManager.Instance.TurnOffUI();
     }
 }

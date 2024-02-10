@@ -32,6 +32,11 @@ public class PlayerGroundState : PlayerState
             return;
         }
 
+        if (GameManager.Instance.isUITurnedOn)
+        {
+            return;
+        }
+
         
         if (Input.GetKeyDown(KeyCode.Z))
         {

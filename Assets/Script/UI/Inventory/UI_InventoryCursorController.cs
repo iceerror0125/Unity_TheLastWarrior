@@ -62,6 +62,7 @@ public class UI_InventoryCursorController : MonoBehaviour
         //Debug.Log(currentIndex);
         if (currentIndex < 0)
         {
+            // UnEquip weapon
             data = equipmentSlot.GetComponent<UI_SlotItem>();
             if (data.Data != null)
             {
@@ -71,6 +72,7 @@ public class UI_InventoryCursorController : MonoBehaviour
         }
         else
         {
+            // Equip weapon
             data = gridLayoutGroup.transform.GetChild(currentIndex).GetComponent<UI_SlotItem>();
             if (data.Data != null && data.Data.Type == ItemType.equipment)
             {
@@ -80,6 +82,8 @@ public class UI_InventoryCursorController : MonoBehaviour
             }
         }
     }
+
+   
 
     void MoveSelection(int horizontal, int vertical)
     {

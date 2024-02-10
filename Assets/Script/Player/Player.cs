@@ -85,7 +85,7 @@ public class Player : Entity
     {
         base.Update();
         timer -= Time.deltaTime;
-        if (GameManager.Instance.isCutScene)
+        if (GameManager.Instance.isCutScene || GameManager.Instance.isUITurnedOn)
             return;
 
         moveDir = Input.GetAxisRaw("Horizontal");
@@ -141,7 +141,7 @@ public class Player : Entity
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision != null && collision.gameObject.layer == 3 && !isGround)
+        if (collision != null && collision.gameObject.layer == 3 && !isGround && !isDead)
         {
             stateMachine.ChangeState(fallState);
         }

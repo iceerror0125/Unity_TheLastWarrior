@@ -21,6 +21,11 @@ public class PlayerState : BaseState
     public override void Update()
     {
         base.Update();
+        if (GameManager.Instance.isUITurnedOn)
+        {
+            return;
+        }
+
         Flip();
 
         if (player.IsDead && !player.isInDeadState)

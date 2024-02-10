@@ -49,8 +49,11 @@ MonoBehaviour:
   countdown: 5
   duration: 5
   img: {fileID: 21300000, guid: 26b48d037b8727845a3295bfcc79ab7a, type: 3}
-  skillName: 
-  description: 
+  skillName: Vortex
+  description: 'Create a vortex at the nearest enemy, pulling them in and dealing
+    damage. Deal damage by 50% ATK each time pulling
+
+    (15s countdown)'
   skillPrefab: {fileID: 72459555218851305, guid: 3307ebc9215944c438c49c020347fb0f, type: 3}
 --- !u!1 &1271135888793131450
 GameObject:
@@ -98,11 +101,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 0
+  countdown: 10
   duration: 0
   img: {fileID: 21300000, guid: fd50e39aa53723643b9a31bd22567168, type: 3}
-  skillName: 
-  description: 
+  skillName: Heal
+  description: 'Restore HP by 10% Max HP
+
+    (10s countdown)'
 --- !u!1 &1338423017127127265
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,8 +157,8 @@ MonoBehaviour:
   countdown: 0
   duration: 0
   img: {fileID: 21300000, guid: 591675dac1fc4cc4d966cc7ca9bb2f53, type: 3}
-  skillName: 
-  description: 
+  skillName: Blood Sword
+  description: A hit on enemy will restore by 5% Max HP
 --- !u!1 &1713056056361290054
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,11 +251,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 1
+  countdown: 7
   duration: 0
   img: {fileID: 21300000, guid: 6553c605a83e3184eacd9c226b83531c, type: 3}
-  skillName: 
-  description: 
+  skillName: Get Out!
+  description: 'Push enemies away upon impact. Deal damage by 100% ATK.
+
+    (7s
+    countdown)'
   skillPrefab: {fileID: 2248330511505412394, guid: eb8f88173e50a5c43b1a727882edd221, type: 3}
 --- !u!1 &1920242243706411057
 GameObject:
@@ -337,11 +345,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 0
+  countdown: 180
   duration: 0
   img: {fileID: 21300000, guid: eb7e05ab7cc7dfc40af3d1ccf931d25c, type: 3}
-  skillName: 
-  description: 
+  skillName: Respawn
+  description: 'Equip this skill. Restore HP by 50% Max HP when HP is below 0 (except
+    dead by falling)
+
+    (180s countdown)'
 --- !u!1 &2208312239817617559
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +402,8 @@ MonoBehaviour:
   countdown: 0
   duration: 0
   img: {fileID: 21300000, guid: 6003e9c1fc1ee9a49a5dcb8d0f27363a, type: 3}
-  skillName: Buff 2
-  description: "T\u0103ng t\u1EA5n c\xF4ng"
+  skillName: The Strength
+  description: Attack will be increased by 50%
 --- !u!1 &2439954627775415101
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,11 +652,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 0
-  countdown: 5
+  countdown: 7
   duration: 0
   img: {fileID: 21300000, guid: 0b3de04cb53a3f648bfdaa971a1f9c61, type: 3}
-  skillName: 
-  description: 
+  skillName: The Meteorites
+  description: '3 meteorites  will fall onto the nearest enemy, dealing damage by
+    33% ATK for each meteorite
+
+    (7s countdown)'
   skillPrefab: {fileID: 3046906344721934433, guid: d9ecd957e7a643a4dbae421eca8166f7, type: 3}
 --- !u!1 &6987150567384296123
 GameObject:
@@ -693,11 +707,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 10
+  countdown: 30
   duration: 0
   img: {fileID: 21300000, guid: fbf280f4f9592e64fba09d9095574a21, type: 3}
-  skillName: Buff 3
-  description: "T\u0103ng ch\xED m\u1EA1ng"
+  skillName: The Rage
+  description: 'In the next 5 consecutive hit (against the enemy)
+
+    Crit rate
+    will be 100%.
+
+    Crit damage will be increase by 150%
+
+    (30s countdown)'
   counter: 0
   isActivated: 0
 --- !u!1 &7152117692597540368
@@ -746,11 +767,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 2
-  duration: 2
+  countdown: 10
+  duration: 5
   img: {fileID: 21300000, guid: 01821c39a611c2942b08f1a405cdf36e, type: 3}
-  skillName: Buff 1
-  description: "T\u0103ng t\u1ED1c \u0111\u1ED9 \u0111\xE1nh"
+  skillName: The Speed
+  description: 'Increase attack speed in 5 seconds
+
+    (10s countdown)'
   newCountdown: 0
   originCountdown: 0
 --- !u!1 &7698972271181534432
@@ -799,11 +822,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 2
+  countdown: 60
   duration: 3
   img: {fileID: 21300000, guid: 3181a520b29e0514aa191edfa7aa2ef2, type: 3}
-  skillName: 
-  description: 
+  skillName: Lazer Beam
+  description: 'Shoot a lazer beam, deal damage by 100% ATK each 0.5s in 3s
+
+    (60s
+    countdown)'
   skillPrefab: {fileID: 6929345585300952808, guid: 8972f5bbfb60bbe4493e312aa03602c1, type: 3}
   x: 9
 --- !u!1 &8544499605504219599
@@ -930,6 +956,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: 19eed390cb9a1db4d95bef6caedba03b, type: 2}
+    - target: {fileID: 1940014550492264367, guid: 0c089832fac21184d93efb357a64ce97, type: 3}
+      propertyPath: checkpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2334560472515973760, guid: 0c089832fac21184d93efb357a64ce97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

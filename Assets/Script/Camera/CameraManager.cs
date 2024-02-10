@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraManager : MonoBehaviour
 {
@@ -125,4 +126,11 @@ public class CameraManager : MonoBehaviour
 
         }
     }
+
+    private void OnShake(float duration, float strength)
+    {
+        currentCamera.transform.DOShakePosition(duration, strength);
+        currentCamera.transform.DOShakeRotation(duration, strength);
+    }
+    public void ShakeCamera(float duration, float strength) => OnShake(duration, strength);
 }

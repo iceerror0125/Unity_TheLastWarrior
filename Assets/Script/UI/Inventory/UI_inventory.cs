@@ -17,6 +17,7 @@ public class UI_inventory : MonoBehaviour
             if (inventory.activeSelf)
             {
                 inventory.SetActive(false);
+                GameManager.Instance.TurnOffUI();
             }
             else
             {
@@ -24,7 +25,7 @@ public class UI_inventory : MonoBehaviour
                 skillTree.SetActive(false);
                 inventory.GetComponent<UI_InventoryCursorController>().InitCursor();
                 AudioManager.instance.environment.InventoryOpen();
-
+                GameManager.Instance.TurnOnUI();
             }
 
             UI_PlayerStat.instance.UpdateStat();
@@ -35,6 +36,7 @@ public class UI_inventory : MonoBehaviour
             if (skillTree.activeSelf)
             {
                 skillTree.SetActive(false);
+                GameManager.Instance.TurnOffUI();
             }
             else
             {
@@ -42,6 +44,7 @@ public class UI_inventory : MonoBehaviour
                 inventory.SetActive(false);
                 skillTree.GetComponent<UI_SkillTreeCursorController>().InitCursor();
                 AudioManager.instance.environment.InventoryOpen();
+                GameManager.Instance.TurnOnUI();
             }
         }
     }

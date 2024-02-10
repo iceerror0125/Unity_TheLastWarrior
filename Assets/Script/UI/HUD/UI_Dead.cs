@@ -21,10 +21,14 @@ public class UI_Dead : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (text2.color.a > 0.8f)
         {
-            Respawn();
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Respawn();
+            }
         }
+        
     }
 
     private void Respawn()

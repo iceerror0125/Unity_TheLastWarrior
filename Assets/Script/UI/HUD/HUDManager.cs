@@ -32,6 +32,7 @@ public class HUDManager : MonoBehaviour
             if (!esc.gameObject.activeSelf)
             {
                 esc.gameObject.SetActive(true);
+                GameManager.Instance.PauseGame();
             }
 
         }

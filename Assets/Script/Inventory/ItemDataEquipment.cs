@@ -5,10 +5,11 @@ using UnityEngine;
 public class ItemDataEquipment : ItemData
 {
     [SerializeField] private int damage;
-    [SerializeField] private int critRate;
+    [Range(0f, 1f)]
+    [SerializeField] private float critRate;
     [SerializeField] private int critDamage;
 
     public int Damage => damage;
-    public int CritRate => critRate;
+    public float CritRate => critRate;
     public int CritDamage => critDamage;
 }

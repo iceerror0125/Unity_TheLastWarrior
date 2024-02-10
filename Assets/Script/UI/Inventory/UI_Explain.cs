@@ -29,7 +29,7 @@ public class UI_Explain : MonoBehaviour
         if (item.Type == ItemType.equipment) {
             ItemDataEquipment equipment  = item as ItemDataEquipment;   
             description.text = $"Damage: + {equipment.Damage}" +
-                $"\n Crit rate: + {equipment.CritRate} " +
+                $"\n Crit rate: + {equipment.CritRate * 100}%" +
                 $"\n Crit damage: + {equipment.CritDamage}";
         }
         else
