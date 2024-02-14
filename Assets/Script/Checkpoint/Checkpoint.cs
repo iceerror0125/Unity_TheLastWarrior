@@ -7,6 +7,7 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject halo;
+    public string id = System.Guid.NewGuid().ToString();
     public bool isActivated { get; private set; }
 
     private void Start()

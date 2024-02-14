@@ -9,6 +9,7 @@ public class PlayerSkill : MonoBehaviour
     [SerializeField] protected float countdown;
     [SerializeField] protected float duration;
     [SerializeField] protected Sprite img;
+    public float counteddownTime;
 
     [Space]
     [SerializeField] protected string skillName;
@@ -71,5 +72,9 @@ public class PlayerSkill : MonoBehaviour
         }
     }
     protected virtual void AfterExit() { }
-    
+
+    public override string ToString()
+    {
+        return base.ToString();
+    }
 }

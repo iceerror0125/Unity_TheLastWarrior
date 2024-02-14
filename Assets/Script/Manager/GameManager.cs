@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isCutScene;
     public bool isGamePaused { get; private set; }
     public bool isUITurnedOn { get; private set; }
+    public SaveManager saveManager { get; private set; }
 
     private void Awake()
     {
@@ -22,8 +24,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        saveManager = SaveManager.instance;
     }
 
+
+
+    private void Start()
+    {
+      
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -48,5 +59,23 @@ public class GameManager : MonoBehaviour
     public void TurnOffUI()
     {
         isUITurnedOn = false;
+    }
+
+    private void OnSceneUnloaded(Scene current)
+    {
+        saveManager.SaveData();
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!string.Equals(scene.path, SceneManager.GetActiveScene().path)) return;
+
+        LoadSaveData();
+    }
+    private void LoadSaveData()
+    {
+        if (saveManager.ExistsFileSave())
+        {
+            saveManager.LoadData();
+        }
     }
 }

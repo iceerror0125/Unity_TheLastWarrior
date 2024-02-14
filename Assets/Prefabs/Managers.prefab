@@ -49,6 +49,7 @@ MonoBehaviour:
   countdown: 5
   duration: 5
   img: {fileID: 21300000, guid: 26b48d037b8727845a3295bfcc79ab7a, type: 3}
+  counteddownTime: 0
   skillName: Vortex
   description: 'Create a vortex at the nearest enemy, pulling them in and dealing
     damage. Deal damage by 50% ATK each time pulling
@@ -104,6 +105,7 @@ MonoBehaviour:
   countdown: 10
   duration: 0
   img: {fileID: 21300000, guid: fd50e39aa53723643b9a31bd22567168, type: 3}
+  counteddownTime: 0
   skillName: Heal
   description: 'Restore HP by 10% Max HP
 
@@ -157,6 +159,7 @@ MonoBehaviour:
   countdown: 0
   duration: 0
   img: {fileID: 21300000, guid: 591675dac1fc4cc4d966cc7ca9bb2f53, type: 3}
+  counteddownTime: 0
   skillName: Blood Sword
   description: A hit on enemy will restore by 5% Max HP
 --- !u!1 &1713056056361290054
@@ -254,6 +257,7 @@ MonoBehaviour:
   countdown: 7
   duration: 0
   img: {fileID: 21300000, guid: 6553c605a83e3184eacd9c226b83531c, type: 3}
+  counteddownTime: 0
   skillName: Get Out!
   description: 'Push enemies away upon impact. Deal damage by 100% ATK.
 
@@ -297,6 +301,7 @@ Transform:
   - {fileID: 6898383887553893843}
   - {fileID: 5324426725896955740}
   - {fileID: 3731376672026461259}
+  - {fileID: 8896555055361595199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2124956966870114312
@@ -348,6 +353,7 @@ MonoBehaviour:
   countdown: 180
   duration: 0
   img: {fileID: 21300000, guid: eb7e05ab7cc7dfc40af3d1ccf931d25c, type: 3}
+  counteddownTime: 0
   skillName: Respawn
   description: 'Equip this skill. Restore HP by 50% Max HP when HP is below 0 (except
     dead by falling)
@@ -402,6 +408,7 @@ MonoBehaviour:
   countdown: 0
   duration: 0
   img: {fileID: 21300000, guid: 6003e9c1fc1ee9a49a5dcb8d0f27363a, type: 3}
+  counteddownTime: 0
   skillName: The Strength
   description: Attack will be increased by 50%
 --- !u!1 &2439954627775415101
@@ -463,6 +470,61 @@ MonoBehaviour:
   slot3: {fileID: 0}
   skillTree: {fileID: 0}
   skillSet: {fileID: 0}
+  skillList:
+  - {fileID: 3503026930304049403}
+  - {fileID: 2238850843754121415}
+  - {fileID: 4491181924342193833}
+  - {fileID: 7892088615279260084}
+  - {fileID: 2488769354681747699}
+  - {fileID: 9010424646771920409}
+  - {fileID: 289838533009322415}
+  - {fileID: 8339191854107863800}
+  - {fileID: 547943127600613124}
+  - {fileID: 3532590357478450786}
+--- !u!1 &5193448278921360032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8896555055361595199}
+  - component: {fileID: 714224209283330317}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8896555055361595199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193448278921360032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4916076448759573068}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714224209283330317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193448278921360032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62233193e0354c4b97111b6f230f9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5374406912915299342
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +717,7 @@ MonoBehaviour:
   countdown: 7
   duration: 0
   img: {fileID: 21300000, guid: 0b3de04cb53a3f648bfdaa971a1f9c61, type: 3}
+  counteddownTime: 0
   skillName: The Meteorites
   description: '3 meteorites  will fall onto the nearest enemy, dealing damage by
     33% ATK for each meteorite
@@ -710,6 +773,7 @@ MonoBehaviour:
   countdown: 30
   duration: 0
   img: {fileID: 21300000, guid: fbf280f4f9592e64fba09d9095574a21, type: 3}
+  counteddownTime: 0
   skillName: The Rage
   description: 'In the next 5 consecutive hit (against the enemy)
 
@@ -770,6 +834,7 @@ MonoBehaviour:
   countdown: 10
   duration: 5
   img: {fileID: 21300000, guid: 01821c39a611c2942b08f1a405cdf36e, type: 3}
+  counteddownTime: 0
   skillName: The Speed
   description: 'Increase attack speed in 5 seconds
 
@@ -825,6 +890,7 @@ MonoBehaviour:
   countdown: 60
   duration: 3
   img: {fileID: 21300000, guid: 3181a520b29e0514aa191edfa7aa2ef2, type: 3}
+  counteddownTime: 0
   skillName: Lazer Beam
   description: 'Shoot a lazer beam, deal damage by 100% ATK each 0.5s in 3s
 

@@ -8,6 +8,10 @@ public class UI_SkillSet : MonoBehaviour
     [SerializeField] private Image a;
     [SerializeField] private Image s;
     [SerializeField] private Image d;
+    public PlayerSkill skillA { get; private set; }
+    public PlayerSkill skillS { get; private set; }
+    public PlayerSkill skillD { get; private set; }
+
 
     private void Start()
     {
@@ -16,17 +20,20 @@ public class UI_SkillSet : MonoBehaviour
         d.sprite = null;    
     }
 
-    public void SetA(Sprite _img)
+    public void SetA(PlayerSkill skill)
     {
-        a.sprite = _img;
+        skillA = skill;
+        a.sprite = skill?.Img;
     }
-    public void SetS(Sprite _img)
+    public void SetS(PlayerSkill skill)
     {
-        s.sprite = _img;
+        skillS = skill;
+        s.sprite = skill?.Img;
     }
-    public void SetD(Sprite _img)
+    public void SetD(PlayerSkill skill)
     {
-        d.sprite = _img;
+        skillD = skill;
+        d.sprite = skill?.Img;
     }
 
 }

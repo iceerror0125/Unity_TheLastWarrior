@@ -17,6 +17,7 @@ public class EntityStat : MonoBehaviour
     #region Get Set
     public float MaxHp => maxHp;
     public float Hp => hp;
+    public void SetHP(float value) => hp = value;
     public float Damage => damage;
     public float SetDamage(float _value) => damage = _value;
     public float CritRate => critRate;

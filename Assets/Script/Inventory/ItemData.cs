@@ -9,7 +9,7 @@ public enum ItemType
 [CreateAssetMenu(fileName = "new item", menuName = "Data/Normal Item")]
 public class ItemData : ScriptableObject
 {
-    public string id; // remember to change to protected after accomplish testing
+    public string id = System.Guid.NewGuid().ToString();
     [SerializeField] protected string itemName;
     [SerializeField] protected Sprite img;
     [SerializeField] protected ItemType type;
@@ -20,9 +20,4 @@ public class ItemData : ScriptableObject
     public Sprite Img => img;
     public ItemType Type => type;
     public  string Description => description;
-
-    private void OnValidate()
-    {
-        id = System.Guid.NewGuid().ToString();  
-    }
-}
+}                                               

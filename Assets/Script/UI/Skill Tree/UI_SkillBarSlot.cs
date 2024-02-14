@@ -54,6 +54,7 @@ public class UI_SkillBarSlot : MonoBehaviour
         if (skill.IsExitCalled)
         {
             timer -= Time.deltaTime;
+            skill.counteddownTime = timer;
             countdownImage.fillAmount = timer / skill.Countdown;
         }
     }

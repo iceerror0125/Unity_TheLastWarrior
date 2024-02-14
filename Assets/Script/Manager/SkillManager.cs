@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -9,12 +10,17 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private PlayerSkill slot3;
     [SerializeField] private GameObject skillTree;
     [SerializeField] private UI_SkillSet skillSet;
+
+    [SerializeField] private List<PlayerSkill> skillList;
     public int dimond { get; private set; }
     public System.Action UpdateDimondUI = () => { };
 
     public PlayerSkill Slot1 => slot1;
     public PlayerSkill Slot2 => slot2;
     public PlayerSkill Slot3 => slot3;
+    public List<PlayerSkill> SkillList => skillList;
+    public UI_SkillSet SkillSet => skillSet;
+    public void SetDimond(int dimond) => this.dimond = dimond;
     public void PlusDimond()
     {
         dimond++;
@@ -30,8 +36,6 @@ public class SkillManager : MonoBehaviour
         UpdateDimondUI();
 
     }
-
-
     private void Awake()
     {
         if (instance == null)
@@ -42,6 +46,9 @@ public class SkillManager : MonoBehaviour
         {
             Destroy(instance.gameObject);
         }
+        slot1 = null;
+        slot2 = null;
+        slot3 = null;
     }
 
     private void Update()
@@ -100,8 +107,17 @@ public class SkillManager : MonoBehaviour
     }
     private void UpdateSkillSet()
     {
-        skillSet.SetA(slot1?.Img);
-        skillSet.SetS(slot2?.Img);
-        skillSet.SetD(slot3?.Img);
+        skillSet.SetA(slot1);
+        skillSet.SetS(slot2);
+        skillSet.SetD(slot3);
+    }
+    public PlayerSkill FindSkillByName(string name)
+    {
+        for (int i = 0; i < skillList.Count; i++)
+        {
+            if (skillList[i].SkillName.Equals(name)) 
+                return skillList[i];
+        }
+        return null;
     }
 }

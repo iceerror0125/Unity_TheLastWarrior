@@ -5,9 +5,9 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public List<ItemData> stashList;
+    public List<ItemData> stashList; // here
     public Dictionary<ItemData, InventoryItem> stashDic;
-    public ItemDataEquipment equipSlot;
+    public ItemDataEquipment equipSlot; // here
 
     public Transform stashSlotParent;
     public UI_SlotItem[] uiStashSlots;
