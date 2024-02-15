@@ -13,13 +13,13 @@ public class UI_SkillSet : MonoBehaviour
     public PlayerSkill skillD { get; private set; }
 
 
-    private void Start()
+  /*  private void Start()
     {
         a.sprite = null;
         s.sprite = null;
-        d.sprite = null;    
+        d.sprite = null;
     }
-
+*/
     public void SetA(PlayerSkill skill)
     {
         skillA = skill;

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2069129946289071258}
   - component: {fileID: 714686544109548878}
   - component: {fileID: 482915289232488497}
+  - component: {fileID: 105757028482989195}
   m_Layer: 0
   m_Name: HP Posion
   m_TagString: Untagged
@@ -273,6 +274,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &105757028482989195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375401191566801737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isApear: 1
 --- !u!1 &2708664666315128224
 GameObject:
   m_ObjectHideFlags: 0

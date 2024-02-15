@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 2684126817234162314}
   - component: {fileID: 2215780579343730934}
   - component: {fileID: 2441900461156817660}
+  - component: {fileID: 125974267884817893}
   m_Layer: 0
   m_Name: ATK Position
   m_TagString: Untagged
@@ -379,6 +380,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &125974267884817893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816616389601216375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isApear: 1
 --- !u!1 &9047017741080919014
 GameObject:
   m_ObjectHideFlags: 0

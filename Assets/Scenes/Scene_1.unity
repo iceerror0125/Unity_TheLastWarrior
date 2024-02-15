@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7372148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5193448278921360032, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+  m_PrefabInstance: {fileID: 7284138149061864572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7372150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62233193e0354c4b97111b6f230f9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &38042349
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,8 +972,9 @@ GameObject:
   - component: {fileID: 293851145}
   - component: {fileID: 293851144}
   - component: {fileID: 293851146}
+  - component: {fileID: 293851147}
   m_Layer: 0
-  m_Name: Hidden wall 1
+  m_Name: S1 Hidden wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2751,6 +2769,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &293851147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293851142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &314723010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,8 +2888,9 @@ GameObject:
   - component: {fileID: 333815318}
   - component: {fileID: 333815317}
   - component: {fileID: 333815316}
+  - component: {fileID: 333815319}
   m_Layer: 0
-  m_Name: Switch
+  m_Name: S1 Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2993,6 +3024,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &333815319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333815314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350070824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,8 +7308,9 @@ GameObject:
   - component: {fileID: 941549198}
   - component: {fileID: 941549197}
   - component: {fileID: 941549202}
+  - component: {fileID: 941549203}
   m_Layer: 3
-  m_Name: Hidden wall 2
+  m_Name: S1 Hidden wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7806,6 +7850,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &941549203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941549195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &955899527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28213,8 +28269,9 @@ GameObject:
   - component: {fileID: 1788072751}
   - component: {fileID: 1788072750}
   - component: {fileID: 1788072755}
+  - component: {fileID: 1788072756}
   m_Layer: 3
-  m_Name: Block wall
+  m_Name: S1 Block wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28546,6 +28603,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd209691c51cbf24a92e2567a30848be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1788072756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788072748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1799441753
@@ -50763,8 +50832,9 @@ GameObject:
   - component: {fileID: 2121716922}
   - component: {fileID: 2121716923}
   - component: {fileID: 2121716924}
+  - component: {fileID: 2121716925}
   m_Layer: 3
-  m_Name: Broken wall
+  m_Name: S1 Broken wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50848,6 +50918,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 3.947618}
   m_EdgeRadius: 0
+--- !u!114 &2121716925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121716921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2125479630
 GameObject:
   m_ObjectHideFlags: 0
@@ -52475,10 +52557,14 @@ PrefabInstance:
       propertyPath: environment
       value: 
       objectReference: {fileID: 1040071662}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 714224209283330317, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5193448278921360032, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7372150}
   m_SourcePrefab: {fileID: 100100000, guid: 454248fcc0cd8924aa7d06e2adbc444a, type: 3}
 --- !u!4 &7284138149061864573 stripped
 Transform:

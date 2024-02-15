@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 1120430254222450722}
   - component: {fileID: 5197387126017479550}
   - component: {fileID: 3862213023932376681}
+  - component: {fileID: -2430156151734144645}
   m_Layer: 0
   m_Name: Crit Rate Posion
   m_TagString: Untagged
@@ -379,6 +380,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2430156151734144645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578816809711304322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isApear: 1
 --- !u!1 &4501116465175004493
 GameObject:
   m_ObjectHideFlags: 0

@@ -1075,8 +1075,9 @@ GameObject:
   - component: {fileID: 165792379}
   - component: {fileID: 165792378}
   - component: {fileID: 165792377}
+  - component: {fileID: 165792380}
   m_Layer: 0
-  m_Name: Broken Left 1
+  m_Name: S3 Broken Left 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1212,6 +1213,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &165792380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165792375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &172020641
 GameObject:
   m_ObjectHideFlags: 0
@@ -13691,8 +13704,9 @@ GameObject:
   - component: {fileID: 513330999}
   - component: {fileID: 513330998}
   - component: {fileID: 513330997}
+  - component: {fileID: 513331000}
   m_Layer: 0
-  m_Name: Broken 1
+  m_Name: S3 Broken 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13828,6 +13842,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &513331000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513330995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &529126513
 GameObject:
   m_ObjectHideFlags: 0
@@ -14832,8 +14858,9 @@ GameObject:
   - component: {fileID: 736738274}
   - component: {fileID: 736738273}
   - component: {fileID: 736738272}
+  - component: {fileID: 736738275}
   m_Layer: 0
-  m_Name: Broken Slope
+  m_Name: S3 Broken Slope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14976,6 +15003,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &736738275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736738270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &741957592
 GameObject:
   m_ObjectHideFlags: 0
@@ -16512,8 +16551,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.6095998, y: 1.1722, z: 0}
-    m_Extent: {x: 6.6317997, y: 3.1951, z: 0}
+    m_Center: {x: 0.60969996, y: 1.1810501, z: 0}
+    m_Extent: {x: 6.6335, y: 3.19335, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22200,8 +22239,9 @@ GameObject:
   - component: {fileID: 1123634455}
   - component: {fileID: 1123634454}
   - component: {fileID: 1123634453}
+  - component: {fileID: 1123634456}
   m_Layer: 0
-  m_Name: Broken 2
+  m_Name: S3 Broken 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22337,6 +22377,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1123634456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123634451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1140699708
 GameObject:
   m_ObjectHideFlags: 0
@@ -22349,8 +22401,9 @@ GameObject:
   - component: {fileID: 1140699711}
   - component: {fileID: 1140699710}
   - component: {fileID: 1140699709}
+  - component: {fileID: 1140699713}
   m_Layer: 0
-  m_Name: Snow platform tileset_41
+  m_Name: S3 Snow platform tileset_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22401,7 +22454,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -22484,6 +22537,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1590555339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140699713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140699708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174243311
 GameObject:
   m_ObjectHideFlags: 0
@@ -22496,8 +22561,9 @@ GameObject:
   - component: {fileID: 1174243314}
   - component: {fileID: 1174243313}
   - component: {fileID: 1174243315}
+  - component: {fileID: 1174243316}
   m_Layer: 0
-  m_Name: Hide wall 4
+  m_Name: S3 Hide wall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23366,6 +23432,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &1174243316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174243311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1189331007
 GameObject:
   m_ObjectHideFlags: 0
@@ -25280,8 +25358,9 @@ GameObject:
   - component: {fileID: 1430385990}
   - component: {fileID: 1430385989}
   - component: {fileID: 1430385991}
+  - component: {fileID: 1430385992}
   m_Layer: 0
-  m_Name: 'Hide wall 2 '
+  m_Name: 'S3 Hide wall 2 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30760,6 +30839,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &1430385992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430385987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1439639736
 GameObject:
   m_ObjectHideFlags: 0
@@ -30772,8 +30863,9 @@ GameObject:
   - component: {fileID: 1439639740}
   - component: {fileID: 1439639739}
   - component: {fileID: 1439639738}
+  - component: {fileID: 1439639741}
   m_Layer: 0
-  m_Name: Broken Left 2
+  m_Name: S3 Broken Left 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30910,6 +31002,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1439639741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439639736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1453844958
 GameObject:
   m_ObjectHideFlags: 0
@@ -31625,8 +31729,9 @@ GameObject:
   - component: {fileID: 1590156576}
   - component: {fileID: 1590156575}
   - component: {fileID: 1590156574}
+  - component: {fileID: 1590156577}
   m_Layer: 0
-  m_Name: Broken Right 2
+  m_Name: S3 Broken Right 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31762,6 +31867,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1590156577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590156572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590555337
 GameObject:
   m_ObjectHideFlags: 0
@@ -31911,8 +32028,9 @@ GameObject:
   - component: {fileID: 1625502676}
   - component: {fileID: 1625502675}
   - component: {fileID: 1625502677}
+  - component: {fileID: 1625502678}
   m_Layer: 0
-  m_Name: Hide wall 1
+  m_Name: S3 Hide wall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32231,6 +32349,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &1625502678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625502673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1639487581
 GameObject:
   m_ObjectHideFlags: 0
@@ -38279,8 +38409,9 @@ GameObject:
   - component: {fileID: 1851948233}
   - component: {fileID: 1851948232}
   - component: {fileID: 1851948234}
+  - component: {fileID: 1851948235}
   m_Layer: 0
-  m_Name: Hide wall 3
+  m_Name: S3 Hide wall 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43239,6 +43370,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &1851948235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851948230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1861099326
 GameObject:
   m_ObjectHideFlags: 0
@@ -43753,8 +43896,9 @@ GameObject:
   - component: {fileID: 2066717402}
   - component: {fileID: 2066717401}
   - component: {fileID: 2066717400}
+  - component: {fileID: 2066717403}
   m_Layer: 0
-  m_Name: Broken Right 1
+  m_Name: S3 Broken Right 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43890,6 +44034,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2066717403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066717398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073914897
 GameObject:
   m_ObjectHideFlags: 0

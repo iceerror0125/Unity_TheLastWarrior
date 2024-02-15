@@ -68,23 +68,37 @@ public class SaveManager : MonoBehaviour
         SkillManager.instance.SetDimond(mainData.dimond);
 
         // skill set
-        int counter = 0;
-        foreach(KeyValuePair<string, float> pair in mainData.skillCountdown)
+        LoadSkillSetData();
+
+    }
+
+    private void LoadSkillSetData()
+    {
+        if (mainData.skilSetName.Length != mainData.skillSetCountdown.Length)
         {
-            PlayerSkill skill = SkillManager.instance.FindSkillByName(pair.Key);
-            if (skill != null)
-            {
-                skill.counteddownTime = pair.Value;
-                switch(counter)
-                {
-                    case 0: SkillManager.instance.SetA(skill); break;
-                    case 1: SkillManager.instance.SetS(skill); break;
-                    case 2: SkillManager.instance.SetD(skill); break;
-                }
-                counter++;
-            }
+            Debug.Log("Lenght Array Is Not Match");
+            return;
+        }
+
+        SkillManager manager = SkillManager.instance;
+        manager.SetA(manager.FindSkillByName(mainData.skilSetName[0]));
+        manager.SetS(manager.FindSkillByName(mainData.skilSetName[1]));
+        manager.SetD(manager.FindSkillByName(mainData.skilSetName[2]));
+
+        if (manager.Slot1 != null)
+        {
+            manager.Slot1.counteddownTime = mainData.skillSetCountdown[0];
+        }
+        if (manager.Slot2 != null)
+        {
+            manager.Slot2.counteddownTime = mainData.skillSetCountdown[1];
+        }
+        if (manager.Slot3 != null)
+        {
+            manager.Slot3.counteddownTime = mainData.skillSetCountdown[2];
         }
     }
+
     private void SaveInventoryData()
     {
         throw new NotImplementedException();
@@ -110,35 +124,26 @@ public class SaveManager : MonoBehaviour
         mainData.dimond = SkillManager.instance.dimond;
 
         // skill set
-        //UI_SkillSet skillSet = SkillManager.instance.SkillSet;
-        
-        var setA = CheckSkillSet(SkillManager.instance.Slot1, "Skill A");
-        SaveSkillCountdown(setA);
-        var setS = CheckSkillSet(SkillManager.instance.Slot2, "Skill S");
-        SaveSkillCountdown(setS);
-        var setD = CheckSkillSet(SkillManager.instance.Slot3, "Skill D");
-        SaveSkillCountdown(setD);
-  
-        
+        SaveSkillSet(0, SkillManager.instance.Slot1, "Skill A");
+        SaveSkillSet(1, SkillManager.instance.Slot2, "Skill S");
+        SaveSkillSet(2, SkillManager.instance.Slot3, "Skill D");
     }
 
-    private void SaveSkillCountdown(KeyValuePair<string, float> set)
+    private void SaveSkillSet(int index, PlayerSkill skill, string defaultName)
     {
-        if (!mainData.skillCountdown.ContainsKey(set.Key))
+        if (index < 3)
         {
-            mainData.skillCountdown.Add(set.Key, set.Value);
+            if (skill is null)
+            {
+                mainData.skilSetName[index] = defaultName;
+                mainData.skillSetCountdown[index] = -1;
+            }
+            else
+            {
+                mainData.skilSetName[index] = skill.SkillName;
+                mainData.skillSetCountdown[index] = skill.counteddownTime;
+            }
         }
-        else
-        {
-            mainData.skillCountdown[set.Key] = set.Value;
-        }
-    }
-
-    private KeyValuePair<string, float> CheckSkillSet(PlayerSkill skill, string defaultName)
-    {
-        if (skill is null)
-            return new KeyValuePair<string, float>(defaultName, 0f);
-        return new KeyValuePair<string, float>(skill.SkillName, skill.counteddownTime);
     }
 
     private void SavePlayerStat()

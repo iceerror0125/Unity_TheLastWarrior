@@ -10,15 +10,18 @@ public class UI_SkillBarSlot : MonoBehaviour
     private PlayerSkill skill;
     private float timer;
 
+    bool isLoadData;
     public PlayerSkill Skill => skill;
 
     private void Start()
     {
         skillImage = GetComponentsInChildren<Image>()[0];
         countdownImage = GetComponentsInChildren<Image>()[1];
+        isLoadData = false;
     }
     private void Update()
     {
+
         if (skill != null)
         {
             if (skill.CanUseSkill)
@@ -40,15 +43,27 @@ public class UI_SkillBarSlot : MonoBehaviour
         }
         else
         {
+
             skillImage.sprite = _skill.Img;
             countdownImage.sprite = _skill.Img;
             skill = _skill;
-            EnabledImage();
+            if (skill.counteddownTime > 0)
+            {
+                timer = skill.counteddownTime;
+                skill.SetIsExitCalled(true);
+                skill.SetCanUseSkill(false);
+                skill.CountdownSkill(skill.counteddownTime);
+            }
+            else
+            {
+                EnabledImage();
+            }
         }
 
     }
     private void CountDown()
     {
+
         countdownImage.fillAmount = 1;
 
         if (skill.IsExitCalled)
@@ -61,7 +76,7 @@ public class UI_SkillBarSlot : MonoBehaviour
     private void EnabledImage()
     {
         skillImage.color = EnabledColor;
-        //countdownImage.color = EnabledColor;
+        //countdownImage.fillAmount = 0;
     }
     private void UnenabledImage()
     {

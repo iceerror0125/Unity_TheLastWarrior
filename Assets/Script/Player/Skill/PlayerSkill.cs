@@ -29,7 +29,9 @@ public class PlayerSkill : MonoBehaviour
     public float Duration => duration;
     public Sprite Img => img;
     public bool CanUseSkill => canUseSkill;
+    public void SetCanUseSkill(bool canUseSkill) => this.canUseSkill = canUseSkill;
     public bool IsExitCalled => isExitCalled;
+    public void SetIsExitCalled(bool value) => isExitCalled = value;
     public string SkillName => skillName;
     public string Description => description;
     #endregion
@@ -55,11 +57,15 @@ public class PlayerSkill : MonoBehaviour
     {
         UI_PlayerStat.instance.UpdateStat();
         isExitCalled = true;
-        StartCoroutine(EnableCanUseSkill());
+        StartCoroutine(EnableCanUseSkill(countdown));
     }
-    private IEnumerator EnableCanUseSkill()
+    public void CountdownSkill(float cd)
     {
-        yield return new WaitForSeconds(countdown);
+        StartCoroutine(EnableCanUseSkill(cd));
+    }
+    private IEnumerator EnableCanUseSkill(float cd)
+    {
+        yield return new WaitForSeconds(cd);
         canUseSkill = true;
         isExitCalled = false;
 

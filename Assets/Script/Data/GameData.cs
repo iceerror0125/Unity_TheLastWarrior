@@ -9,7 +9,8 @@ public class GameData
     public List<string> uniqueGOIdList;
     public PlayerStatData playerStatData;
     public SerializableDictionary<string, bool> skillTree;
-    public SerializableDictionary<string, float> skillCountdown;
+    public string[] skilSetName;
+    public float[] skillSetCountdown;
 
     public int dimond;
     public string equipId;
@@ -20,7 +21,8 @@ public class GameData
         uniqueGOIdList = new List<string>();
         playerStatData = new PlayerStatData();
         skillTree = new SerializableDictionary<string, bool>();
-        skillCountdown = new SerializableDictionary<string, float>();
+        skilSetName = new string[3];
+        skillSetCountdown = new float[3];
         dimond = -1;
         equipId = string.Empty;
         stashIdList = new List<string>();
