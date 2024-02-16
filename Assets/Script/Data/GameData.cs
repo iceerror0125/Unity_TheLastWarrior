@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameData
 {
     public string checkPointScene;
-    public List<string> uniqueGOIdList;
     public PlayerStatData playerStatData;
     public SerializableDictionary<string, bool> skillTree;
     public string[] skilSetName;
@@ -18,7 +17,6 @@ public class GameData
 
     public GameData() { 
         checkPointScene = string.Empty;
-        uniqueGOIdList = new List<string>();
         playerStatData = new PlayerStatData();
         skillTree = new SerializableDictionary<string, bool>();
         skilSetName = new string[3];

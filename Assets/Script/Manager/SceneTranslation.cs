@@ -12,12 +12,16 @@ public class SceneTranslation : MonoBehaviour
 
     void Start()
     {
-        if (transitionTo == GameManager.Instance.transitionFromScene)
+        if (!GameManager.Instance.isRespawn)
         {
-            PlayerManager.instance.player.transform.position = startPoint.transform.position;
-            StartCoroutine(PlayerManager.instance.WalkToNewScene(startDir, delay));
-            BlackScreen.instance.FadeOut();
+            if (transitionTo == GameManager.Instance.transitionFromScene)
+            {
+                PlayerManager.instance.player.transform.position = startPoint.transform.position;
+                StartCoroutine(PlayerManager.instance.WalkToNewScene(startDir, delay));
+                BlackScreen.instance.FadeOut();
 
+            }
+            GameManager.Instance.isRespawn = false;
         }
     }
 
@@ -41,6 +45,7 @@ public class SceneTranslation : MonoBehaviour
         {
             yield return null;
         }
+        GameManager.Instance.isRespawn = false;
         SceneManager.LoadScene(transitionTo);
     }
 }

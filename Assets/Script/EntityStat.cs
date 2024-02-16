@@ -31,7 +31,6 @@ public class EntityStat : MonoBehaviour
     {
         hp = maxHp;
         entity = GetComponent<Entity>();
-        critDamage = damage;
     }
 
     public virtual void TakeDamage(float damage, bool isDeadZone = false)

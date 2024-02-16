@@ -25,13 +25,15 @@ public class Inventory : MonoBehaviour
 
         stashList = new List<ItemData>();
         stashDic = new Dictionary<ItemData, InventoryItem>();
+        uiStashSlots = stashSlotParent.GetComponentsInChildren<UI_SlotItem>();
     }
 
     private void Start()
     {
-        uiStashSlots = stashSlotParent.GetComponentsInChildren<UI_SlotItem>();
-
-        ClearUI();
+        if (uiStashSlots[0].Data == null)
+        {
+            ClearUI();
+        }
     }
 
     private void UpdateUI()
@@ -110,7 +112,7 @@ public class Inventory : MonoBehaviour
         UpdateUI();
     }
 
-    private void PlusPlayerStat(ItemDataEquipment data)
+    public void PlusPlayerStat(ItemDataEquipment data)
     {
         Player player = PlayerManager.instance.player;
         player.stat.SetDamage(player.stat.Damage + data.Damage);
@@ -118,7 +120,7 @@ public class Inventory : MonoBehaviour
         player.stat.SetCritRate(player.stat.CritRate + data.CritRate);
     }
 
-    private void MinusPlayerStat(ItemDataEquipment data)
+    public void MinusPlayerStat(ItemDataEquipment data)
     {
         Player player = PlayerManager.instance.player;
         player.stat.SetDamage(player.stat.Damage - data.Damage);

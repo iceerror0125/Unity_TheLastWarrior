@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8832304439769697266}
   - component: {fileID: 6058482434171425785}
   - component: {fileID: 6482642660907917936}
+  - component: {fileID: 2369272007396043533}
   m_Layer: 0
   m_Name: Dimond
   m_TagString: Untagged
@@ -163,5 +164,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c3e9513054608458d206aae44012ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2369272007396043533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184675565098968313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

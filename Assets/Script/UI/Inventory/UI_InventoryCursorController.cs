@@ -24,7 +24,12 @@ public class UI_InventoryCursorController : MonoBehaviour
     {
         gridLenght = gridLayoutGroup.transform.childCount;
         InitCursor();
+
+        // load data
+        LoadUIData();
     }
+
+    
 
     void Update()
     {
@@ -143,5 +148,16 @@ public class UI_InventoryCursorController : MonoBehaviour
         currentIndex = 0;
         cursor.gameObject.SetActive(true);
         SetCursorPosition(currentIndex);
+    }
+
+    private void LoadUIData()
+    {
+        Inventory inventory = Inventory.instance;
+       
+        if (inventory.equipSlot != null)
+        {
+            var data = inventory.equipSlot;
+            equipmentSlot.GetComponent<UI_SlotItem>().SetupImageSlot(data);
+        }
     }
 }

@@ -10,6 +10,9 @@ public class FileManager
     private string dir = Application.persistentDataPath;
     private string tempFileName = "temp.json";
     private string mainFileName = "data.json";
+
+
+
     public void LoadGame()
     {
         // load entire game data from file
@@ -80,5 +83,13 @@ public class FileManager
     {
         string fullPath = Path.Combine(dir, mainFileName);
         return File.Exists(fullPath);
+    }
+    public void DeleteData()
+    {
+        string fullPath = Path.Combine(dir, mainFileName);
+        if (ExistsFileSave())
+        {
+            File.Delete(fullPath);
+        }
     }
 }

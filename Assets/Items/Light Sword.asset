@@ -18,5 +18,5 @@ MonoBehaviour:
   type: 1
   description: 
   damage: 10
-  critRate: 0.5
+  critRate: 0.1
   critDamage: 10

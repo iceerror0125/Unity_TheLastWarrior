@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,11 +14,13 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public MainMenuController controller;
     public AudioClip sfxHover;
     public AudioClip sfxClick;
+    public CheckpointData checkpoint;
 
     private void Start()
     {
         img = GetComponent<Image>();
         radio = GetComponent<AudioSource>();
+
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -34,21 +37,54 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (!controller.isClickable)
         {
-            radio.Stop();
-            radio.clip = sfxClick;
-            radio.Play();
-
-            controller.isClickable = true;
-            BlackScreen.instance.FadeIn();
-            InvokeRepeating("LoadScene", 1, 0.5f);
+            EnterGame();
+            ResetData();
         }
     }
+
+    private void ResetData()
+    {
+        // delete checkpoint
+        if (checkpoint  != null)
+        {
+            checkpoint.scene = "";
+        }
+        // playerPrefs
+        PlayerPrefs.DeleteAll();
+        // delete data file
+        SaveManager.instance.DeleteFileSave();
+        GameManager.Instance.isRespawn = true;
+    }
+
+    private void EnterGame()
+    {
+        radio.Stop();
+        radio.clip = sfxClick;
+        radio.Play();
+
+        controller.isClickable = true;
+        BlackScreen.instance.FadeIn();
+        InvokeRepeating("LoadScene", 1, 0.5f);
+    }
+
     private void LoadScene()
     {
         if (BlackScreen.instance.IsFill())
         {
-            SceneManager.LoadScene("Scene_1");
+            //SceneManager.LoadScene("Scene_1");
+            if (checkpoint != null && checkpoint.scene.Length > 0)
+            {
+                SceneManager.LoadScene(checkpoint.scene);
+            }
+            else
+            {
+                SceneManager.LoadScene("Scene_1");
+            }
         }
+    }
+    public void Continue()
+    {
+        EnterGame();
     }
     public void ExitGame()
     {

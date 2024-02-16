@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -24,9 +25,9 @@ public class SaveManager : MonoBehaviour
 
     public void SaveData()
     {
-        SavePlayerStat();
         SaveSkillData();
-        //SaveInventoryData();
+        SaveInventoryData();
+        SavePlayerStat();
         // checkpoiint -> get scene name
 
 
@@ -37,6 +38,7 @@ public class SaveManager : MonoBehaviour
         mainData = fileManager.LoadData();
         LoadPlayerStat();
         LoadSkillData();
+        LoadInventoryData();
     }
 
     private void LoadPlayerStat()
@@ -63,13 +65,10 @@ public class SaveManager : MonoBehaviour
                 }
             }
         }
-
         // dimond
         SkillManager.instance.SetDimond(mainData.dimond);
-
         // skill set
         LoadSkillSetData();
-
     }
 
     private void LoadSkillSetData()
@@ -99,9 +98,45 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    private void LoadInventoryData()
+    {
+        Inventory inventory = Inventory.instance;
+        // equip
+        ItemDataEquipment equip = FindItemDataPrefab(mainData.equipId) as ItemDataEquipment;
+        if (equip != null)
+        {
+            inventory.AddEquipmentItem(equip);
+        }
+
+        // stash
+        for (int i = 0; i < mainData.stashIdList.Count; i++)
+        {
+            ItemData equipment = FindItemDataPrefab(mainData.stashIdList[i]);
+            if (equipment != null)
+            {
+                inventory.AddItem(equipment);
+            }
+        }
+    }
+
     private void SaveInventoryData()
     {
-        throw new NotImplementedException();
+        Inventory inventory = Inventory.instance;
+        mainData.equipId = "";
+        if (inventory.equipSlot != null)
+        {
+            mainData.equipId = inventory.equipSlot.id;
+            //minus stat item
+            inventory.MinusPlayerStat(inventory.equipSlot);
+        }
+
+        //stash 
+        mainData.stashIdList.Clear();
+        for (int i = 0; i < inventory.stashList.Count; i++)
+        {
+            string id = inventory.stashList[i].id;
+            mainData.stashIdList.Add(id);
+        }
     }
 
     private void SaveSkillData()
@@ -159,12 +194,23 @@ public class SaveManager : MonoBehaviour
         return fileManager.ExistsFileSave();
     }
 
-    public void SaveOneTimeAppear(string id)
+    public void DeleteFileSave()
     {
-        if (!mainData.uniqueGOIdList.Contains(id))
+        fileManager.DeleteData();
+    }
+
+    private ItemData FindItemDataPrefab(string id)
+    {
+        string[] assets = AssetDatabase.FindAssets("", new[] { "Assets/Items" });
+        foreach (string asset in assets)
         {
-            mainData.uniqueGOIdList.Add(id);
-            fileManager.SaveData(mainData);
+            var SOPath = AssetDatabase.GUIDToAssetPath(asset);
+            var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(SOPath);
+            if (itemData != null && itemData.id == id)
+            {
+                return itemData;
+            }
         }
+        return null;
     }
 }

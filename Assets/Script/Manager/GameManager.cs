@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public string transitionFromScene;
     public bool isCutScene;
+    public bool isRespawn;
     public bool isGamePaused { get; private set; }
     public bool isUITurnedOn { get; private set; }
     public SaveManager saveManager { get; private set; }
@@ -24,14 +25,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        saveManager = SaveManager.instance;
     }
-
 
 
     private void Start()
     {
-      
+        saveManager = SaveManager.instance;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }

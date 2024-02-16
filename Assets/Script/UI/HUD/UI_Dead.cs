@@ -37,6 +37,7 @@ public class UI_Dead : MonoBehaviour
         if (manager.data.scene.Contains("Scene"))
         {
             string name = manager.data.scene;
+            GameManager.Instance.isRespawn = true;
             SceneManager.LoadScene(name);
         }
         else

@@ -25,16 +25,21 @@ public class CheckpointManager : MonoBehaviour
     }
     void Start()
     {
-        if (checkpoints[0].isActivated)
+        BlackScreen.instance.FadeOut();
+        Debug.Log(GameManager.Instance.isRespawn);
+
+        if (GameManager.Instance.isRespawn)
         {
-            BlackScreen.instance.FadeOut();
-            PlayerManager.instance.player.transform.position = checkpoints[0].transform.position;
+            if (checkpoints[0].isActivated)
+            {
+                PlayerManager.instance.player.transform.position = checkpoints[0].transform.position;
+            }
+            else if (!data.scene.Contains("Scene"))
+            {
+                PlayerManager.instance.player.transform.position = new Vector2(-10, -1);
+            }
         }
-        else if (!data.scene.Contains("Scene"))
-        {
-            BlackScreen.instance.FadeOut();
-            PlayerManager.instance.player.transform.position = new Vector2(-10, -1);
-        }
+
     }
 
     public bool HasCheckPoint()

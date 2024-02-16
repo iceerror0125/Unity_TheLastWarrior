@@ -12,6 +12,17 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         BlackScreen.instance.FadeOut();
+
+        GameObject continueBtn = transform.Find("Continue").gameObject;
+
+        if (SaveManager.instance.ExistsFileSave())
+        {
+            continueBtn.SetActive(true);
+        }
+        else
+        {
+            continueBtn.SetActive(false);
+        }
     }
     private void Update()
     {
