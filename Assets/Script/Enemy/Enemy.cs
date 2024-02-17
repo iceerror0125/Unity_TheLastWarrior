@@ -74,6 +74,12 @@ public class Enemy : Entity
                 isActivePhase2 = true;
             }
         }
+
+      /*  // test all monster 
+        if (stat.Hp < 0)
+        {
+            stateMachine.ChangeState(deadState);
+        }*/
     }
 
     protected virtual void ActivePhase2() { }

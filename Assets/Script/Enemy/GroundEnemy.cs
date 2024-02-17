@@ -35,13 +35,14 @@ public class GroundEnemy : Enemy
 
     bool DetectPlayer(Vector2 origin, Vector2 direction, float distance)
     {
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance);
-
-        if (hit.collider != null && (1 << hit.collider.gameObject.layer) == whatIsPlayer)
-        {
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, whatIsPlayer);
+        /* Debug.Log(hit);
+         if (hit.collider != null && (1 << hit.collider.gameObject.layer) == whatIsPlayer)
+         {
+             return true;
+         }*/
+        if (hit)
             return true;
-        }
-
         return false;
     }
     protected override void OnDrawGizmos()

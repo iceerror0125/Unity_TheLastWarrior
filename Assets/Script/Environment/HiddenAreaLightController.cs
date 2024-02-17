@@ -17,14 +17,21 @@ public class HiddenAreaLightController : MonoBehaviour
 
     private void TurnOnLight()
     {
-        global.TurnOn(speed);
-        hiddenLight.SetActive(false);
+        if (global != null)
+        {
+            global.TurnOn(speed);
+            hiddenLight.SetActive(false);
+        }
     }
 
     private void TurnOffLight()
     {
-        global.TurnOff(speed);
-        hiddenLight.SetActive(true);
+        if (global != null)
+        {
+            global.TurnOff(speed);
+            hiddenLight.SetActive(true);
+        }
+       
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -6,6 +6,7 @@ public class ItemObject : MonoBehaviour
     private SpriteRenderer sr;
     private CollectItemManager manager;
     private DialogManager dialogManager;
+    private float distance = 1f;
 
     private void Start()
     {
@@ -15,12 +16,22 @@ public class ItemObject : MonoBehaviour
         sr.sprite = item.Img;
     }
 
+    private void Update()
+    {
+        if (CheckGround())
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 0;
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckShowDialog();
+       
 
         if (collision.GetComponent<Player>() != null)
         {
+            CheckShowDialog();
             Inventory.instance.AddItem(item);
             manager.CollectedItem(item.ItemName);
             AudioManager.instance.environment.PickUpItem();
@@ -35,4 +46,19 @@ public class ItemObject : MonoBehaviour
             dialogManager.ShowInfoDialog(item);
         }
     }
+
+    private bool CheckGround()
+    {
+        var x = Physics2D.Raycast(transform.position, Vector2.down, distance, 1 << 3);
+        if (x)
+        {
+            return true;
+        }
+        return false;
+    }
+
+   /* private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - distance));
+    }*/
 }

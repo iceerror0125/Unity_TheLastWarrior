@@ -54,7 +54,7 @@ public class UI_Dead : MonoBehaviour
     }
     private IEnumerator FadeOutRoutine()
     {
-        float speed = 0.5f;
+        float speed = 1f;
         while (text1.color.a < 0.9)
         {
             text1.color = new Color(1, 0, 0, text1.color.a + Time.deltaTime * speed);
