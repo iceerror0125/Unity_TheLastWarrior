@@ -45,6 +45,7 @@ public class GroundEnemy : Enemy
             return true;
         return false;
     }
+    
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

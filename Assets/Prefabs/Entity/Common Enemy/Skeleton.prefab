@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2399320422709302501
 Transform:
   m_ObjectHideFlags: 0
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b79d3c17b6cfa4fa788978aee2fd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50000
+  maxHp: 400
   hp: 0
-  damage: 0
+  damage: 20
   critRate: 0
   critDamage: 0
 --- !u!114 &7896094889479232852
@@ -146,7 +146,9 @@ MonoBehaviour:
   attackCheck: {fileID: 2795236892724223583}
   attackCheckRadius: 1.68
   hurtTime: 0.2
+  canKnockback: 0
   isDead: 0
+  isImmortal: 0
   moveDuration: 3
   idleDuration: 1
   detectPlayerDistance: 4
@@ -158,6 +160,7 @@ MonoBehaviour:
   exitBattleStateTime: 5
   attackRange: 4.13
   isAttack: 0
+  attackCount: 0
   isShield: 0
   useShieldDuration: 1
 --- !u!1 &2255154031363680289
@@ -214,7 +217,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fa91a1b9c57b6547a5c3b8e79875af8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1882129101
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 290686896, guid: e0283eb4527f57a429e85ada1ffdf0d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

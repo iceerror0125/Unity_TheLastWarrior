@@ -106,7 +106,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fa91a1b9c57b6547a5c3b8e79875af8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8043407992942757736
 Transform:
   m_ObjectHideFlags: 0
@@ -199,11 +199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b79d3c17b6cfa4fa788978aee2fd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10000
+  maxHp: 100
   hp: 0
-  damage: 10
-  critRate: 0
-  critDamage: 0
+  damage: 15
+  critRate: 0.2
+  critDamage: 10
 --- !u!50 &7150105983852729290
 Rigidbody2D:
   serializedVersion: 4
@@ -296,7 +296,9 @@ MonoBehaviour:
   attackCheck: {fileID: 218550404789809044}
   attackCheckRadius: 0
   hurtTime: 0.5
+  canKnockback: 0
   isDead: 0
+  isImmortal: 0
   moveDuration: 2
   idleDuration: 2
   detectPlayerDistance: 15
@@ -308,6 +310,7 @@ MonoBehaviour:
   exitBattleStateTime: 5
   attackRange: 0
   isAttack: 0
+  attackCount: 0
   distanceStopMoving: 10
   toAttackStateCountdown: 2
   moveBackwardSpeed: 2

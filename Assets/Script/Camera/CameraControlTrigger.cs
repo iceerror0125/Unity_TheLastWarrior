@@ -1,8 +1,7 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditor.TerrainTools;
+#endif
 using UnityEngine;
 
 public class CameraControlTrigger : MonoBehaviour
@@ -62,6 +61,7 @@ public enum PanDirection
     Up, Down, Left, Right
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(CameraControlTrigger))]
 public class MyScriptEditor : Editor
 {
@@ -100,3 +100,4 @@ public class MyScriptEditor : Editor
         }
     }
 }
+#endif

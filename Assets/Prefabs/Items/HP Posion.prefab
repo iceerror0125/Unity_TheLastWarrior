@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffType: 0
-  index: 20
+  index: 35
 --- !u!114 &718231545487545574
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -201,6 +199,7 @@ public class SaveManager : MonoBehaviour
 
     private ItemData FindItemDataPrefab(string id)
     {
+#if UNITY_EDITOR
         string[] assets = AssetDatabase.FindAssets("", new[] { "Assets/Items" });
         foreach (string asset in assets)
         {
@@ -211,6 +210,8 @@ public class SaveManager : MonoBehaviour
                 return itemData;
             }
         }
+#endif
         return null;
     }
+
 }

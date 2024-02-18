@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Principal;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyStat))]
@@ -150,5 +148,11 @@ public class Enemy : Entity
     {
         base.KnockBack(attacker, knockback);
         stateMachine.ChangeState(hurtState);
+    }
+    public bool CheckGroundAhead()
+    {
+        Vector2 start = new Vector2(transform.position.x + 0.6f * entityDir, transform.position.y);
+        var ray = Physics2D.Raycast(start, Vector2.down, groundCheckLength, whatIsGround);
+        return ray;
     }
 }

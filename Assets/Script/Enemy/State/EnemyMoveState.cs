@@ -25,7 +25,7 @@ public class EnemyMoveState : EnemyState
         base.Update();
         enemy.ChangeVelocity(enemy.MoveSpeed * enemy.EntityDir, enemy.rb.velocity.y);
 
-        if (timer < 0 || enemy.IsWall)
+        if (timer < 0 || enemy.IsWall || !enemy.CheckGroundAhead())
         {
             enemy.idleState.SetHasFlip(true);
             stateMachine.ChangeState(enemy.idleState);

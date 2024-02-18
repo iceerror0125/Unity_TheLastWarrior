@@ -17,6 +17,6 @@ MonoBehaviour:
   img: {fileID: 160384165, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
   description: 
-  damage: 10
-  critRate: 0.1
+  damage: 20
+  critRate: 0.2
   critDamage: 10

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Checkpoint
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointData
-  scene: Scene_3
+  scene: 

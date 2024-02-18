@@ -13,7 +13,7 @@ public class HitPlayerTrigger
             if (player != null && !player.IsDead)
             {
                 //enemy.PerformNormalAttack(player);
-                enemy.CauseDamage(player, isCrit: true);
+                enemy.CauseDamage(player, enemy.stat.Damage * 2, isCrit: true);
 
             }
         }
