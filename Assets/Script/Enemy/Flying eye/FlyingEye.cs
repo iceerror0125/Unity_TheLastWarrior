@@ -26,7 +26,6 @@ public class FlyingEye : FlyEnemy
         stateMachine.InitState(idleState);
     }
 
-
     /*public override void PerformNormalAttack(Entity hitEntity)
     {
         if (attackCount == 3) // the third attack will be further knockback

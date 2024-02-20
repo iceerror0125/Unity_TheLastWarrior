@@ -1,4 +1,7 @@
 
+
+using UnityEngine;
+
 public class EnemyIdleState : EnemyState
 {
     private bool hasFlip;

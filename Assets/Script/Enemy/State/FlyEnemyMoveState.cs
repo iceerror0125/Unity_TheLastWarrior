@@ -19,7 +19,6 @@ public class FlyEnemyMoveState : EnemyMoveState
         flyEnemy = (FlyEnemy)enemy;
 
         moveVector = CalculateMoveVector();
-
         outFlyBoxTimer = 2;
     }
 

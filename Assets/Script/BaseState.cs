@@ -15,6 +15,7 @@ public class BaseState
     public virtual void Update()
     {
         timer -= Time.deltaTime;
+       // Debug.Log(animName);
     }
     public virtual void Exit() { }
 }

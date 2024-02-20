@@ -26,7 +26,6 @@ public class CheckpointManager : MonoBehaviour
     void Start()
     {
         BlackScreen.instance.FadeOut();
-        Debug.Log(GameManager.Instance.isRespawn);
 
         if (GameManager.Instance.isRespawn)
         {

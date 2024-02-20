@@ -1,53 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class TestScipt : MonoBehaviour
+public class FieldOfView : MonoBehaviour
 {
     Mesh mesh;
-    public float startingAngle;
-    public float angle;
+    public float startingAngle = 0;
+    public Vector3 origin = Vector3.zero;
     public float fov = 120f;
-    private Quaternion rotationFlag;
+    public float viewDistance = 50;
+    public LayerMask target;
+    public bool catchedTarget { get; private set; }
+
     private void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        rotationFlag = transform.parent.rotation;
 
     }
     private void Update()
     {
-        Vector3 origin = Vector3.zero;
         int rayCount = 60;
-       /* if (rotationFlag != transform.parent.rotation)
-        {
-            rotationFlag = transform.parent.rotation;
-            transform.Rotate(0, 180, 0);
-            if (Mathf.Abs(transform.parent.eulerAngles.y) == 180)
-            {
-                startingAngle -= 60;
-            }
-            else
-            {
-                startingAngle += 60;
-            }
-
-        }*/
-        angle = startingAngle;
+        float angleIncrease = fov / rayCount;
+        float angle = startingAngle;
 
         transform.localRotation = transform.parent.rotation;
-
         if (Mathf.Abs(transform.parent.eulerAngles.y) == 180)
         {
             angle -= 60;
         }
 
-        float angleIncrease = fov / rayCount;
-        float viewDistance = 50;
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -69,6 +51,23 @@ public class TestScipt : MonoBehaviour
             else
             {
                 vertex = rayCast.point;
+                /* if (rayCast.collider.gameObject.layer == 3)
+                 {
+                     Debug.Log(rayCast.point);
+                     vertex = rayCast.point;
+                 }
+                 else
+                 {
+                     vertex = origin + GetVectorFromAngle(angle) * viewDistance;
+                 }*/
+                if (rayCast.collider.gameObject.layer == target)
+                {
+                    catchedTarget = true;
+                }
+                else
+                {
+                    catchedTarget = false;
+                }
             }
 
 
@@ -76,19 +75,6 @@ public class TestScipt : MonoBehaviour
 
             if (i > 0)
             {
-                /* if (Mathf.Abs(transform.rotation.y) == 180)
-                 {
-                     triangles[triangleIndex + 0] = 0;
-                     triangles[triangleIndex + 1] = vertexIndex;
-                     triangles[triangleIndex + 2] = vertexIndex + 1;
-                 }
-                 else
-                 {
-                     triangles[triangleIndex + 0] = 0;
-                     triangles[triangleIndex + 1] = vertexIndex - 1;
-                     triangles[triangleIndex + 2] = vertexIndex;
-                 }
-                */
                 triangles[triangleIndex + 0] = 0;
                 triangles[triangleIndex + 1] = vertexIndex - 1;
                 triangles[triangleIndex + 2] = vertexIndex;

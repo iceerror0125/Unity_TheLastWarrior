@@ -151,6 +151,11 @@ public class Enemy : Entity
     }
     public bool CheckGroundAhead()
     {
+        if (groundCheckLength == 0)
+        {
+            // fly enemy no need to check ground
+            return true;
+        }
         Vector2 start = new Vector2(transform.position.x + 0.6f * entityDir, transform.position.y);
         var ray = Physics2D.Raycast(start, Vector2.down, groundCheckLength, whatIsGround);
         return ray;
