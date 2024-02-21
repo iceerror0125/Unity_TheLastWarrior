@@ -8,6 +8,7 @@ public class FlyEnemyMoveState : EnemyMoveState
     Vector2 moveVector;
     FlyEnemy flyEnemy;
     private float outFlyBoxTimer;
+    private bool isOutOfBox;
     public FlyEnemyMoveState(Enemy enemy, string animName) : base(enemy, animName)
     {
     }
@@ -20,6 +21,15 @@ public class FlyEnemyMoveState : EnemyMoveState
 
         moveVector = CalculateMoveVector();
         outFlyBoxTimer = 2;
+
+        if (!flyEnemy.IsInsideFlyBox(flyEnemy.transform.position))
+        {
+            isOutOfBox = true;
+        }
+        else
+        {
+            isOutOfBox = false;
+        }
     }
 
     public override void Exit()
@@ -31,7 +41,7 @@ public class FlyEnemyMoveState : EnemyMoveState
     {
         outFlyBoxTimer -= Time.deltaTime;
 
-        if (!flyEnemy.IsInsideFlyBox(flyEnemy.transform.position))
+        if (isOutOfBox)
         {
             if (!flyEnemy.isInOriginalPos())
             {

@@ -25,7 +25,7 @@ public class EnemyState : BaseState
     {
         base.Update();
 
-        if (enemy.IsDead && !enemy.isInDeadState)
+        if (enemy.stat.Hp <= 0 && !enemy.isInDeadState)
         {
             stateMachine.ChangeState(enemy.deadState);
         }

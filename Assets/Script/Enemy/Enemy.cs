@@ -73,8 +73,8 @@ public class Enemy : Entity
             }
         }
 
-      /*  // test all monster 
-        if (stat.Hp < 0)
+        // test all monster 
+        /*if (stat.Hp < 0)
         {
             stateMachine.ChangeState(deadState);
         }*/

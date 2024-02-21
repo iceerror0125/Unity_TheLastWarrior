@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class BlockWall : MonoBehaviour
 {
-    public void DestroyBlockWall()
+    [SerializeField] private GameObject target;
+    
+    void Update()
     {
-        Destroy(gameObject);
+        if (target == null)
+        {
+            Destroy(gameObject);
+        }
     }
 }
