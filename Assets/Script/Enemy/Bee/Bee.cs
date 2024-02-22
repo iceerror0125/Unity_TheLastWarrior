@@ -27,6 +27,7 @@ public class Bee : FlyEnemy
         deadState = new EnemyDeadState(this, "Bee_Dead");
         idleState = new EnemyIdleState(this, "Bee_Idle");
         moveState = new FlyEnemyMoveState(this, "Bee_Move");
+        hurtState = new EnemyHurtState(this, "Bee_Idle");
 
         stateMachine.InitState(idleState);
     }

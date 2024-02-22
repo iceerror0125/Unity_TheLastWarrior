@@ -18,6 +18,8 @@ public class PlayerWallJumpState : PlayerAirState
 
         activeMoveControllerTimer = 0.2f;
 
+        player.PlusJumpCounter();
+
         AudioManager.instance.player.Jump();
 
     }

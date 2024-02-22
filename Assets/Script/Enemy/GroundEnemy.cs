@@ -4,6 +4,7 @@ using UnityEngine;
 public class GroundEnemy : Enemy
 {
     protected float raycastAngle = 15f;
+    int layersToIgnore = (1 << 0) | (1 << 7);
     protected override void Start()
     {
         base.Start();
@@ -35,9 +36,11 @@ public class GroundEnemy : Enemy
 
     bool DetectPlayer(Vector2 origin, Vector2 direction, float distance)
     {
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, ~layersToIgnore);
         if (hit.collider != null)
         {
+            Debug.Log(hit.collider.name);
+           
             if (hit.collider.gameObject.layer == 6)
             {
                 return true;

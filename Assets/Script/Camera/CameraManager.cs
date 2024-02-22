@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float distanceFromGround;
     private float normDamping;
 
-    private CinemachineVirtualCamera currentCamera;
+    public CinemachineVirtualCamera currentCamera;
     private CinemachineFramingTransposer transposer;
 
     private Coroutine panCameraCoroutine;
@@ -106,25 +106,25 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
     }
-    public void SwapCamera(CinemachineVirtualCamera cameraFromLeft, CinemachineVirtualCamera cameraFromRight, Vector2 triggerExitDirection)
+    public void SwapCamera(CinemachineVirtualCamera cameraOut, CinemachineVirtualCamera cameraIn)
     {
-        bool isRightDownOut = triggerExitDirection.x > 0f || triggerExitDirection.y < 0f;
-        bool isLeftUpOut = triggerExitDirection.x < 0f || triggerExitDirection.y > 0f;
-        if (currentCamera == cameraFromLeft && isRightDownOut)
+       /* bool isRightDownOut = triggerExitDirection.x > 0f || triggerExitDirection.y < 0f;
+        bool isLeftUpOut = triggerExitDirection.x < 0f || triggerExitDirection.y > 0f;*/
+        if (currentCamera == cameraOut )
         {
-            cameraFromRight.enabled = true;
-            cameraFromLeft.enabled = false;
-            currentCamera = cameraFromRight;
+            cameraIn.enabled = true;
+            cameraOut.enabled = false;
+            currentCamera = cameraIn;
             transposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         }
-        else if (currentCamera == cameraFromRight && isLeftUpOut)
+       /* else if (currentCamera == cameraIn)
         {
-            cameraFromLeft.enabled = true;
-            cameraFromRight.enabled = false;
-            currentCamera = cameraFromLeft;
+            cameraOut.enabled = true;
+            cameraIn.enabled = false;
+            currentCamera = cameraOut;
             transposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
 
-        }
+        }*/
     }
 
     private void OnShake(float duration, float strength)

@@ -29,7 +29,10 @@ public class EntityStat : MonoBehaviour
 
     private void Start()
     {
-        hp = maxHp;
+        if (hp == 0)
+        {
+            hp = maxHp;
+        }
         entity = GetComponent<Entity>();
     }
 
@@ -43,7 +46,7 @@ public class EntityStat : MonoBehaviour
             {
                 CanRespawn();
             }
-           
+
             if (!hasRespawn)
             {
                 entity.SetIsDead(true);
@@ -55,7 +58,7 @@ public class EntityStat : MonoBehaviour
             }
         }
     }
-   
+
 
     protected virtual void CanRespawn()
     {

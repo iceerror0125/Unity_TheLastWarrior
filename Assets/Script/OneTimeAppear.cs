@@ -15,6 +15,6 @@ public class OneTimeAppear : MonoBehaviour
 
     private void OnDestroy()
     {
-        //PlayerPrefs.SetInt(gameObject.name, 1);
+        // PlayerPrefs.SetInt(gameObject.name, 1);
     }
 }

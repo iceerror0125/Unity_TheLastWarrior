@@ -15,11 +15,14 @@ public class CameraFollowPlayer : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = player.transform.position; 
+        transform.position = player.transform.position;
     }
     public void RotateCamera()
     {
-        LeanTween.rotateY(gameObject, CameraRotation(), speed).setEaseInOutSine();
+        if (this != null)
+        {
+            LeanTween.rotateY(gameObject, CameraRotation(), speed).setEaseInOutSine();
+        }
     }
     private float CameraRotation()
     {

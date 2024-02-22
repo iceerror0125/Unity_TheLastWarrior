@@ -6,7 +6,6 @@ using UnityEngine;
 public class BeeBattleState : EnemyBattleState
 {
    
-    float exitBattleStateTimer;
     Bee bee;
     public BeeBattleState(Enemy enemy, string animName) : base(enemy, animName)
     {
@@ -16,7 +15,6 @@ public class BeeBattleState : EnemyBattleState
     {
         base.Enter();
         bee = (Bee)enemy;
-
         bee.SetIsDetectedPlayer(true);
 
         timer = bee.ToAttackStateTimer;

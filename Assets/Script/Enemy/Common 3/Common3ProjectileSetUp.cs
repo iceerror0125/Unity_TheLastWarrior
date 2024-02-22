@@ -20,7 +20,7 @@ public class Common3ProjectileSetUp : MonoBehaviour
 
     private void Start()
     {
-        common3 = EnemyManager.instance.common3;
+        common3 = FindAnyObjectByType<Common3>();
         target = common3.player.transform; 
         SimulateProjectile();
     }
@@ -66,7 +66,7 @@ public class Common3ProjectileSetUp : MonoBehaviour
         {
             Player player = collision.GetComponent<Player>();
             //EnemyManager.instance.common3.PerformNormalAttack(player);
-            EnemyManager.instance.common3.CauseDamage(player, isCrit: true);
+            common3.CauseDamage(player, isCrit: true);
 
             Destroy(gameObject);
         }

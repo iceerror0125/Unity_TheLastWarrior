@@ -35,7 +35,6 @@ public class FieldOfView : MonoBehaviour
         if (Mathf.Abs(Mathf.DeltaAngle(transform.parent.eulerAngles.y, 180)) < 0.1f)
         {
             angle -= 127;
-            //startingAngle *= -1;
         }
 
         for (int i = 0; i <= rayCount; i++)
@@ -46,6 +45,7 @@ public class FieldOfView : MonoBehaviour
 
             if (rayCast.collider != null)
             {
+                //Debug.Log(rayCast.collider.name);
                 if (rayCast.collider.gameObject.layer == 6)
                 {
                     return true;

@@ -14,6 +14,7 @@ public class EnemyBattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
+       
         exitBattleStateTimer = enemy.ExitBattleStateTime;
         attackCountdownTimer = enemy.AttackCountDown;
         enemy.SetIsDetectedPlayer(true);

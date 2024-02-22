@@ -24,15 +24,32 @@ public class CameraControlTrigger : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Player>() != null)
+        {
+            
+            if (custom.swapCameras && custom.cameraOut != null && custom.cameraIn != null)
+            {
+
+                CameraManager.instance.SwapCamera(custom.cameraOut, custom.cameraIn);
+            }
+            if (custom.panCameraOnContact)
+            {
+                CameraManager.instance.PanCameraOnContact(custom.panDistance, custom.panTime, custom.panDirection, false);
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() != null)
         {
-            Vector2 exitDirection = (collision.transform.position - coll.bounds.center).normalized;
-            if (custom.swapCameras && custom.cameraOnLeft != null && custom.cameraOnRight != null)
+
+            if (custom.swapCameras && custom.cameraOut != null && custom.cameraIn != null)
             {
-            
-                CameraManager.instance.SwapCamera(custom.cameraOnLeft, custom.cameraOnRight, exitDirection);
+
+                CameraManager.instance.SwapCamera(custom.cameraIn, custom.cameraOut);
             }
             if (custom.panCameraOnContact)
             {
@@ -48,8 +65,11 @@ public class CustomInspectorObjects
     public bool swapCameras = false;
     public bool panCameraOnContact = false;
 
-    [HideInInspector] public CinemachineVirtualCamera cameraOnLeft;
-    [HideInInspector] public CinemachineVirtualCamera cameraOnRight;
+    /*  [HideInInspector] public CinemachineVirtualCamera cameraOnLeft; 
+      [HideInInspector] public CinemachineVirtualCamera cameraOnRight; */
+
+    [HideInInspector] public CinemachineVirtualCamera cameraOut;
+    [HideInInspector] public CinemachineVirtualCamera cameraIn;
 
     [HideInInspector] public PanDirection panDirection;
     [HideInInspector] public float panDistance = 0.3f;
@@ -78,9 +98,9 @@ public class MyScriptEditor : Editor
 
         if (cameraControlTrigger.custom.swapCameras)
         {
-            cameraControlTrigger.custom.cameraOnLeft = EditorGUILayout.ObjectField("Camera On Left", cameraControlTrigger.custom.cameraOnLeft,
+            cameraControlTrigger.custom.cameraOut = EditorGUILayout.ObjectField("Camera On Left", cameraControlTrigger.custom.cameraOut,
                 typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
-            cameraControlTrigger.custom.cameraOnRight = EditorGUILayout.ObjectField("Camera On Right", cameraControlTrigger.custom.cameraOnRight,
+            cameraControlTrigger.custom.cameraIn = EditorGUILayout.ObjectField("Camera On Right", cameraControlTrigger.custom.cameraIn,
               typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
         }
 

@@ -66,7 +66,7 @@ public class BeeProjectileSetUp : MonoBehaviour
         if (collision.GetComponent<Player>() != null)
         {
             // EnemyManager.instance.bee.PerformNormalAttack(collision.GetComponent<Player>());
-            Bee bee = EnemyManager.instance.bee;
+            Bee bee = FindAnyObjectByType<Bee>();
             Player player = collision.GetComponent<Player>();
             bee.CauseDamage(player);
         }

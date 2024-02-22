@@ -20,7 +20,7 @@ public class Spike : MonoBehaviour
         Player player = collision.gameObject.GetComponent<Player>();
         if (player != null && timer < 0 && !player.isImmortal)
         {
-            player.TakeDamage(10);
+            player.TakeDamage(5);
             player.ChangeVelocity(4 * player.EntityDir * -1, 4);
             player.stateMachine.ChangeState(player.hurtState);
             timer = countdown;
