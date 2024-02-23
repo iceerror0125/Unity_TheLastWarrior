@@ -102,14 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlock: 0
   isActiveSkill: 1
-  countdown: 10
+  countdown: 7
   duration: 0
   img: {fileID: 21300000, guid: fd50e39aa53723643b9a31bd22567168, type: 3}
   counteddownTime: 0
   skillName: Heal
-  description: 'Restore HP by 10% Max HP
+  description: 'Restore HP by 20% Max HP
 
-    (10s countdown)'
+    (7s countdown)'
 --- !u!1 &1338423017127127265
 GameObject:
   m_ObjectHideFlags: 0

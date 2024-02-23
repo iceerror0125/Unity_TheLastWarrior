@@ -15,6 +15,9 @@ public class FieldOfView : MonoBehaviour
     public LayerMask target;
     public bool catchedTarget { get; private set; }
 
+    int layersToIgnore = (1 << 0) | (1 << 7);
+
+
     private void Start()
     {
         mesh = new Mesh();
@@ -39,7 +42,7 @@ public class FieldOfView : MonoBehaviour
 
         for (int i = 0; i <= rayCount; i++)
         {
-            RaycastHit2D rayCast = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance);
+            RaycastHit2D rayCast = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, ~layersToIgnore);
 
             Debug.DrawRay(origin, GetVectorFromAngle(angle) * viewDistance, Color.blue);
 

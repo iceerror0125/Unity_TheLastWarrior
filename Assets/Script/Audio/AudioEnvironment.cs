@@ -21,6 +21,8 @@ public class AudioEnvironment : MonoBehaviour
     [SerializeField] AudioClip secretPlaceDiscovered;
     [SerializeField] AudioClip shakingGround;
     [SerializeField] AudioClip hitBySpike;
+    [SerializeField] AudioClip enemyHurt;
+
     void Start()
     {
         bg = GetComponentsInChildren<AudioSource>()[0];
@@ -83,6 +85,10 @@ public class AudioEnvironment : MonoBehaviour
     public void HitBySpike()
     {
         PlaySFX(hitBySpike);
+    }
+    public void EnemyHurt()
+    {
+        PlaySFX(enemyHurt);
     }
 
     private void PlaySFX(AudioClip clip)

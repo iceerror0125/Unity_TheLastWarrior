@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class PlayerFallState : PlayerAirState
 {
     public PlayerFallState(string animName) : base(animName)
@@ -22,6 +24,16 @@ public class PlayerFallState : PlayerAirState
     {
         base.Update();
 
+        if (player.CheckTagGround("Slippery"))
+        {
+            player.rb.gravityScale = 30;
+            player.ZeroJumpCounter();
+        }
+        else
+        {
+            player.ActivateFallGravity(true);
+
+        }
         if (player.IsGround)
         {
             stateMachine.ChangeState(player.idleState);

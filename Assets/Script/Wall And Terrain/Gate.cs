@@ -34,7 +34,11 @@ public class Gate : MonoBehaviour
             offset = Vector2.up;
         }
         AudioManager.instance.environment.OpenGate();
-        StartCoroutine(MoveGateRoutine());
+        if (this != null)
+        {
+            StartCoroutine(MoveGateRoutine());
+
+        }
     }
     private void CloseGate()
     {

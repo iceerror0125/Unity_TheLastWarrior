@@ -11,7 +11,7 @@ public class PlayerAirState : PlayerState
     {
         base.Enter();
         timer = 0.2f;
-      
+        
     }
     public override void Exit()
     {
@@ -35,6 +35,7 @@ public class PlayerAirState : PlayerState
             CameraManager.instance.InterpolateYAxis(true);
             isFall = true;
         }
+
     }
 
     protected void CheckWallSlide()

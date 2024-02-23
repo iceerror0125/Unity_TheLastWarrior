@@ -44,7 +44,15 @@ public class SaveManager : MonoBehaviour
         EntityStat stat = PlayerManager.instance.player.stat;
         PlayerStatData statData = mainData.playerStatData;
         stat.SetMaxHp(statData.maxHP);
-        stat.SetHP(statData.currentHP);
+        if (statData.currentHP <= 0)
+        {
+            stat.SetHP(statData.maxHP);
+        }
+        else
+        {
+            stat.SetHP(statData.currentHP);
+        }
+
         stat.SetDamage(statData.dmg);
         stat.SetCritRate(statData.critRate);
         stat.SetCritDamage(statData.critDamage);

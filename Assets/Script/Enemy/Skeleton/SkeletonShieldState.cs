@@ -28,6 +28,16 @@ public class SkeletonShieldState : EnemyState
     public override void Update()
     {
         base.Update();
+        float dir = skeleton.IsOnTheRightOfPlayer() ? 1 : -1;
+        if (dir == skeleton.EntityDir * -1)
+        {
+            skeleton.isImmortal = true ;
+        }
+        else
+        {
+            skeleton.isImmortal = false;
+        }
+
         if (timer < 0)
         {
             stateMachine.ChangeState(skeleton.battleState);

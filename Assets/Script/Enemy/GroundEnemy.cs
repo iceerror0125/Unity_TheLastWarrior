@@ -39,7 +39,7 @@ public class GroundEnemy : Enemy
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, ~layersToIgnore);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
            
             if (hit.collider.gameObject.layer == 6)
             {

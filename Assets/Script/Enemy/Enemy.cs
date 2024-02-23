@@ -21,6 +21,8 @@ public class Enemy : Entity
     [SerializeField] protected int attackCount; // active special skill when attackCount = x
     [SerializeField] protected List<EnemyState> skillList;
     protected int skillIndex;
+    [Header("Boss")]
+    [SerializeField] protected bool isBoss;
     public bool isActivePhase2 { get; protected set; }
 
     #endregion
@@ -146,8 +148,24 @@ public class Enemy : Entity
      }*/
     public override void KnockBack(Entity attacker, Vector2 knockback)
     {
-        base.KnockBack(attacker, knockback);
-        stateMachine.ChangeState(hurtState);
+        if (!isBoss)
+        {
+            stateMachine.ChangeState(hurtState);
+        }
+        else
+        {
+            float temp = moveSpeed;
+            moveSpeed *= -1;
+            StartCoroutine(RestoreSpeedRoutine(temp));
+        }
+
+        base.KnockBack(attacker, knockback  * 2);
+        
+    }
+    private System.Collections.IEnumerator RestoreSpeedRoutine(float speed)
+    {
+        yield return new WaitForSeconds(0.5f);
+        moveSpeed = speed;
     }
     public bool CheckGroundAhead()
     {

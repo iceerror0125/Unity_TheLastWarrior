@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonBattleState : EnemyBattleState
+public class SkeletonBattleState : EliteEnemyBattleState
 {
     Skeleton skeleton;
     public SkeletonBattleState(Enemy enemy, string animName) : base(enemy, animName)

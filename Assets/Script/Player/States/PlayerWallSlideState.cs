@@ -20,7 +20,6 @@ public class PlayerWallSlideState : PlayerState
         //player.PlusJumpCounter();
         player.SetCanHighJump(true);
 
-
         wasPress = false;
     }
 
@@ -35,12 +34,14 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
         player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.WallSlideGravity));
+        Debug.Log(player.IsSliding);
         if (!IsSlideWall())
         {
-           //stateMachine.ChangeState(player.fallState);
+            stateMachine.ChangeState(player.fallState);
         }
         CheckToGroundState();
         JumpOutWall();
+       
     }
 
     private void JumpOutWall()
@@ -60,19 +61,27 @@ public class PlayerWallSlideState : PlayerState
     }
     private bool IsSlideWall()
     {
-        var x = Physics2D.OverlapCircleAll(player.exitWallState.position, 1);
+        Vector2 size = new Vector2(1.243875f, 1.939426f);
+        var x = Physics2D.OverlapCapsuleAll(player.transform.position, size, CapsuleDirection2D.Horizontal, 0);
         foreach (var collide in x)
         {
             /* TilemapCollider2D tilemapCollider = collide.GetComponent<TilemapCollider2D>();
              Debug.Log(tilemapCollider.gameObject.layer);*/
-            if (collide != null && collide.gameObject.layer == 3)
+
+            if (collide != null)
             {
-                return true;
+                Debug.Log(collide.gameObject.name);
+                if (collide.gameObject.layer == 3)
+                {
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
             }
-            else
-            {
-                continue;
-            }
+
+
         }
 
         return false;

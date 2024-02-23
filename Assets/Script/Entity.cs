@@ -93,7 +93,7 @@ public class Entity : MonoBehaviour
         // rb.gravityScale = 4;
         isDead = false;
         isInDeadState = false;
-       
+
     }
 
     protected virtual void Start() { }
@@ -115,6 +115,29 @@ public class Entity : MonoBehaviour
             groundCheckLength,
             whatIsGround
             );
+    }
+    public bool CheckTagGround(string tag)
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            Vector2.down,
+            groundCheckLength + 0.5f
+            );
+        if (hits != null)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+
+                if (hit.collider != null)
+                {
+                    // Debug.Log(hit.collider.gameObject.tag);
+                    if (hit.collider.gameObject.tag == tag)
+                        return true;
+                }
+            }
+        }
+
+        return false;
     }
     private void CheckingWall()
     {
@@ -207,7 +230,6 @@ public class Entity : MonoBehaviour
     }
     public virtual void Freeze(float seconds)
     {
-        Debug.Log("Call");
         StartCoroutine(FreezeCoroutine(seconds));
     }
     IEnumerator FreezeCoroutine(float seconds)

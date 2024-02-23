@@ -8,6 +8,8 @@ public class FemaleKnight : GroundEnemy
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject phase2;
 
+    private float phase2Speed;
+
    
     public FemaleKnightAttack2State atk2State { get; private set; }
     public FemaleKnightSkill skill { get; private set; }
@@ -30,11 +32,22 @@ public class FemaleKnight : GroundEnemy
         phase2.SetActive(false);
 
         stateMachine.InitState(idleState);
+
+        phase2Speed = moveSpeed * 2;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (stat.Hp < stat.MaxHp / 2 && moveSpeed != phase2Speed) 
+        {
+            moveSpeed = phase2Speed;
+        }
     }
     protected override void ActivePhase2()
     {
         base.ActivePhase2();
-        moveSpeed = moveSpeed * 2;
+       
         stat.SetDamage(stat.Damage * 1.5f);
         stat.SetCritRate(0.5f);
 

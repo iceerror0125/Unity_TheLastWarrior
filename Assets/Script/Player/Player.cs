@@ -15,6 +15,7 @@ public class Player : Entity
     public PlayerDeadState deadState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerHurtState hurtState { get; private set; }
+    public PlayerSlideState slideState { get; private set; }
     #endregion
 
     #region Player setting
@@ -56,6 +57,7 @@ public class Player : Entity
     public bool IsSliding => isSliding;
     public void SetIsSliding(bool _value) => isSliding = _value;
     public float WallSlideGravity => wallSlideGravity;
+    public void SetMoveSpeed(float value) => moveSpeed = value;
     // public PlayerStat PlayerStat => stat;
     #endregion
 
@@ -73,6 +75,7 @@ public class Player : Entity
         deadState = new PlayerDeadState("Player_Death");
         wallJumpState = new PlayerWallJumpState("Player_Jump");
         hurtState = new PlayerHurtState("Player_Hurt");
+        slideState = new PlayerSlideState("Player_Fall");
         #endregion
 
         stateMachine.InitState(idleState);
@@ -89,6 +92,8 @@ public class Player : Entity
             return;
 
         moveDir = Input.GetAxisRaw("Horizontal");
+
+
     }
     public void ActivateFallGravity(bool _isActivate)
     {
@@ -139,11 +144,26 @@ public class Player : Entity
         Gizmos.DrawWireSphere(exitWallState.position, 1);
     }
 
+   /* private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("HIIIIIIIIIIIIIIII");
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision != null && collision.gameObject.layer == 3 && !isGround && !isDead)
+        if (collision == null)
         {
-            stateMachine.ChangeState(fallState);
+            isSliding = false;
         }
-    }
+        else
+        {
+            isSliding = false;
+        }
+        *//*if (collision != null)
+        {
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.layer == 3 && !isGround && !isDead)
+                stateMachine.ChangeState(fallState);
+        }*//*
+    }*/
 }

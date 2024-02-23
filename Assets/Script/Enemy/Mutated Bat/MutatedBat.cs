@@ -13,7 +13,7 @@ public class MutatedBat : FlyEnemy
         deadState = new EnemyDeadState(this, "MutatedBat_Dead");
         hurtState = new EnemyHurtState(this, "MutatedBat_Idle");
         attackState = new MutatedBatAttackState(this, "MutatedBat_Idle");
-        battleState = new EnemyBattleState(this, "MutatedBat_Idle");
+        battleState = new MutatedBatBattleState(this, "MutatedBat_Idle");
         idleState = new EnemyIdleState(this, "MutatedBat_Idle");
         moveState = new FlyEnemyMoveState(this, "MutatedBat_Idle");
         skill = new MutatedBatSkillState(this, "MutatedBat_Idle");

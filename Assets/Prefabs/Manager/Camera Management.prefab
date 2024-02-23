@@ -403,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 2240239623353786268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4706156, y: -20.609003, z: -7.3929415}
+  m_LocalPosition: {x: -16.835388, y: -16.26941, z: -8.822193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -859,6 +859,7 @@ MonoBehaviour:
   secretPlaceDiscovered: {fileID: 8300000, guid: 7163f0e184a88e242a196db9e5de359a, type: 3}
   shakingGround: {fileID: 8300000, guid: 544910cad6d10b448b66bb71a96101f8, type: 3}
   hitBySpike: {fileID: 8300000, guid: 94d6e9e241c2cc649a52576363216806, type: 3}
+  enemyHurt: {fileID: 8300000, guid: 5cccd8de73be7c84c876fc095b8fed01, type: 3}
 --- !u!1 &2337119757688999205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1130,7 @@ MonoBehaviour:
   dampingTime: 0.5
   yVDamping: 0
   distanceFromGround: 0
+  currentCamera: {fileID: 0}
 --- !u!1 &4623262487393872176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,8 +1872,8 @@ MonoBehaviour:
   custom:
     swapCameras: 0
     panCameraOnContact: 0
-    cameraOnLeft: {fileID: 0}
-    cameraOnRight: {fileID: 0}
+    cameraOut: {fileID: 0}
+    cameraIn: {fileID: 0}
     panDirection: 0
     panDistance: 0.3
     panTime: 0.35
