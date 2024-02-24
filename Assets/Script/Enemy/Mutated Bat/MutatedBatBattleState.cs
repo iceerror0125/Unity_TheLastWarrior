@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MutatedBatBattleState : EnemyBattleState
@@ -36,6 +37,27 @@ public class MutatedBatBattleState : EnemyBattleState
     public override void Update()
     {
         base.Update();
-        bat.ChangeVelocity(moveX, moveY);
+        //bat.ChangeVelocity(moveX, moveY);
+        FarFromPlayer();
+    }
+
+    private void FarFromPlayer()
+    {
+        if (Vector2.Distance(player.transform.position, bat.transform.position) < 5)
+        {
+            bat.ChangeVelocity(bat.MoveSpeed * bat.EntityDir * -1, bat.rb.velocity.y);
+        }
+    }
+
+    private void CheckGroundAround()
+    {
+        var hit = Physics2D.OverlapCircle(bat.transform.position, 1.3f, 1 << 3);
+        if (hit != null)
+        {
+            if (timer < 0)
+            {
+                timer = 2;
+            }
+        }
     }
 }

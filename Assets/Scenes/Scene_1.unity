@@ -27002,6 +27002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf368177f40dfb43b3920d87f582282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 711507897}
 --- !u!1 &1799441753
 GameObject:
   m_ObjectHideFlags: 0
@@ -49918,7 +49919,7 @@ PrefabInstance:
     - target: {fileID: 7266687950778557527, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: d11473c5cfb109746a32f035fee70247, type: 2}
+      objectReference: {fileID: 6200000, guid: 51433791bb4d69a4dbbc1175a8f4a67b, type: 2}
     - target: {fileID: 7407103674085167122, guid: d53e45d041a26a245afd42f3488d4432, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.9

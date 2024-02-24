@@ -159,7 +159,7 @@ public class Enemy : Entity
             StartCoroutine(RestoreSpeedRoutine(temp));
         }
 
-        base.KnockBack(attacker, knockback  * 2);
+        base.KnockBack(attacker, knockback);
         
     }
     private System.Collections.IEnumerator RestoreSpeedRoutine(float speed)
@@ -177,5 +177,19 @@ public class Enemy : Entity
         Vector2 start = new Vector2(transform.position.x + 0.6f * entityDir, transform.position.y);
         var ray = Physics2D.Raycast(start, Vector2.down, groundCheckLength, whatIsGround);
         return ray;
+    }
+
+    public override void TakeDamage(float damage, bool isDeadZone = false)
+    {
+        base.TakeDamage(damage, isDeadZone);
+        AudioManager.instance.environment.EnemyHurt();
+    }
+    public void DestroyOTA()
+    {
+        OneTimeAppear ota = GetComponent<OneTimeAppear>();
+        if (ota != null)
+        {
+            ota.DestroyOTA();
+        }
     }
 }

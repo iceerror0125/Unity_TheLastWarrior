@@ -13,6 +13,8 @@ public class EnemyDeadState : EnemyState
         enemy.ZeroVelocity(); // In case it can't access Update()
         enemy.SetIsInDeadState(true);
         enemy.rb.gravityScale = 4;
+
+        enemy.DestroyOTA();
     }
 
     public override void Exit()

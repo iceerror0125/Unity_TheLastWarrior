@@ -12,8 +12,6 @@ public class EnemyHurtState : EnemyState
     {
         base.Enter();
         timer = enemy.HurtTime;
-        AudioManager.instance.environment.EnemyHurt();
-
     }
 
     public override void Exit()

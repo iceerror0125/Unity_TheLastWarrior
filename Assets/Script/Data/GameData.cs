@@ -14,6 +14,8 @@ public class GameData
     public int dimond;
     public string equipId;
     public List<string> stashIdList;
+    public SerializableDictionary<string, int> stashVolume;
+
 
     public GameData() { 
         checkPointScene = string.Empty;
@@ -24,6 +26,7 @@ public class GameData
         dimond = -1;
         equipId = string.Empty;
         stashIdList = new List<string>();
+        stashVolume = new SerializableDictionary<string, int>();
     }
 
 }

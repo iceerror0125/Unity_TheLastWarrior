@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public string transitionFromScene;
     public bool isCutScene;
     public bool isRespawn;
+    public bool isInMainMenu;
     public bool isGamePaused { get; private set; }
     public bool isUITurnedOn { get; private set; }
     public SaveManager saveManager { get; private set; }
@@ -62,13 +63,19 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneUnloaded(Scene current)
     {
-        saveManager.SaveData();
+        if (SceneManager.GetActiveScene().name.Contains("Scene"))
+        {
+            saveManager.SaveData();
+        }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (!string.Equals(scene.path, SceneManager.GetActiveScene().path)) return;
 
-        LoadSaveData();
+        if (SceneManager.GetActiveScene().name.Contains("Scene"))
+        {
+            LoadSaveData();
+        }
     }
     private void LoadSaveData()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,23 @@ public class UI_SlotItem : MonoBehaviour
         {
             img.sprite = item.Img;
             img.color = Color.white;
+        }
+    }
+    public void SetUpVolume(int volume)
+    {
+        GameObject volumeObject = transform.Find("Volume BG").gameObject;
+        if (volumeObject != null)
+        {
+            if (volume <= 1)
+            {
+                volumeObject.SetActive(false);
+            }
+            else
+            {
+                volumeObject.SetActive(true);
+                TextMeshProUGUI volumeText = volumeObject.GetComponentInChildren<TextMeshProUGUI>();
+                volumeText.text = volume.ToString();
+            }
         }
     }
     public void ClearSlot()

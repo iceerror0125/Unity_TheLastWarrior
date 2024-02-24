@@ -33,10 +33,7 @@ public class CameraExpand : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer < 0)
             {
-                /* transposer.m_TrackedObjectOffset = new Vector3(
-                     transposer.m_TrackedObjectOffset.x,
-                     isUp ? transposer.m_TrackedObjectOffset.y + offset : transposer.m_TrackedObjectOffset.y - offset,
-                     transposer.m_TrackedObjectOffset.z);*/
+                transposer.m_YDamping = 2;
                 if (isUp)
                 {
                     StartCoroutine(ExpandCameraRoutine(transposer.m_TrackedObjectOffset.y + offset));
@@ -61,10 +58,10 @@ public class CameraExpand : MonoBehaviour
     private IEnumerator ExpandCameraRoutine(float target)
     {
         float temp = target;
-        while (temp > 0.3f)
+        Debug.Log(target - transposer.m_TrackedObjectOffset.y);
+        while (Mathf.Abs(target - transposer.m_TrackedObjectOffset.y) > 0.1f)
         {
             transposer.m_TrackedObjectOffset.y += speed;
-            temp -= Mathf.Abs(speed);
             yield return null;
         }
         transposer.m_TrackedObjectOffset.y = target;

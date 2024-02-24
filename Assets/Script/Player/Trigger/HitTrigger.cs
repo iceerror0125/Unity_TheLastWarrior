@@ -32,6 +32,10 @@ public class HitTrigger
             //player.PerformNormalAttack(enemy);
             player.CauseDamage(enemy, isCrit: true);
 
+            if (enemy.stat.Hp < 0)
+            {
+                enemy.stateMachine.ChangeState(enemy.deadState);
+            }
 
             if (_skill != null && _skill.IsActivated)
             {

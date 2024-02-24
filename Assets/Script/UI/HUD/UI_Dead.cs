@@ -21,7 +21,7 @@ public class UI_Dead : MonoBehaviour
    
     void Update()
     {
-        if (text2.color.a > 0.8f)
+        if (text2.color.a > 0.5f)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {

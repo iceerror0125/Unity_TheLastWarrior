@@ -17236,8 +17236,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.6041498, y: 1.1738499, z: 0}
-    m_Extent: {x: 6.62995, y: 3.2010498, z: 0}
+    m_Center: {x: 0.6019001, y: 1.1851001, z: 0}
+    m_Extent: {x: 6.632, y: 3.1946, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -17979,13 +17979,14 @@ GameObject:
   - component: {fileID: 1104262549}
   - component: {fileID: 1104262548}
   - component: {fileID: 1104262547}
+  - component: {fileID: 1104262550}
   m_Layer: 3
   m_Name: Hide Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1104262544
 Transform:
   m_ObjectHideFlags: 0
@@ -22754,7 +22755,81 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1104262547}
+    m_ColliderPaths:
+    - - X: 600000000
+        Y: 500000000
+      - X: 190000000
+        Y: 500000000
+      - X: 190000000
+        Y: 670000000
+      - X: 170000000
+        Y: 670000000
+      - X: 170000000
+        Y: 480000000
+      - X: 580000000
+        Y: 480000000
+      - X: 580000000
+        Y: 430000000
+      - X: 600000000
+        Y: 430000000
+    - - X: 650000000
+        Y: 550000000
+      - X: 530000000
+        Y: 550000000
+      - X: 530000000
+        Y: 610000000
+      - X: 1220000000
+        Y: 610000000
+      - X: 1220000000
+        Y: 620000000
+      - X: 1230000000
+        Y: 620000000
+      - X: 1230000000
+        Y: 630000000
+      - X: 210000000
+        Y: 630000000
+      - X: 210000000
+        Y: 530000000
+      - X: 230000000
+        Y: 530000000
+      - X: 230000000
+        Y: 610000000
+      - X: 510000000
+        Y: 610000000
+      - X: 510000000
+        Y: 530000000
+      - X: 630000000
+        Y: 530000000
+      - X: 630000000
+        Y: 430000000
+      - X: 650000000
+        Y: 430000000
+    - - X: 480000000
+        Y: 400000000
+      - X: 390000000
+        Y: 400000000
+      - X: 390000000
+        Y: 380000000
+      - X: 480000000
+        Y: 380000000
+    - - X: 640000000
+        Y: 400000000
+      - X: 530000000
+        Y: 400000000
+      - X: 530000000
+        Y: 380000000
+      - X: 640000000
+        Y: 380000000
+    - - X: 380000000
+        Y: 370000000
+      - X: 330000000
+        Y: 370000000
+      - X: 330000000
+        Y: 360000000
+      - X: 380000000
+        Y: 360000000
   m_CompositePaths:
     m_Paths:
     - - {x: 59.99997, y: 43}
@@ -22824,6 +22899,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1104262550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104262543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc85371c91768644498fef59d161b89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerItem: {fileID: 1140699708}
 --- !u!1 &1123634451
 GameObject:
   m_ObjectHideFlags: 0
@@ -39108,6 +39196,7 @@ GameObject:
   - component: {fileID: 1850617998}
   - component: {fileID: 1850617997}
   - component: {fileID: 1850617999}
+  - component: {fileID: 1850618000}
   m_Layer: 0
   m_Name: Block wall
   m_TagString: Untagged
@@ -39304,6 +39393,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 531089343}
+--- !u!114 &1850618000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850617995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08b26005937e34eab8b5e91728f3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1851244207
 GameObject:
   m_ObjectHideFlags: 0

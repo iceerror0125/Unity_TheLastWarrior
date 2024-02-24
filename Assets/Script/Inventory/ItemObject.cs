@@ -35,6 +35,13 @@ public class ItemObject : MonoBehaviour
             Inventory.instance.AddItem(item);
             manager.CollectedItem(item.ItemName);
             AudioManager.instance.environment.PickUpItem();
+
+            OneTimeAppear ota = GetComponent<OneTimeAppear>();
+            if (ota != null)
+            {
+                ota.DestroyOTA();
+            }
+
             Destroy(gameObject);
         }
     }

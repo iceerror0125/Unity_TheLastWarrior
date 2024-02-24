@@ -198,6 +198,7 @@ public class Entity : MonoBehaviour
         float knockbackDir = IsRightOfB(attacker) == true ? 1 : -1;
         Vector2 hit = new Vector2(knockback.x * knockbackDir, knockback.y);
         ChangeVelocity(hit);
+        Invoke(nameof(ZeroVelocity), 0.5f);
     }
 
     // Use Entity as Interface and Stat is Interface implement

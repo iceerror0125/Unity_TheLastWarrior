@@ -6,6 +6,8 @@ public enum BrokenWallSide
 {
     Left, Right, Both
 }
+
+[RequireComponent(typeof(OneTimeAppear))]
 public class BrokenWall : MonoBehaviour
 {
     [SerializeField] private GameObject hideWall;
@@ -45,6 +47,8 @@ public class BrokenWall : MonoBehaviour
         if (hp <= 0)
         {
             AudioManager.instance.environment.BreakWall();
+
+            GetComponent<OneTimeAppear>().DestroyOTA();
             Destroy(gameObject);
             
             if (hideWall == null)

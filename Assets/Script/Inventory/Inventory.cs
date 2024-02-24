@@ -5,9 +5,9 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public List<ItemData> stashList; // here
+    public List<ItemData> stashList;
     public Dictionary<ItemData, InventoryItem> stashDic;
-    public ItemDataEquipment equipSlot; // here
+    public ItemDataEquipment equipSlot; 
 
     public Transform stashSlotParent;
     public UI_SlotItem[] uiStashSlots;
@@ -42,6 +42,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < stashList.Count; i++)
         {
             uiStashSlots[i].SetupImageSlot(stashList[i]);
+            uiStashSlots[i].SetUpVolume(stashDic[stashList[i]].Amount);
         }
 
         UI_PlayerStat.instance.UpdateStat();
@@ -69,6 +70,15 @@ public class Inventory : MonoBehaviour
             stashList.Add(item);
             stashDic.Add(item, newItem);
         }
+        UpdateUI();
+    }
+    public void SetItem(ItemData item, int amount)
+    {
+        InventoryItem newItem = new InventoryItem(item);
+        newItem.SetAmount(amount);
+        stashList.Add(item);
+        stashDic.Add(item, newItem);
+
         UpdateUI();
     }
     public void AddEquipmentItem(ItemDataEquipment item)

@@ -53,7 +53,9 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         PlayerPrefs.DeleteAll();
         // delete data file
         SaveManager.instance.DeleteFileSave();
-        GameManager.Instance.isRespawn = true;
+        //GameManager.Instance.isRespawn = true;
+        GameManager.Instance.isInMainMenu = true;
+
     }
 
     private void EnterGame()
@@ -64,6 +66,8 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         controller.isClickable = true;
         BlackScreen.instance.FadeIn();
+        GameManager.Instance.isRespawn = true;
+
         InvokeRepeating("LoadScene", 1, 0.5f);
     }
 

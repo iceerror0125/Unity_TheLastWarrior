@@ -15,7 +15,6 @@ public class Player : Entity
     public PlayerDeadState deadState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerHurtState hurtState { get; private set; }
-    public PlayerSlideState slideState { get; private set; }
     #endregion
 
     #region Player setting
@@ -75,7 +74,6 @@ public class Player : Entity
         deadState = new PlayerDeadState("Player_Death");
         wallJumpState = new PlayerWallJumpState("Player_Jump");
         hurtState = new PlayerHurtState("Player_Hurt");
-        slideState = new PlayerSlideState("Player_Fall");
         #endregion
 
         stateMachine.InitState(idleState);

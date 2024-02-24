@@ -11,6 +11,13 @@ public class Dimond : MonoBehaviour
         {
             SkillManager.instance.PlusDimond();
             AudioManager.instance.environment.PickUpItem();
+
+            OneTimeAppear ota = GetComponent<OneTimeAppear>();
+            if (ota != null)
+            {
+                ota.DestroyOTA();
+            }
+
             Destroy(gameObject);
         }
     }
@@ -30,5 +37,10 @@ public class Dimond : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

@@ -117,10 +117,12 @@ public class SaveManager : MonoBehaviour
         // stash
         for (int i = 0; i < mainData.stashIdList.Count; i++)
         {
-            ItemData equipment = FindItemDataPrefab(mainData.stashIdList[i]);
-            if (equipment != null)
+            ItemData item = FindItemDataPrefab(mainData.stashIdList[i]);
+            int amount = mainData.stashVolume[mainData.stashIdList[i]];
+            if (item != null)
             {
-                inventory.AddItem(equipment);
+                inventory.SetItem(item, amount);
+                //inventory.AddItem(item);
             }
         }
     }
@@ -142,6 +144,17 @@ public class SaveManager : MonoBehaviour
         {
             string id = inventory.stashList[i].id;
             mainData.stashIdList.Add(id);
+
+            // volume
+            int amount = inventory.stashDic[inventory.stashList[i]].Amount;
+            if (mainData.stashVolume.TryGetValue(id, out var volume))
+            {
+                mainData.stashVolume[id] = amount;
+            }
+            else
+            {
+                mainData.stashVolume.Add(id, amount);
+            }
         }
     }
 

@@ -13,8 +13,8 @@ public class OneTimeAppear : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void DestroyOTA()
     {
-        // PlayerPrefs.SetInt(gameObject.name, 1);
+        PlayerPrefs.SetInt(gameObject.name, 1);
     }
 }

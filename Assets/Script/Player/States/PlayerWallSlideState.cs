@@ -34,7 +34,6 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
         player.ChangeVelocity(new Vector2(player.rb.velocity.x, player.WallSlideGravity));
-        Debug.Log(player.IsSliding);
         if (!IsSlideWall())
         {
             stateMachine.ChangeState(player.fallState);
@@ -62,7 +61,7 @@ public class PlayerWallSlideState : PlayerState
     private bool IsSlideWall()
     {
         Vector2 size = new Vector2(1.243875f, 1.939426f);
-        var x = Physics2D.OverlapCapsuleAll(player.transform.position, size, CapsuleDirection2D.Horizontal, 0);
+        var x = Physics2D.OverlapCapsuleAll(player.transform.position, size, CapsuleDirection2D.Vertical, 0);
         foreach (var collide in x)
         {
             /* TilemapCollider2D tilemapCollider = collide.GetComponent<TilemapCollider2D>();
@@ -70,7 +69,7 @@ public class PlayerWallSlideState : PlayerState
 
             if (collide != null)
             {
-                Debug.Log(collide.gameObject.name);
+                //Debug.Log(collide.gameObject.name);
                 if (collide.gameObject.layer == 3)
                 {
                     return true;

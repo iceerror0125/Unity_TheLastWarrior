@@ -17,6 +17,10 @@ public class InventoryItem
     {
         amount++;
     }
+    public void SetAmount(int value)
+    {
+        amount = value;
+    }
     public void Decrease()
     {
         if (amount > 0)
