@@ -53,6 +53,7 @@ public class UI_SkillSlot : MonoBehaviour
             return;
 
         skill.Unlock(true);
+
         SkillManager.instance.MinusDimond();
         image.color = UnlockColor();
         

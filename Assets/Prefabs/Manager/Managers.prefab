@@ -298,7 +298,6 @@ Transform:
   - {fileID: 1816721968236181744}
   - {fileID: 2615716949180257875}
   - {fileID: 6543727168910694973}
-  - {fileID: 6898383887553893843}
   - {fileID: 5324426725896955740}
   - {fileID: 3731376672026461259}
   - {fileID: 8896555055361595199}
@@ -577,53 +576,6 @@ MonoBehaviour:
   equipSlot: {fileID: 0}
   stashSlotParent: {fileID: 0}
   uiStashSlots: []
---- !u!1 &5814327567788471111
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6898383887553893843}
-  - component: {fileID: 6964895044522922173}
-  m_Layer: 0
-  m_Name: Collect Item Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6898383887553893843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814327567788471111}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4916076448759573068}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6964895044522922173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5814327567788471111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1d4af00dac45f43bb989ec8bee41e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 5e1afa3a209a5c543844419f71d88520, type: 2}
-  - {fileID: 11400000, guid: b44b73d5b188a0c40a81a41ccb06bc9a, type: 2}
 --- !u!1 &6002547202262115219
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +929,7 @@ PrefabInstance:
     - target: {fileID: 1940014550492264367, guid: 0c089832fac21184d93efb357a64ce97, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: 19eed390cb9a1db4d95bef6caedba03b, type: 2}
+      objectReference: {fileID: 11400000, guid: 10674e6336cfb144f8503a7e228bf8e1, type: 2}
     - target: {fileID: 1940014550492264367, guid: 0c089832fac21184d93efb357a64ce97, type: 3}
       propertyPath: checkpoints.Array.size
       value: 1

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7622851999944184e8524e6882d361c6, type: 3}
+  m_Name: Crit Damage Position
+  m_EditorClassIdentifier: 
+  id: c6febae5-7ed8-4032-9400-4ebd0919af42
+  itemName: Crit Damage Position
+  img: {fileID: 21300000, guid: 65648b07ea8a04b4a9a63adde4445e18, type: 3}
+  type: 0
+  description: Plus HP

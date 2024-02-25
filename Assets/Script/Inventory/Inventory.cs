@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 
     public List<ItemData> stashList;
     public Dictionary<ItemData, InventoryItem> stashDic;
-    public ItemDataEquipment equipSlot; 
+    public ItemDataEquipment equipSlot;
 
     public Transform stashSlotParent;
     public UI_SlotItem[] uiStashSlots;
@@ -59,17 +59,30 @@ public class Inventory : MonoBehaviour
     public void AddItem(ItemData item)
     {
         // already exist
-        if (stashDic.TryGetValue(item, out var value))
+        /* if (stashDic.TryGetValue(item, out var value))
+         {
+
+             value.Plus();
+         }*/
+        bool isOldItem = false;
+        foreach (var stash in stashDic)
         {
-            value.Plus();
+            if (stash.Key.id.Equals(item.id))
+            {
+                stash.Value.Plus();
+                isOldItem = true;
+                break;
+            }
         }
         // add new one
-        else
+        //else ...
+        if (!isOldItem)
         {
             InventoryItem newItem = new InventoryItem(item);
             stashList.Add(item);
             stashDic.Add(item, newItem);
         }
+
         UpdateUI();
     }
     public void SetItem(ItemData item, int amount)

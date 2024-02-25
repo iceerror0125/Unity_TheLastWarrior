@@ -27,7 +27,10 @@ public class ItemObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        if (collision.gameObject.layer == 3)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
 
         if (collision.GetComponent<Player>() != null)
         {
@@ -64,8 +67,8 @@ public class ItemObject : MonoBehaviour
         return false;
     }
 
-   /* private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - distance));
-    }*/
+    /* private void OnDrawGizmos()
+     {
+         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - distance));
+     }*/
 }

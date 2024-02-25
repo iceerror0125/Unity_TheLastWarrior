@@ -68,6 +68,10 @@ public class SaveManager : MonoBehaviour
                 if (data.Key.Equals(skill.SkillName))
                 {
                     skill.Unlock(data.Value);
+                    /*if (data.Value && !skill.IsActiveSkill)
+                    {
+                        skill.Activate();
+                    }*/
                 }
             }
         }
@@ -140,6 +144,7 @@ public class SaveManager : MonoBehaviour
 
         //stash 
         mainData.stashIdList.Clear();
+        mainData.stashVolume.Clear();
         for (int i = 0; i < inventory.stashList.Count; i++)
         {
             string id = inventory.stashList[i].id;
@@ -147,14 +152,7 @@ public class SaveManager : MonoBehaviour
 
             // volume
             int amount = inventory.stashDic[inventory.stashList[i]].Amount;
-            if (mainData.stashVolume.TryGetValue(id, out var volume))
-            {
-                mainData.stashVolume[id] = amount;
-            }
-            else
-            {
-                mainData.stashVolume.Add(id, amount);
-            }
+            mainData.stashVolume.Add(id, amount);
         }
     }
 
@@ -220,7 +218,15 @@ public class SaveManager : MonoBehaviour
 
     private ItemData FindItemDataPrefab(string id)
     {
-#if UNITY_EDITOR
+        ItemData[] items = Resources.LoadAll<ItemData>("Items");
+        foreach (var item in items)
+        {
+            if (item != null && item.id == id)
+            {
+                return item;
+            }
+        }
+/*#if UNITY_EDITOR
         string[] assets = AssetDatabase.FindAssets("", new[] { "Assets/Items" });
         foreach (string asset in assets)
         {
@@ -231,7 +237,11 @@ public class SaveManager : MonoBehaviour
                 return itemData;
             }
         }
-#endif
+#else
+    string path = "Assets/Items/" + id;
+    ItemData itemData = Resources.Load<ItemData>(path);
+    return itemData;
+#endif*/
         return null;
     }
 

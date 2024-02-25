@@ -66,8 +66,18 @@ public class EnemyBattleState : EnemyState
                     stateMachine.ChangeState(enemy.attackState);
                 }
             }
+        }
 
-            
+        // sometime still alive when hp <= 0
+        if (enemy.stat.Hp <= 0 && enemy.isInDeadState)
+        {
+            // prevent drop item 2 times
+            DropItem ota = enemy.GetComponentInChildren<DropItem>();
+            if (ota != null)
+            {
+                enemy.DestroyDropItem(ota);
+            }
+            stateMachine.ChangeState(enemy.deadState);
         }
     }
 

@@ -192,4 +192,8 @@ public class Enemy : Entity
             ota.DestroyOTA();
         }
     }
+    public void DestroyDropItem(DropItem di)
+    {
+        Destroy(di);
+    }
 }

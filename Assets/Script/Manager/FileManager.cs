@@ -8,7 +8,7 @@ using UnityEngine;
 public class FileManager
 {
     private string dir = Application.persistentDataPath;
-    private string tempFileName = "temp.json";
+    private string debugFile = "debug.txt";
     private string mainFileName = "data.json";
 
 
@@ -90,6 +90,47 @@ public class FileManager
         if (ExistsFileSave())
         {
             File.Delete(fullPath);
+        }
+    }
+
+    public void DebugFile(string data)
+    {
+        string fullPath = Path.Combine(dir, debugFile);
+        if (File.Exists(fullPath))
+        {
+            try
+            {
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamWriter writer = new StreamWriter(stream))
+                    {
+                        writer.WriteLine(data);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+
+            }
+        }
+        else
+        {
+            try
+            {
+                using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(stream))
+                    {
+                        writer.WriteLine(data);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+
+            }
         }
     }
 }

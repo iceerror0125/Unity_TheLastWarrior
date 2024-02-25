@@ -19,7 +19,12 @@ public class UI_InfoDialog : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            DialogManager.instance.CloseDialog();
         }
+    }
+    public void CloseDialog()
+    {
+        gameObject.SetActive(false);
     }
 }
