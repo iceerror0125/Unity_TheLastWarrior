@@ -2513,6 +2513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3866530963947312898}
   - component: {fileID: 3057434758765895761}
+  - component: {fileID: 4376160948666844322}
   m_Layer: 5
   m_Name: Dead UI
   m_TagString: Untagged
@@ -2553,6 +2554,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1d1b94321627d4d99f5a6f512de822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &4376160948666844322
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929020949564091480}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 6
+  m_TargetDisplay: 0
 --- !u!1 &5306876206768219916
 GameObject:
   m_ObjectHideFlags: 0
@@ -5667,11 +5691,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black screen
       objectReference: {fileID: 0}
+    - target: {fileID: 4201446767671143140, guid: 343474ed602593c45ab265d240e8f2f6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4033287671213604716, guid: 343474ed602593c45ab265d240e8f2f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4353359999318296222}
   m_SourcePrefab: {fileID: 100100000, guid: 343474ed602593c45ab265d240e8f2f6, type: 3}
+--- !u!1 &6712237641148544554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4033287671213604716, guid: 343474ed602593c45ab265d240e8f2f6, type: 3}
+  m_PrefabInstance: {fileID: 7701073272540760390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &4353359999318296222
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712237641148544554}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
+  m_TargetDisplay: 0
 --- !u!224 &8457452824074239571 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2270198897057838869, guid: 343474ed602593c45ab265d240e8f2f6, type: 3}

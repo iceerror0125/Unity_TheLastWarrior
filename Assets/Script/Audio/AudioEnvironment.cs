@@ -124,7 +124,7 @@ public class AudioEnvironment : MonoBehaviour
     }
     private IEnumerator ChangeClipRoutine(AudioSource audio, AudioClip clip)
     {
-        float speed = 0.01f;
+        float speed = 0.02f;
         // decrease volume
         while (audio.volume > 0.1)
         {

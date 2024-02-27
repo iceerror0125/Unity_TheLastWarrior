@@ -16,4 +16,6 @@ MonoBehaviour:
   itemName: ATK Position
   img: {fileID: 21300000, guid: 5baad0910795d7c44bbece5a9375a6bd, type: 3}
   type: 0
-  description: Plus HP
+  description: '+10 ATK
+
+'

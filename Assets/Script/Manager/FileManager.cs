@@ -2,39 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 
 public class FileManager
 {
     private string dir = Application.persistentDataPath;
-    private string debugFile = "debug.txt";
     private string mainFileName = "data.json";
 
-
-
-    public void LoadGame()
-    {
-        // load entire game data from file
-        // call this method when use "Continue" or respawn player
-    }
-    public void SaveAtCheckpoint()
-    {
-        // Save entire game data
-        // - break wall
-        // - some object trigger
-        // - inventory
-        // - player stat
-    }
-    public void SaveSkillTree()
-    {
-        // call this method when unlock new skill
-        // - save skill unlock
-        // - save dimond
-    }
     public void SaveData(GameData data)
     {
         string fullPath = Path.Combine(dir, mainFileName);
+        BinaryFormatter formatter = new BinaryFormatter();
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
@@ -43,9 +24,14 @@ public class FileManager
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
+                    dataStore = EncodeStringData(dataStore);
                     writer.Write(dataStore);
                 }
             }
+           /* using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                formatter.Serialize(stream, data);
+            }*/
 
         }
         catch (Exception e)
@@ -57,6 +43,8 @@ public class FileManager
     public GameData LoadData()
     {
         string fullPath = Path.Combine(dir, mainFileName);
+        BinaryFormatter formatter = new BinaryFormatter();
+
         GameData loadData = null;
         if (File.Exists(fullPath))
         {
@@ -68,9 +56,19 @@ public class FileManager
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         stringData = reader.ReadToEnd();
+                        stringData = DecodeStringData(stringData);
+                       /* stream.Seek(0, SeekOrigin.Begin);
+                        stringData = formatter.Deserialize(stream) as string;
+                        Debug.Log(stringData);*/
                     }
+                    /*stringData = formatter.Deserialize(stream) as string;
+                    Debug.Log(stringData);*/
                 }
+
+
                 loadData = JsonUtility.FromJson<GameData>(stringData);
+               
+              
             }
             catch (Exception e)
             {
@@ -93,44 +91,30 @@ public class FileManager
         }
     }
 
-    public void DebugFile(string data)
+    private string EncodeStringData(string data)
     {
-        string fullPath = Path.Combine(dir, debugFile);
-        if (File.Exists(fullPath))
+        char[] charArray = data.ToCharArray();
+        for (int i = 0; i < charArray.Length; i++)
         {
-            try
-            {
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-                {
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.WriteLine(data);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-
-            }
+            charArray[i] = Encode(charArray[i]);
         }
-        else
+        return new string(charArray);
+    }
+    private string DecodeStringData(string data)
+    {
+        char[] charArray = data.ToCharArray();
+        for (int i = 0; i < charArray.Length; i++)
         {
-            try
-            {
-                using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.WriteLine(data);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-
-            }
+            charArray[i] = Decode(charArray[i]);
         }
+        return new string(charArray);
+    }
+    private char Encode(char x)
+    {
+        return (char) (x << 1);
+    }
+    private char Decode(char x)
+    {
+        return (char)(x >> 1);
     }
 }

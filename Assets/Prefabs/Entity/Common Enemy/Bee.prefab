@@ -177,7 +177,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 2052501776068174157}
   attackCheckRadius: 0
-  hurtTime: 0.5
+  hurtTime: 0.3
   canKnockback: 0
   isDead: 0
   isImmortal: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   attackRange: 0
   isAttack: 0
   attackCount: 0
+  isBoss: 0
   limitBoxSize: {x: 10, y: 5}
   projectile: {fileID: 800209104388000245, guid: 453fa853216f604479d2eb3791ad7bf7, type: 3}
   distanceStopMoving: 0

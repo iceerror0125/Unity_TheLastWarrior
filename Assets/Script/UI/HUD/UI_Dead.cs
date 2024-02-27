@@ -34,21 +34,13 @@ public class UI_Dead : MonoBehaviour
     private void Respawn()
     {
         var manager = CheckpointManager.instance;
-        Debug.Log("_Manager: " + manager);
-        Debug.Log("_Data: " + manager.data);
-        Debug.Log("_Scene: " + manager.data.scene);
+ 
+        string scene = PlayerPrefs.GetString(manager.data.key, string.Empty);
 
-
-
-        /* Debug.Log("Data: " + manager.data.scene);
-         Debug.Log("Scene: " + manager.data.scene);
- */
-        if (manager.data.scene.Contains("Scene"))
+        if (scene.Contains("Scene"))
         {
-            Debug.Log("Inside if");
-            string name = manager.data.scene;
             GameManager.Instance.isRespawn = true;
-            SceneManager.LoadScene(name);
+            SceneManager.LoadScene(scene);
         }
         else
         {

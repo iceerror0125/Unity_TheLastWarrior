@@ -17,13 +17,13 @@ public class EntityStat : MonoBehaviour
     #region Get Set
     public float MaxHp => maxHp;
     public float Hp => hp;
-    public void SetHP(float value) => hp = value;
+    public void SetHP(float value) => hp = Mathf.Round(value);
     public float Damage => damage;
-    public float SetDamage(float _value) => damage = _value;
+    public float SetDamage(float _value) => damage = Mathf.Round(_value);
     public float CritRate => critRate;
-    public float SetCritRate(float _value) => critRate = _value;
+    public float SetCritRate(float _value) => critRate = Mathf.Round(_value * Mathf.Pow(10, 1)) / Mathf.Pow(10, 1);
     public float CritDamage => critDamage;
-    public float SetCritDamage(float _value) => critDamage = _value;
+    public float SetCritDamage(float _value) => critDamage = Mathf.Round(_value);
     public float SetMaxHp(float _value) => maxHp = _value;
     #endregion
 

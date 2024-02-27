@@ -44,11 +44,11 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void ResetData()
     {
-        // delete checkpoint
+       /* // delete checkpoint
         if (checkpoint  != null)
         {
-            checkpoint.scene = "";
-        }
+            checkpoint.key = "";
+        }*/
         // playerPrefs
         PlayerPrefs.DeleteAll();
         // delete data file
@@ -76,14 +76,8 @@ public class MainMenuOption : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (BlackScreen.instance.IsFill())
         {
             //SceneManager.LoadScene("Scene_1");
-            if (checkpoint != null && checkpoint.scene.Length > 0)
-            {
-                SceneManager.LoadScene(checkpoint.scene);
-            }
-            else
-            {
-                SceneManager.LoadScene("Scene_1");
-            }
+            string scene = PlayerPrefs.GetString(checkpoint.key, "Scene_1");
+            SceneManager.LoadScene(scene);
         }
     }
     public void Continue()

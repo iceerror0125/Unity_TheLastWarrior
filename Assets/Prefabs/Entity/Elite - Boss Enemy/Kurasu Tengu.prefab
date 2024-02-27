@@ -244,10 +244,11 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  exitBattleStateTime: 5
+  exitBattleStateTime: 300
   attackRange: 3.51
   isAttack: 0
   attackCount: 0
+  isBoss: 0
   phase2: {fileID: 2374024148649025331}
   alert: {fileID: 754817685464108795}
 --- !u!1 &8284794437351420843

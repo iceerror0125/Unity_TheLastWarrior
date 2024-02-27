@@ -16,7 +16,11 @@ MonoBehaviour:
   itemName: Shadow Sword
   img: {fileID: -787713539, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
-  description: 
+  description: '+15 ATK
+
+    +10% Crit Rate
+
+    +5 Crit Damage'
   damage: 15
   critRate: 0.1
   critDamage: 5

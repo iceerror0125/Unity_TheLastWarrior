@@ -16,7 +16,9 @@ MonoBehaviour:
   itemName: Fire Sword
   img: {fileID: 1957800230, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
-  description: 
+  description: '+10 ATK
+
+    +5 Crit Damage'
   damage: 10
   critRate: 0
   critDamage: 5

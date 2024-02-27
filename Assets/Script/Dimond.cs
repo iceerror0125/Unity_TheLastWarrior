@@ -7,6 +7,11 @@ public class Dimond : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == 3)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+
         if (collision.GetComponent<Player>() != null)
         {
             SkillManager.instance.PlusDimond();
@@ -21,6 +26,15 @@ public class Dimond : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
+
     private void Update()
     {
         if (CheckGround())
@@ -37,10 +51,5 @@ public class Dimond : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

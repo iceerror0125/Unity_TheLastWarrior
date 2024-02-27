@@ -158,10 +158,11 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  exitBattleStateTime: 5
+  exitBattleStateTime: 300
   attackRange: 4.7
   isAttack: 0
   attackCount: 0
+  isBoss: 0
   projectilePrefab: {fileID: 1015081818249614460, guid: 6dea2cbf8a367c44e90bec303ef44b64, type: 3}
   phase2: {fileID: 2065270081345003164}
 --- !u!1 &7468813227171322276

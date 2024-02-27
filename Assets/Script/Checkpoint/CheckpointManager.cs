@@ -8,6 +8,7 @@ public class CheckpointManager : MonoBehaviour
     public static CheckpointManager instance;
     [SerializeField] List<Checkpoint> checkpoints;
     [SerializeField] public CheckpointData data;
+    private string scene;
     private void Awake()
     {
         if (instance == null)
@@ -19,7 +20,8 @@ public class CheckpointManager : MonoBehaviour
             Destroy(instance.gameObject);
         }
 
-        if (data.scene.Equals(SceneManager.GetActiveScene().name))
+        scene = PlayerPrefs.GetString(data.key, string.Empty);
+        if (scene.Equals(SceneManager.GetActiveScene().name))
         {
             checkpoints[0].ActiveCheckpoint();
         }
@@ -34,7 +36,7 @@ public class CheckpointManager : MonoBehaviour
             {
                 PlayerManager.instance.player.transform.position = checkpoints[0].transform.position;
             }
-            else if (!data.scene.Contains("Scene"))
+            else if (!scene.Contains("Scene"))
             {
                 PlayerManager.instance.player.transform.position = new Vector2(-10, -1);
             }

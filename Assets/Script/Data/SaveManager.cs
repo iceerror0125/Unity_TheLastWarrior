@@ -68,10 +68,10 @@ public class SaveManager : MonoBehaviour
                 if (data.Key.Equals(skill.SkillName))
                 {
                     skill.Unlock(data.Value);
-                    /*if (data.Value && !skill.IsActiveSkill)
+                    if (data.Value && !skill.IsActiveSkill)
                     {
                         skill.Activate();
-                    }*/
+                    }
                 }
             }
         }

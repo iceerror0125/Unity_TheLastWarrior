@@ -72,11 +72,11 @@ public class EnemyBattleState : EnemyState
         if (enemy.stat.Hp <= 0 && enemy.isInDeadState)
         {
             // prevent drop item 2 times
-            DropItem ota = enemy.GetComponentInChildren<DropItem>();
+           /* DropItem ota = enemy.GetComponentInChildren<DropItem>();
             if (ota != null)
             {
                 enemy.DestroyDropItem(ota);
-            }
+            }*/
             stateMachine.ChangeState(enemy.deadState);
         }
     }

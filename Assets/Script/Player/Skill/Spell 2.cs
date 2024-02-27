@@ -8,6 +8,9 @@ public class Spell2 : PlayerSkill
     protected override void SetUp()
     {
         base.SetUp();
+        if (player == null)
+            return;
+
         if (player.NeareastEnemy() == null)
         {
             counter = 0;

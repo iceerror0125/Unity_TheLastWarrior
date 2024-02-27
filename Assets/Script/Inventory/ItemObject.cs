@@ -36,7 +36,7 @@ public class ItemObject : MonoBehaviour
         {
             CheckShowDialog();
             Inventory.instance.AddItem(item);
-            manager.CollectedItem(item.ItemName);
+           
             AudioManager.instance.environment.PickUpItem();
 
             OneTimeAppear ota = GetComponent<OneTimeAppear>();
@@ -48,11 +48,19 @@ public class ItemObject : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
 
     private void CheckShowDialog()
     {
-        if (manager.IsCollectNewItem(item.ItemName))
+        if (manager.IsCollectNewItem(item.id))
         {
+            manager.CollectedItem(item.id);
             dialogManager.ShowInfoDialog(item);
         }
     }

@@ -5,19 +5,21 @@ using UnityEngine;
 public class CollectItemManager : MonoBehaviour
 {
     public static CollectItemManager instance;
-    [SerializeField] private Dictionary<string, bool> dic;
+    private Dictionary<string, bool> dic;
     [SerializeField] private List<ItemData> items;
 
     private void Awake()
     {
+
         if (instance == null)
         {
+
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(instance.gameObject);
+            Destroy(gameObject);
         }
     }
     void Start()
@@ -26,24 +28,37 @@ public class CollectItemManager : MonoBehaviour
         // convert list to dictinary (add item to dictionary)
         foreach (ItemData item in items)
         {
-            dic.Add(item.ItemName, false);
+            dic.Add(item.id, false);
         }
     }
 
-    public bool IsCollectNewItem(string _itemName)
+    public bool IsCollectNewItem(string _itemId)
     {
-        if (dic.TryGetValue(_itemName, out bool result))
+        foreach (var pair in dic)
         {
-            if (result == false)
-                return true;
+            /* Debug.Log(pair.Key + " - " + pair.Value);
+             Debug.Log("New: " + _itemId);
+             Debug.Log("Compare: " + (pair.Key.Equals(_itemId)));*/
+            if (pair.Key.Equals(_itemId) && pair.Value)
+            {
+                return false;
+            }
         }
-        return false;
+        return true;
+        /* if (dic.TryGetValue(_itemName, out bool result))
+         {
+             if (result == false)
+                 return true;
+         }
+         return false;*/
     }
-    public void CollectedItem(string _itemName)
+    public void CollectedItem(string _itemId)
     {
-        if (dic.ContainsKey(_itemName))
+        //Debug.Log("New: " + _itemId);
+        //Debug.Log(dic.ContainsKey(_itemId));
+        if (dic.ContainsKey(_itemId))
         {
-            dic[_itemName] = true;
+            dic[_itemId] = true;
         }
     }
 }

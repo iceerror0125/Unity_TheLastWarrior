@@ -16,7 +16,11 @@ MonoBehaviour:
   itemName: Light Sword
   img: {fileID: 160384165, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
-  description: 
+  description: '+20 ATK
+
+    +20% Crit Rate
+
+    +10 Crit Damage'
   damage: 20
   critRate: 0.2
   critDamage: 10

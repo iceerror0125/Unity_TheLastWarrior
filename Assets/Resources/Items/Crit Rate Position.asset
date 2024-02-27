@@ -16,4 +16,6 @@ MonoBehaviour:
   itemName: Crit Rate Position
   img: {fileID: 21300000, guid: 8b5fe5413354b104895dad81e6d77992, type: 3}
   type: 0
-  description: Plus HP
+  description: '+10% Crit Rate
+
+'

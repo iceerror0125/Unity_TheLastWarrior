@@ -16,6 +16,7 @@ public class DropItem : MonoBehaviour
             rb.gravityScale = 1;
             rb.AddForce(RandomSpawn(), ForceMode2D.Impulse);
         }
+        items.Clear();
     }
     private Vector2 RandomSpawn()
     {

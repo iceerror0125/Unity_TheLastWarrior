@@ -32,7 +32,8 @@ public class Checkpoint : MonoBehaviour
     {
         CheckpointManager.instance.TurnOffAllCheckpoint();
         isActivated = true;
-        CheckpointManager.instance.data.scene = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString(CheckpointManager.instance.data.key, SceneManager.GetActiveScene().name);
+        //CheckpointManager.instance.data.key = SceneManager.GetActiveScene().name;
         halo.SetActive(true);
     }
     public void UnActiveCheckpoint()
@@ -42,7 +43,7 @@ public class Checkpoint : MonoBehaviour
             halo.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() != null)
         {

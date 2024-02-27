@@ -295,7 +295,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 218550404789809044}
   attackCheckRadius: 0
-  hurtTime: 0.5
+  hurtTime: 0.3
   canKnockback: 0
   isDead: 0
   isImmortal: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   attackRange: 0
   isAttack: 0
   attackCount: 0
+  isBoss: 0
   distanceStopMoving: 10
   toAttackStateCountdown: 2
   moveBackwardSpeed: 2

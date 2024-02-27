@@ -278,7 +278,7 @@ MonoBehaviour:
   attackCountdown: 0
   attackCheck: {fileID: 3777444404360005658}
   attackCheckRadius: 0.5
-  hurtTime: 0.5
+  hurtTime: 0.3
   canKnockback: 0
   isDead: 0
   isImmortal: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   attackRange: 1.2
   isAttack: 0
   attackCount: 0
+  isBoss: 0
 --- !u!114 &6583065611967232362
 MonoBehaviour:
   m_ObjectHideFlags: 0

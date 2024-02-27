@@ -16,7 +16,11 @@ MonoBehaviour:
   itemName: Snow Sword
   img: {fileID: -1172215379, guid: c90d98c4a46b3864fab76305af19257f, type: 3}
   type: 1
-  description: 
+  description: '+30 ATK
+
+    +30% Crit Rate
+
+    +25 Crit Damage'
   damage: 30
   critRate: 0.3
   critDamage: 25
